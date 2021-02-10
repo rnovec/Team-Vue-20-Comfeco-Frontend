@@ -157,12 +157,13 @@
                 this.$router.push("/home");
               })
               .catch(error => {
-                // TODO: Ha ocurrido un error, se le debe notificar al usuario...
-                const { code, message } = error;
-                console.error(code, message);
+                this.loading = false;
+                const { message } = error;
+                this.fireErrorAlert(message);
               });
           } else {
-            // TODO: Lanzar una notificación al usuario acerca de que su contraseña es muy corta
+            this.loading = false;
+            this.fireErrorAlert("La contraseña proporcionada es muy corta");
           }
         } else if (this.isRegistering) {
           if (this.password.length >= 8) {
@@ -184,27 +185,48 @@
                   this.$router.push("/home");
                 })
                 .catch(error => {
-                  // TODO: Ha ocurrido un error, se le debe notificar al usuario...
-                  const { code, message } = error;
-                  console.error(code, message);
+                  this.loading = false;
+                  const { message } = error;
+                  this.fireErrorAlert(message);
                 });
             } else {
-              // TODO: Lanzar una notificación al usuario acerca de que sus contraseñas no coinciden
+              this.loading = false;
+              this.fireErrorAlert(
+                "Las contraseñas de confirmación no coinciden. Por favor, revise"
+              );
             }
           } else {
-            // TODO: Lanzar una notificación al usuario acerca de que su contraseña es muy corta
+            this.loading = false;
+            this.fireErrorAlert("La contraseña proporcionada es muy corta");
           }
         } else if (this.isPasswordRecovery) {
           fb.auth
             .sendPasswordResetEmail(this.email)
             .then(() => {
-              // TODO: El correo se envío correctamente, hay que mandarle una notificación al usuario al respecto
+              this.loading = false;
+              this.fireSuccessAlert("El correo se ha enviado a su cuenta");
             })
             .catch(error => {
-              // TODO: Hay que decirle al usuario que el correo no se pudo enviar por alguna razón...
-              console.error(error);
+              this.loading = false;
+              this.fireErrorAlert(
+                `El correo no pudo ser enviado, causa del error: ${error.message}`
+              );
             });
         }
+      },
+      fireErrorAlert: function(text) {
+        this.$swal({
+          icon: "error",
+          title: "Oops...",
+          text,
+        });
+      },
+      fireSuccessAlert: function(text) {
+        this.$swal({
+          icon: "success",
+          title: "¡Enhorabuena!",
+          text,
+        });
       },
     },
     computed: {
@@ -240,5 +262,9 @@
 
   .has-text-black {
     color: black;
+  }
+
+  .active-state {
+    color: #42b983 !important;
   }
 </style>
