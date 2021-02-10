@@ -12,7 +12,7 @@ const routes = [
     component: Login,
   },
   {
-    path: "/",
+    path: "/home",
     name: "Home",
     component: () => import("../views/Home.vue"),
     meta: {
@@ -20,8 +20,8 @@ const routes = [
     },
   },
   {
-    path: "/home",
-    redirect: "/",
+    path: "/",
+    redirect: "/home",
   },
 ];
 
