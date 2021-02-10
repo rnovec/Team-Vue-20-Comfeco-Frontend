@@ -51,44 +51,44 @@
 </template>
 
 <script>
-export default {
-  name: 'LoginForm'
-}
+  export default {
+    name: "LoginForm",
+  };
 </script>
 
 <style>
-#nav {
-  padding: 10px;
-}
+  #nav {
+    padding: 10px;
+  }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+  #nav a {
+    font-weight: bold;
+    color: #2c3e50;
+  }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+  #nav a.router-link-exact-active {
+    color: #42b983;
+  }
 </style>
 
 <style>
-.hero.is-success {
-  background: #f2f6fa;
-}
-.hero .nav,
-.hero.is-success .nav {
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
+  .hero.is-success {
+    background: #f2f6fa;
+  }
+  .hero .nav,
+  .hero.is-success .nav {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
 
-p {
-  font-weight: 700;
-}
-p.subtitle {
-  padding-top: 1rem;
-}
+  p {
+    font-weight: 700;
+  }
+  p.subtitle {
+    padding-top: 1rem;
+  }
 
-.has-text-black {
-  color: black;
-}
+  .has-text-black {
+    color: black;
+  }
 </style>
