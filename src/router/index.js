@@ -40,7 +40,7 @@ const routes = [
     },
   },
   {
-    path: "/",
+    path: "*",
     redirect: "/home",
   },
 ];
@@ -53,7 +53,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   const userIsLoggedIn = !!auth.currentUser;
   if (to.matched.some(record => record.meta.requiresAuth) && !userIsLoggedIn) {
-    next("/login");
+    next("/sign-in");
   }
   next();
 });

@@ -1,32 +1,44 @@
 <template>
-  <form class="mt-2" @submit.prevent="handleFormSubmit">
-    <div class="columns">
-      <div class="column">
-        <b-field>
-          <b-input
-            type="email"
-            icon="email"
-            v-model="email"
-            placeholder="Correo electrónico"
-            required
-          ></b-input>
-        </b-field>
+  <div>
+    <h1 class="title is-5">
+      Reasignar contraseña
+    </h1>
+    <h2 class="subtitle is-7">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
+      quod alias dolores reiciendis animi maxime esse laborum porro nulla, hic
+      saepe inventore exercitationem numquam tempore dolor.
+    </h2>
+    <form class="mt-2" @submit.prevent="submit">
+      <div class="columns">
+        <div class="column">
+          <b-field>
+            <b-input
+              type="email"
+              icon="email"
+              name="email"
+              v-model="email"
+              placeholder="Correo electrónico"
+              required
+            ></b-input>
+          </b-field>
+        </div>
       </div>
-    </div>
-    <b-button
-      type="is-primary"
-      expanded
-      fullwidth
-      native-type="submit"
-      :loading="loading"
-    >
-      Enviar enlace
-    </b-button>
-  </form>
+      <b-button
+        type="is-primary"
+        expanded
+        fullwidth
+        native-type="submit"
+        :loading="loading"
+      >
+        Enviar enlace
+      </b-button>
+    </form>
+  </div>
 </template>
 
 <script>
-  import * as fb from "@/firebaseconfig";
+  import { passwordRecovery } from "@/store";
+
   export default {
     name: "LoginForm",
     data() {
@@ -36,45 +48,17 @@
       };
     },
     methods: {
-      handleFormSubmit: function() {
+      async submit() {
         this.loading = true;
-        fb.auth
-          .sendPasswordResetEmail(this.email)
-          .then(() => {
-            this.loading = false;
-            this.fireSuccessAlert("El correo se ha enviado a su cuenta");
-          })
-          .catch(error => {
-            this.loading = false;
-            this.fireErrorAlert(
-              `El correo no pudo ser enviado, causa del error: ${error.message}`
-            );
-          });
-      },
-      fireErrorAlert: function(text) {
-        this.$swal({
-          icon: "error",
-          title: "Oops...",
-          text,
-        });
-      },
-      fireSuccessAlert: function(text) {
-        this.$swal({
-          icon: "success",
-          title: "¡Enhorabuena!",
-          text,
-        });
-      },
-    },
-    computed: {
-      isRegistering: function() {
-        return this.state === "register";
-      },
-      isLogin: function() {
-        return this.state === "login";
-      },
-      isPasswordRecovery: function() {
-        return this.state === "recovery";
+        try {
+          await passwordRecovery(this.email);
+        } catch (error) {
+          this.$snackbar(
+            `El correo no pudo ser enviado, causa del error: ${error.message}`
+          );
+        } finally {
+          this.loading = false;
+        }
       },
     },
   };

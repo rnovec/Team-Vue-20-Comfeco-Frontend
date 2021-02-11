@@ -1,29 +1,25 @@
 <template>
   <div class="home">
     <h1>Si estás viendo esto estás logeado</h1>
-    <p>Nickname: {{ user.displayName }}</p>
-    <p>Email: {{ user.email }}</p>
+    <p>Nickname: {{ loguedUser.displayName }}</p>
+    <p>Email: {{ loguedUser.email }}</p>
     <button @click="signOut">boton de prueba para cerrar sesión</button>
   </div>
 </template>
 
 <script>
-  import * as fb from "@/firebaseconfig";
+  import store, { logout } from "@/store";
 
   export default {
     name: "Home",
-    mounted() {
-      const { displayName, email } = fb.auth.currentUser;
-      this.user = { displayName, email };
-    },
-    data() {
-      return {
-        user: {},
-      };
+    computed: {
+      loguedUser() {
+        return store.user;
+      },
     },
     methods: {
       signOut: function() {
-        fb.auth.signOut().then(() => this.$router.push("/login"));
+        logout().then(() => this.$router.push("/sign-in"));
       },
     },
   };
