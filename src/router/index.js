@@ -47,12 +47,15 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  mode: "hash",
+  mode: "history",
   routes,
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth) && !userIsLoggedIn) {
+  if (
+    to.matched.some(record => record.meta.requiresAuth) &&
+    !userIsLoggedIn()
+  ) {
     next("/sign-in");
   }
   next();

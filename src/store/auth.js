@@ -2,7 +2,7 @@ import Vue from "vue";
 import * as fb from "@/firebaseconfig";
 
 const state = Vue.observable({
-  user: {},
+  user: fb.auth.currentUser,
 });
 
 export const basic = (key, value) => {
@@ -14,7 +14,7 @@ export const setUser = () => {
 };
 
 export const userIsLoggedIn = () => {
-  return !!fb.auth.currentUser;
+  return fb.auth.currentUser;
 };
 
 /**
