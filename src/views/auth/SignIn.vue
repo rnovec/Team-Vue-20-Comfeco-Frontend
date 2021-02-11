@@ -49,7 +49,6 @@
 </template>
 
 <script>
-  import { signIn } from "@/store";
   import { AuthNav, SocialButtons } from "./components";
 
   export default {
@@ -69,8 +68,7 @@
       async submit() {
         this.loading = true;
         try {
-          await signIn(this.email, this.password);
-          this.$router.push("/home");
+          await this.login(this.email, this.password);
         } catch (error) {
           this.$snackbar(error.toString());
         } finally {

@@ -1,19 +1,20 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Auth from "../layouts/auth.vue";
-import { auth } from "@/firebaseconfig";
+import { userIsLoggedIn } from "@/store/auth";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/login",
+    path: "/auth",
     name: "Login",
+    redirect: "/sign-in",
     component: Auth,
     children: [
       {
         path: "/sign-in",
-        name: "Login",
+        name: "SignIn",
         component: () => import("../views/auth/SignIn.vue"),
         children: [],
       },
@@ -51,7 +52,6 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const userIsLoggedIn = !!auth.currentUser;
   if (to.matched.some(record => record.meta.requiresAuth) && !userIsLoggedIn) {
     next("/sign-in");
   }

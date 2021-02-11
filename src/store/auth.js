@@ -2,9 +2,20 @@ import Vue from "vue";
 import * as fb from "@/firebaseconfig";
 
 const state = Vue.observable({
-  user: fb.auth.currentUser,
-  isLoggedIn: false,
+  user: {},
 });
+
+export const basic = (key, value) => {
+  state[key] = value;
+};
+
+export const setUser = () => {
+  state.user = fb.auth.currentUser;
+};
+
+export const userIsLoggedIn = () => {
+  return !!fb.auth.currentUser;
+};
 
 /**
  * User login
@@ -17,7 +28,7 @@ export const signIn = async (email, password) => {
   // Este es el token de autenticacion
   const idToken = await fb.auth.currentUser.getIdToken();
   // Este es el refresh token
-  state.isLoggedIn = true;
+  setUser();
   console.log(idToken, user.refreshToken);
 };
 
@@ -37,10 +48,10 @@ export const signUp = async form => {
 
   const idToken = await fb.auth.currentUser.getIdToken();
   console.log(idToken, user.refreshToken);
-  state.isLoggedIn = true;
+  setUser();
 };
 
-export const logout = async () => {
+export const signOut = async () => {
   await fb.auth.signOut();
 };
 

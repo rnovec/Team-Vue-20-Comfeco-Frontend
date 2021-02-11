@@ -37,8 +37,6 @@
 </template>
 
 <script>
-  import { passwordRecovery } from "@/store";
-
   export default {
     name: "LoginForm",
     data() {
@@ -51,11 +49,9 @@
       async submit() {
         this.loading = true;
         try {
-          await passwordRecovery(this.email);
+          await this.resetPassword(this.email);
         } catch (error) {
-          this.$snackbar(
-            `El correo no pudo ser enviado, causa del error: ${error.message}`
-          );
+          this.$snackbar(error.message);
         } finally {
           this.loading = false;
         }

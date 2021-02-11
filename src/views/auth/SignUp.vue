@@ -59,7 +59,6 @@
 </template>
 
 <script>
-  import { signUp } from "@/store";
   import { AuthNav, SocialButtons } from "./components";
 
   export default {
@@ -85,8 +84,7 @@
         if (this.form.password.length >= 8) {
           if (this.form.password === this.form.confirmPassword) {
             try {
-              await signUp(this.form);
-              this.$router.push("/home");
+              await this.register(this.form);
             } catch (error) {
               this.$snackbar(error.toString());
             } finally {
