@@ -3,12 +3,12 @@ import "firebase/auth";
 import "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCR1Nuij93ie6007_g3jJAgheLE3ySZEx0",
-  authDomain: "comfeco-management-system.firebaseapp.com",
-  projectId: "comfeco-management-system",
-  storageBucket: "comfeco-management-system.appspot.com",
-  messagingSenderId: "484788062989",
-  appId: "1:484788062989:web:1c090b2faed6ee99043e44",
+  apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
+  authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.VUE_APP_FIREBASE_BUCKET,
+  messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.VUE_APP_FIREBASE_APP_ID,
 };
 
 const app = Firebase.initializeApp(firebaseConfig);
