@@ -1,19 +1,18 @@
 <template>
   <div class="column has-text-centered">
-    <div id="nav">
+    <div id="nav" class="is-flex is-justify-content-center">
       <router-link
         tag="a"
-        class="is-inline is-bold has-text-grey-dark"
-        role="button"
+        exact-active-class="is-primary has-text-weight-bold"
+        class="button is-text is-inverted"
         to="/sign-in"
       >
         Iniciar sesión
       </router-link>
-      |
       <router-link
         tag="a"
-        class="is-inline is-bold has-text-grey-dark"
-        role="button"
+        exact-active-class="is-primary has-text-weight-bold"
+        class="button is-text is-inverted"
         to="/sign-up"
       >
         Regístrate

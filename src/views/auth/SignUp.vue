@@ -54,12 +54,14 @@
       </b-button>
       <br />
       <SocialButtons />
+      <br />
+      <TermsAndConditions />
     </form>
   </div>
 </template>
 
 <script>
-  import { AuthNav, SocialButtons } from "./components";
+  import { AuthNav, SocialButtons, TermsAndConditions } from "./components";
 
   export default {
     name: "LoginForm",
@@ -74,10 +76,7 @@
         },
       };
     },
-    components: {
-      AuthNav,
-      SocialButtons,
-    },
+    components: { AuthNav, SocialButtons, TermsAndConditions },
     methods: {
       async submit() {
         this.loading = true;

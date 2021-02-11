@@ -24,18 +24,7 @@
     box-shadow: none;
   }
 
-  p {
-    font-weight: 700;
-  }
   p.subtitle {
     padding-top: 1rem;
-  }
-
-  .has-text-black {
-    color: black;
-  }
-
-  .active-state {
-    color: #42b983 !important;
   }
 </style>

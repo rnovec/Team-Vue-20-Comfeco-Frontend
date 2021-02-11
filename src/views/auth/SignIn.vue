@@ -22,14 +22,18 @@
         </b-input>
       </b-field>
       <b-field>
-        <router-link tag="a" to="password-recovery">
-          <small>¿Olvidaste tu contraseña?</small>
-        </router-link>
-      </b-field>
-      <b-field class="has-text-centered">
-        <b-checkbox size="is-small">
-          Mantenerme conectado
-        </b-checkbox>
+        <b-field>
+          <router-link
+            tag="a"
+            to="password-recovery"
+            class="button is-primary is-text is-small is-inverted"
+          >
+            <small>¿Olvidaste tu contraseña?</small>
+          </router-link>
+          <b-checkbox size="is-small">
+            <small>Mantenerme conectado</small>
+          </b-checkbox>
+        </b-field>
       </b-field>
 
       <b-button
@@ -43,7 +47,6 @@
       </b-button>
       <br />
       <SocialButtons />
-      <br />
     </form>
   </div>
 </template>
