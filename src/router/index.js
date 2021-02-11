@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Login from "../views/Login.vue";
+import Auth from "../layouts/auth.vue";
 import { auth } from "@/firebaseconfig";
 
 Vue.use(VueRouter);
@@ -9,7 +9,27 @@ const routes = [
   {
     path: "/login",
     name: "Login",
-    component: Login,
+    component: Auth,
+    children: [
+      {
+        path: "/sign-in",
+        name: "Login",
+        component: () => import("../views/auth/SignIn.vue"),
+        children: [],
+      },
+      {
+        path: "/sign-up",
+        name: "SignUp",
+        component: () => import("../views/auth/SignUp.vue"),
+        children: [],
+      },
+      {
+        path: "/password-recovery",
+        name: "PasswordRecovery",
+        component: () => import("../views/auth/PasswordRecovery.vue"),
+        children: [],
+      },
+    ],
   },
   {
     path: "/home",

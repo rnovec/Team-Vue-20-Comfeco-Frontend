@@ -8,7 +8,7 @@
 </template>
 
 <script>
-  import * as fb from "../firebaseconfig";
+  import * as fb from "@/firebaseconfig";
 
   export default {
     name: "Home",
