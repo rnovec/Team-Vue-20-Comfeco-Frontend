@@ -1,6 +1,6 @@
 <template>
   <div class="column has-text-centered">
-    <div id="nav" class="is-flex is-justify-content-center">
+    <div id="nav">
       <router-link
         tag="a"
         exact-active-class="is-primary has-text-weight-bold"

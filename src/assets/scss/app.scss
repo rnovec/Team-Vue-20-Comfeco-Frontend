@@ -5,6 +5,8 @@
 @import "variables";
 
 // 2. Setup your Custom Colors
+$google: #db4a39;
+$google-invert: findColorInvert($google);
 $linkedin: #0077b5;
 $linkedin-invert: findColorInvert($linkedin);
 $twitter: #55acee;
@@ -16,6 +18,7 @@ $github-invert: findColorInvert($github);
 
 // 3. Add new color variables to the color map.
 $addColors: (
+  "google":($google, $google-invert),
   "twitter":($twitter, $twitter-invert),
   "linkedin": ($linkedin, $linkedin-invert),
   "github": ($github, $github-invert)

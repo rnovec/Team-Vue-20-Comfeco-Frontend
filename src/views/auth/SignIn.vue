@@ -45,8 +45,7 @@
       >
         Ingresar
       </b-button>
-      <br />
-      <SocialButtons />
+      <SocialButtons class="mt-4" />
     </form>
   </div>
 </template>

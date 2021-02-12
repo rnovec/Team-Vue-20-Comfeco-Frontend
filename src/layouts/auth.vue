@@ -1,8 +1,7 @@
 <template>
   <div>
     <Navbar />
-    <br />
-    <section class="hero is-light is-fullheight">
+    <section class="hero is-light is-fullheight mt-5">
       <div class="hero-body">
         <div class="box">
           <router-view />
@@ -38,7 +37,7 @@
     );
   }
   .box {
-    max-width: 450px;
+    max-width: 400px;
   }
   .separator {
     /* Paleta de colores */

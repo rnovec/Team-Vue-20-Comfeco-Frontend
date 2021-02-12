@@ -1,7 +1,7 @@
 <template>
   <div>
     <AuthNav />
-    <form class="mt-2" @submit.prevent="submit">
+    <form @submit.prevent="submit">
       <b-field label="Nick" icon-right="email">
         <b-input
           icon="account"
@@ -52,11 +52,11 @@
       >
         Crear una cuenta
       </b-button>
-      <br />
-      <SocialButtons />
-      <br />
-      <TermsAndConditions />
     </form>
+    <social-buttons class="mt-4">
+      O regístrate usando
+    </social-buttons>
+    <TermsAndConditions class="mt-4" />
   </div>
 </template>
 
