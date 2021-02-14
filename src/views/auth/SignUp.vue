@@ -1,58 +1,52 @@
 <template>
   <div>
     <AuthNav />
-    <form @submit.prevent="submit">
-      <b-field label="Nick" icon-right="email">
-        <b-input
-          icon="account"
-          v-model="form.nickname"
-          name="nick"
-          placeholder="my-awesome-nickname"
-          required
-        ></b-input>
-      </b-field>
-      <b-field label="Correo electrónico">
-        <b-input
-          type="email"
-          icon="email"
-          name="email"
-          v-model="form.email"
-          placeholder="somebody@example.com"
-          required
-        ></b-input>
-      </b-field>
-      <b-field label="Contraseña">
-        <b-input
-          type="password"
-          name="password"
-          v-model="form.password"
-          password-reveal
-          icon="lock"
-          required
-        >
-        </b-input>
-      </b-field>
-      <b-field label="Confirmar contraseña">
-        <b-input
-          type="password"
-          name="confirm"
-          v-model="form.confirmPassword"
-          password-reveal
-          icon="lock-open"
-          required
-        >
-        </b-input>
-      </b-field>
+    <ValidationObserver ref="observer" v-slot="{ handleSubmit }">
+      <InputWithValidation
+        icon="account"
+        rules="required"
+        name="nick"
+        label="Nick"
+        placeholder="my-awesome-nickname"
+        v-model="form.nick"
+      />
+      <InputWithValidation
+        icon="email"
+        rules="required|email"
+        type="email"
+        name="email"
+        label="Correo electrónico"
+        placeholder="somebody@example.com"
+        v-model="form.email"
+      />
+      <InputWithValidation
+        rules="required|min:8"
+        type="password"
+        name="password"
+        label="Contraseña"
+        password-reveal
+        icon="lock"
+        v-model="form.password"
+      />
+      <InputWithValidation
+        rules="required|confirmed:password"
+        name="confirmation"
+        type="password"
+        label="Confirmar contraseña"
+        password-reveal
+        icon="lock"
+        v-model="form.confirmation"
+      />
       <b-button
         type="is-primary"
         expanded
         fullwidth
-        native-type="submit"
+        @click="handleSubmit(submit)"
         :loading="loading"
       >
         Crear una cuenta
       </b-button>
-    </form>
+    </ValidationObserver>
     <social-buttons class="mt-4">
       O regístrate usando
     </social-buttons>
@@ -72,7 +66,7 @@
           email: "",
           nickname: "",
           password: "",
-          confirmPassword: "",
+          confirmation: "",
         },
       };
     },
@@ -80,24 +74,12 @@
     methods: {
       async submit() {
         this.loading = true;
-        if (this.form.password.length >= 8) {
-          if (this.form.password === this.form.confirmPassword) {
-            try {
-              await this.register(this.form);
-            } catch (error) {
-              this.$snackbar(error.toString());
-            } finally {
-              this.loading = false;
-            }
-          } else {
-            this.loading = false;
-            this.$snackbar(
-              "Las contraseñas de confirmación no coinciden. Por favor, revise"
-            );
-          }
-        } else {
+        try {
+          await this.register(this.form);
+        } catch (error) {
+          this.$snackbar(error.toString());
+        } finally {
           this.loading = false;
-          this.$snackbar("La contraseña proporcionada es muy corta");
         }
       },
     },
