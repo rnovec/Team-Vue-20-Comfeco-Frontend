@@ -17,18 +17,27 @@ const routes = [
         name: "SignIn",
         component: () => import("../views/auth/SignIn.vue"),
         children: [],
+        meta: {
+          title: "Iniciar sesión",
+        },
       },
       {
         path: "/sign-up",
         name: "SignUp",
         component: () => import("../views/auth/SignUp.vue"),
         children: [],
+        meta: {
+          title: "Registrarse",
+        },
       },
       {
         path: "/password-recovery",
         name: "PasswordRecovery",
         component: () => import("../views/auth/PasswordRecovery.vue"),
         children: [],
+        meta: {
+          title: "Recuperar contraseña",
+        },
       },
     ],
   },

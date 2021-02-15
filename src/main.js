@@ -16,6 +16,16 @@ Vue.use(Buefy);
 Vue.use(Comfeco);
 Vue.use(VueSweetalert2);
 
+const defaultDocumentTitle = "Community Fest and Code";
+
+router.afterEach(to => {
+  if (to.meta && to.meta.title) {
+    document.title = `${to.meta.title} | ${defaultDocumentTitle}`;
+  } else {
+    document.title = defaultDocumentTitle;
+  }
+});
+
 Vue.config.productionTip = false;
 
 let app;
