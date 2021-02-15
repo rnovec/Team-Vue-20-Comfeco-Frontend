@@ -3,8 +3,9 @@ import auth, {
   setUser,
   signIn,
   signUp,
-  passwordRecovery,
   signOut,
+  socialLogin,
+  passwordRecovery,
 } from "../store/auth";
 
 export default {
@@ -19,6 +20,10 @@ export default {
         },
       },
       methods: {
+        async socialSignIn(service) {
+          await socialLogin(service);
+          this.$router.push("/home");
+        },
         async login(email, password) {
           await signIn(email, password);
           this.$router.push("/home");
@@ -37,14 +42,18 @@ export default {
       },
     });
 
-    Vue.prototype.$snackbar = function(message) {
-      Snackbar.open({
-        duration: 5000,
-        message,
+    Vue.prototype.$snackbar = function(
+      message,
+      options = {
         type: "is-danger",
+      }
+    ) {
+      Snackbar.open({
+        message,
+        duration: 5000,
         position: "is-bottom-left",
-        actionText: "Undo",
         queue: false,
+        ...options,
       });
     };
   },

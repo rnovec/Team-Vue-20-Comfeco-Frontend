@@ -51,6 +51,30 @@ export const signUp = async form => {
   setUser();
 };
 
+/**
+ * Login with Social Networks
+ * @param {String} service `facebook` or `google`
+ */
+export const socialLogin = async service => {
+  let provider = null;
+
+  if (service === "facebook") {
+    provider = new fb.Firebase.auth.FacebookAuthProvider();
+  }
+
+  if (service === "google") {
+    provider = new fb.Firebase.auth.GoogleAuthProvider();
+  }
+
+  fb.Firebase.auth().languageCode = "es";
+  const result = await fb.Firebase.auth().signInWithPopup(provider);
+
+  // get valid tokens
+  const idToken = await fb.auth.currentUser.getIdToken();
+  console.log(idToken, result.user.refreshToken);
+  setUser();
+};
+
 export const signOut = async () => {
   await fb.auth.signOut();
 };
