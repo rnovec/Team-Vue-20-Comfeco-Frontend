@@ -8,7 +8,7 @@
         name="email"
         icon="email"
         placeholder="Correo electrónico"
-        v-model="email"
+        v-model="form.email"
       />
       <InputWithValidation
         rules="required"
@@ -17,7 +17,7 @@
         placeholder="Contraseña"
         password-reveal
         icon="lock"
-        v-model="password"
+        v-model="form.password"
       />
       <b-field>
         <router-link
@@ -27,7 +27,7 @@
         >
           <small>¿Olvidaste tu contraseña?</small>
         </router-link>
-        <b-checkbox size="is-small">
+        <b-checkbox v-model="form.rememberMe" size="is-small">
           <small>Mantenerme conectado</small>
         </b-checkbox>
       </b-field>
@@ -53,8 +53,11 @@
     data() {
       return {
         loading: false,
-        email: "",
-        password: "",
+        form: {
+          email: "",
+          password: "",
+          rememberMe: false,
+        },
       };
     },
     components: {
@@ -65,7 +68,7 @@
       async submit() {
         this.loading = true;
         try {
-          await this.login(this.email, this.password);
+          await this.login(this.form);
         } catch (error) {
           this.$snackbar(error.toString());
         } finally {

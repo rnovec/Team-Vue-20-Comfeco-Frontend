@@ -22,7 +22,7 @@ export const userIsLoggedIn = () => {
  * @param {String} email
  * @param {String} password
  */
-export const signIn = async (email, password) => {
+export const signIn = async (email, password, rememberMe = false) => {
   const user = await fb.auth.signInWithEmailAndPassword(email, password);
   // El usuario ha iniciado sesión con éxito
   // Este es el token de autenticacion
@@ -30,6 +30,13 @@ export const signIn = async (email, password) => {
   // Este es el refresh token
   setUser();
   console.log(idToken, user.refreshToken);
+
+  // TODO: persist session
+  fb.Firebase.auth().setPersistence(
+    rememberMe
+      ? fb.firebase.auth.Auth.Persistence.LOCAL
+      : fb.firebase.auth.Auth.Persistence.SESSION
+  );
 };
 
 /**
