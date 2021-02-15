@@ -36,8 +36,8 @@ Vue.component("InputWithValidation", InputWithValidation);
 Vue.config.productionTip = false;
 
 let app;
-auth.onAuthStateChanged((user) => {
-  if (!app || user) {
+auth.onAuthStateChanged(() => {
+  if (!app) {
     app = new Vue({
       router,
       render: h => h(App),

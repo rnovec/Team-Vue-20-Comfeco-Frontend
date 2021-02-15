@@ -8,7 +8,7 @@
       expanded
       type="is-link"
       icon-left="facebook"
-      @click="facebook"
+      @click="handleSocialLogin('facebook')"
     >
       Ingresar con Facebook
     </b-button>
@@ -17,50 +17,22 @@
       expanded
       type="is-google"
       icon-left="google"
-      @click="google"
+      @click="handleSocialLogin('google')"
     >
       Ingresar con Google
     </b-button>
   </div>
 </template>
 <script>
-import { Firebase, db } from "@/firebaseconfig.js";
-import router from "@/router";
-export default {
-  data() {
-    return {};
-  },
-  methods: {
-    facebook() {
-      const provider = new Firebase.auth.FacebookAuthProvider();
-      this.ingresar(provider);
+  export default {
+    methods: {
+      async handleSocialLogin(service) {
+        try {
+          await this.socialSignIn(service);
+        } catch (error) {
+          this.$snackbar(error.toString());
+        }
+      },
     },
-    google() {
-      const provider = new Firebase.auth.GoogleAuthProvider();
-      this.ingresar(provider);
-    },
-    async ingresar(provider) {
-      Firebase.auth().languageCode = "es";
-      try {
-        const result = await Firebase.auth().signInWithPopup(provider);
-        const user = result.user;
-        console.log(user);
-
-        //Contruir usuario
-        const usuario = {
-          nombre: user.displayName,
-          email: user.email,
-          uid: user.uid,
-          foto: user.photoURL,
-        };
-
-        //Guardar en Firestore
-        await db.collection("usuarios").doc(usuario.uid).set(usuario);
-        router.push({ name: "Home" });
-      } catch (error) {
-        this.$snackbar(error.toString());
-      }
-    },
-  },
-};
+  };
 </script>
