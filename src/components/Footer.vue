@@ -1,19 +1,19 @@
 <template>
   <footer class="footer is-fixed-bottom">
     <div class="columns">
-      <div class="column has-text-centered">
+      <div class="column has-text-centered mb-1">
         <router-link tag="a" class="" to="/home">
-          <img src="../assets/logo.png" width="150" height="40" />
+          <img src="../assets/logo3.png" width="75" height="40" />
         </router-link>
       </div>
       <div class="columns has-text-centered copyr flex">
         <p>
-          <strong>Copyright ©2021 todos los derechos reservados</strong> by
-          <a href="https://www.comfeco.com/">Comfeco</a>
+          <strong>Copyright © 2021 Todos los Derechos son Reservados</strong> by
+          <a href="https://www.comfeco.com/">COMFECO</a>
         </p>
       </div>
       <div class="column has-text-centered">
-        <p class="inline">Siguenos en nuestras redes</p>
+        <p class="inline mb-2">Siguenos en nuestras redes</p>
         <div>
           <a href=""
             ><img

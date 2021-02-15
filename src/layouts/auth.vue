@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar />
-    <section class="hero is-light is-fullheight mt-5">
+    <section class="hero is-light is-fullheight mt-3">
       <div class="hero-body">
         <div class="box">
           <router-view />
