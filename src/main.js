@@ -33,7 +33,6 @@ router.afterEach(to => {
 Vue.component("ValidationObserver", ValidationObserver);
 Vue.component("InputWithValidation", InputWithValidation);
 
-
 Vue.config.productionTip = false;
 
 let app;
