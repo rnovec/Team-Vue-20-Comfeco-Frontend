@@ -6,15 +6,15 @@
         rules="required|email"
         type="email"
         name="email"
-        label="Correo electrónico"
-        placeholder="somebody@example.com"
+        icon="email"
+        placeholder="Correo electrónico"
         v-model="email"
       />
       <InputWithValidation
         rules="required"
         type="password"
         name="password"
-        label="Contraseña"
+        placeholder="Contraseña"
         password-reveal
         icon="lock"
         v-model="password"

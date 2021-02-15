@@ -6,8 +6,7 @@
         icon="account"
         rules="required"
         name="nick"
-        label="Nick"
-        placeholder="my-awesome-nickname"
+        placeholder="Nick"
         v-model="form.nick"
       />
       <InputWithValidation
@@ -15,15 +14,14 @@
         rules="required|email"
         type="email"
         name="email"
-        label="Correo electrónico"
-        placeholder="somebody@example.com"
+        placeholder="Correo electrónico"
         v-model="form.email"
       />
       <InputWithValidation
         rules="required|min:8"
         type="password"
         name="password"
-        label="Contraseña"
+        placeholder="Contraseña"
         password-reveal
         icon="lock"
         v-model="form.password"
@@ -32,7 +30,7 @@
         rules="required|confirmed:password"
         name="confirmation"
         type="password"
-        label="Confirmar contraseña"
+        placeholder="Confirmar contraseña"
         password-reveal
         icon="lock"
         v-model="form.confirmation"

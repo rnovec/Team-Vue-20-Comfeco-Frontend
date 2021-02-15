@@ -3,7 +3,7 @@
     <h1 class="title is-5">
       Reasignar contraseña
     </h1>
-    <h2 class="subtitle is-7">
+    <h2 class="subtitle is-6">
       Te enviaremos un correo electrónico con un enlace privado para que
       reasignes tu contraseña. Este enlace será por una hora.
     </h2>
