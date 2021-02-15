@@ -8,6 +8,8 @@
         <a
           role="button"
           class="navbar-burger"
+          :class="{ 'is-active': isActive }"
+          @click="isActive = !isActive"
           aria-label="menu"
           aria-expanded="false"
           data-target="navbarBasicExample"
@@ -18,7 +20,7 @@
         </a>
       </div>
 
-      <div class="navbar-menu">
+      <div class="navbar-menu" :class="{ 'is-active': isActive }">
         <div class="navbar-start"></div>
         <div class="navbar-end" v-if="$route.name === 'PasswordRecovery'">
           <div class="navbar-item">
@@ -26,7 +28,7 @@
               <router-link
                 tag="a"
                 to="/sign-in"
-                class="button is-small is-primary"
+                class="button is-small is-primary is-outlined"
                 >Iniciar sesión</router-link
               >
             </div>
@@ -36,3 +38,13 @@
     </div>
   </nav>
 </template>
+
+<script>
+  export default {
+    data() {
+      return {
+        isActive: false,
+      };
+    },
+  };
+</script>
