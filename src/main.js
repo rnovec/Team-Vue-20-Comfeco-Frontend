@@ -20,8 +20,19 @@ Vue.use(Buefy);
 Vue.use(Global);
 Vue.use(VueSweetalert2);
 
+const defaultDocumentTitle = "Community Fest and Code";
+
+router.afterEach(to => {
+  if (to.meta && to.meta.title) {
+    document.title = `${to.meta.title} | ${defaultDocumentTitle}`;
+  } else {
+    document.title = defaultDocumentTitle;
+  }
+});
+
 Vue.component("ValidationObserver", ValidationObserver);
 Vue.component("InputWithValidation", InputWithValidation);
+
 
 Vue.config.productionTip = false;
 
