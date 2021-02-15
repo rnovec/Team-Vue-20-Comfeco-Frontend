@@ -19,8 +19,8 @@ Vue.use(VueSweetalert2);
 Vue.config.productionTip = false;
 
 let app;
-auth.onAuthStateChanged(() => {
-  if (!app) {
+auth.onAuthStateChanged((user) => {
+  if (!app || user) {
     app = new Vue({
       router,
       render: h => h(App),
