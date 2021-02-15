@@ -7,7 +7,7 @@
         rules="required"
         name="nick"
         placeholder="Nick"
-        v-model="form.nick"
+        v-model="form.nickname"
       />
       <InputWithValidation
         icon="email"
