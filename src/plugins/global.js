@@ -24,8 +24,9 @@ export default {
           await socialLogin(service);
           this.$router.push("/home");
         },
-        async login(email, password) {
-          await signIn(email, password);
+        async login(form) {
+          const { email, password, rememberMe } = form;
+          await signIn(email, password, rememberMe);
           this.$router.push("/home");
         },
         async register(form) {
