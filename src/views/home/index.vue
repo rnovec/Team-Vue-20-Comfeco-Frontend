@@ -14,8 +14,8 @@
       </p>
       <br />
       <h3 class="title is-5">Ellos creen en esta iniciativa:</h3>
-      <Speaker />
-      <SpeakerMobile />
+      <Speakers />
+      <SpeakersMobile />
     </section>
     <section class="section">
       <div class="is-flex is-justify-content-space-between">
@@ -25,7 +25,7 @@
         >
       </div>
       <Sponsors />
-      <SpeakerMobile />
+      <SpeakersMobile />
     </section>
     <section class="section">
       <h1 class="title is-5">Preparate lo mejor esta por venir</h1>
@@ -35,15 +35,15 @@
 </template>
 
 <script>
-  import { Counter, Speaker, Sponsors, SpeakerMobile } from "./components";
+  import { Counter, Speakers, Sponsors, SpeakersMobile } from "./components";
 
   export default {
     name: "Home",
     components: {
       Counter,
-      Speaker,
+      Speakers,
       Sponsors,
-      SpeakerMobile,
+      SpeakersMobile,
     },
   };
 </script>

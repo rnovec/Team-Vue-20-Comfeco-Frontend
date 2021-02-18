@@ -1,6 +1,6 @@
 import Counter from "./Counter";
-import Speaker from "./Speaker";
+import Speakers from "./Speakers";
 import Sponsors from "./Sponsors";
-import SpeakerMobile from "./SpeakerMobile";
+import SpeakersMobile from "./SpeakersMobile";
 
-export { Counter, Speaker, Sponsors, SpeakerMobile };
+export { Counter, Speakers, Sponsors, SpeakersMobile };
