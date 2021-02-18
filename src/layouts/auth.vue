@@ -24,7 +24,7 @@
   };
 </script>
 
-<style>
+<style scoped>
   .hero-body {
     justify-content: center;
     background: linear-gradient(
