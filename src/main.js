@@ -4,6 +4,7 @@ import router from "./router";
 
 import Buefy from "buefy";
 import VueSweetalert2 from "vue-sweetalert2";
+import VueCarousel from "vue-carousel";
 
 import Global from "./plugins/global";
 import { auth } from "./firebaseconfig";
@@ -19,6 +20,7 @@ import "./registerServiceWorker";
 Vue.use(Buefy);
 Vue.use(Global);
 Vue.use(VueSweetalert2);
+Vue.use(VueCarousel);
 
 const defaultDocumentTitle = "Community Fest and Code";
 

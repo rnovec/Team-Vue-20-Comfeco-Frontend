@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Auth from "../layouts/auth.vue";
+import Default from "../layouts/default.vue";
 import { userIsLoggedIn } from "@/store/auth";
 
 Vue.use(VueRouter);
@@ -42,16 +43,24 @@ const routes = [
     ],
   },
   {
-    path: "/home",
-    name: "Home",
-    component: () => import("../views/Home.vue"),
-    meta: {
-      requiresAuth: true,
-    },
+    path: "/",
+    name: "Default",
+    redirect: "/home",
+    component: Default,
+    children: [
+      {
+        path: "/home",
+        name: "Home",
+        component: () => import("../views/home/index.vue"),
+        meta: {
+          requiresAuth: true,
+        },
+      },
+    ],
   },
   {
     path: "*",
-    redirect: "/home",
+    redirect: "/",
   },
 ];
 
