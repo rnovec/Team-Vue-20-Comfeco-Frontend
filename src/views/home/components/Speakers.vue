@@ -4,11 +4,11 @@
     class="is-hidden-touch"
     :perPageCustom="[
       [480, 1],
-      [768, 3],
+      [768, 4],
     ]"
   >
     <slide v-for="_ in 10" :key="_">
-      <div class="card mx-2">
+      <div class="card mx-1">
         <div class="card-image">
           <figure class="image is-1by1">
             <img
@@ -20,8 +20,13 @@
         <div class="card-content">
           <div class="media">
             <div class="media-content">
-              <p class="title is-6">John Smith</p>
-              <p class="subtitle is-7">@johnsmith</p>
+              <figure class="avatar image is-32x32">
+                <img
+                  class="is-rounded"
+                  src="https://www.comfeco.com/icons/vue-icon.svg"
+                />
+              </figure>
+              <p class="title is-7 mt-2">John Smith</p>
             </div>
           </div>
         </div>
@@ -37,3 +42,15 @@
     components: { Carousel, Slide },
   };
 </script>
+
+<style>
+  .avatar {
+    position: relative;
+    margin-top: -40px;
+    margin-left: 30%;
+  }
+  .avatar img {
+    background: #fff;
+    border-radius: 50%;
+  }
+</style>
