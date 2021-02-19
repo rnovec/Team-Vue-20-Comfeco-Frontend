@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer is-fixed-bottom">
+  <footer class="footer is-fixed-bottom custom-footer">
     <div class="columns">
       <div class="column has-text-centered mb-1">
         <router-link tag="a" class="" to="/home">
@@ -41,8 +41,13 @@
     </div>
   </footer>
 </template>
-<style>
+
+<style scoped>
   .copyr {
     align-items: center;
+  }
+
+  .custom-footer {
+    padding: 1em !important;
   }
 </style>

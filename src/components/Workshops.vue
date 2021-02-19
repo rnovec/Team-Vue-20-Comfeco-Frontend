@@ -12,33 +12,56 @@
         </b-button>
       </div>
     </article>
-    <b-select placeholder="Small" size="is-small" expanded>
-      <option value="flint">Flint</option>
-      <option value="silver">Silver</option>
+    <b-select size="is-small" v-model="filter" expanded>
+      <option value="Todos">Todos</option>
+      <option value="Frontend">Frontend</option>
+      <option value="Backend">Backend</option>
+      <option value="Devops">Devops</option>
+      <option value="Video Game Developers">Video Game Developers</option>
+      <option value="UI/UX">UI/UX</option>
+      <option value="Database Developer">Database Developer</option>
+      <option value="Cloud Computing">Cloud Computing</option>
     </b-select>
-    <table class="table is-fullwidth is-striped">
-      <tbody
-        style="max-height: 50px;
-    overflow-y: scroll;"
-      >
-        <tr v-for="_ in 5" :key="_">
-          <td width="1%">
-            <i class="fas fa-check" aria-hidden="true"></i>
-          </td>
-          <td>
-            <p class="is-size-7">
-              <strong
-                >Sint ipsum nisi sunt in ex proident incididunt nisi eu sit
-                adipisicing incididunt excepteur sunt.</strong
-              >
-            </p>
-            <p class="is-size-7">@johndoe</p>
-            <p class="is-size-7">
-              <strong>By</strong> <a href="">Raul Novelo</a>
-            </p>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="mt-4">
+      <WorkshopItem
+        v-for="workshop in workshops"
+        :workshop="workshop"
+        :key="workshop.id"
+      />
+    </div>
   </aside>
 </template>
+
+<script>
+  import WorkshopItem from "@/components/WorkshopItem";
+  import { WorkShopService } from "@/services/workshop-service";
+
+  export default {
+    name: "Workshops",
+    components: { WorkshopItem },
+    mounted() {
+      WorkShopService.getWorkshops().then(response => {
+        this.response = [...response.data];
+        this.workshops = [...this.response];
+      });
+    },
+    data() {
+      return {
+        filter: "Todos",
+        response: [],
+        workshops: [],
+      };
+    },
+    watch: {
+      filter: function() {
+        if (this.filter !== "Todos") {
+          this.workshops = this.response.filter(
+            workshop => workshop.area === this.filter
+          );
+        } else {
+          this.workshops = [...this.response];
+        }
+      },
+    },
+  };
+</script>
