@@ -2,7 +2,7 @@
   <div>
     <Navbar />
     <section class="hero is-light is-fullheight mt-3">
-      <div class="hero-body">
+      <div class="hero-body is-flex is-justify-content-center">
         <div class="box">
           <router-view />
         </div>
@@ -21,12 +21,16 @@
       Navbar,
       Footer,
     },
+    created() {
+      if (this.loguedUser) {
+        this.$router.push("/home");
+      }
+    },
   };
 </script>
 
 <style scoped>
-  .hero-body {
-    justify-content: center;
+  .hero {
     background: linear-gradient(
       50deg,
       rgba(82, 30, 135, 0.8) 0%,
