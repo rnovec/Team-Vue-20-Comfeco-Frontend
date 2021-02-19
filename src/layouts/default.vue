@@ -8,7 +8,7 @@
             <div class="column mt-4 is-3 is-hidden-mobile">
               <Communities />
             </div>
-            <div class="column mt-4 is-6 has-text-centered">
+            <div class="column is-6 has-text-centered">
               <router-view></router-view>
             </div>
             <div class="column mt-4 is-3 is-hidden-mobile">
@@ -41,6 +41,11 @@
 </script>
 
 <style>
+  .is-fixed-at-top {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 90px;
+  }
   .m-l-5 {
     margin-left: 5px !important;
   }

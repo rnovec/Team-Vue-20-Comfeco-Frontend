@@ -1,5 +1,5 @@
 <template>
-  <aside class="menu is-medium is-hidden-mobile">
+  <aside class="menu is-medium is-fixed-at-top is-hidden-mobile">
     <article class="media">
       <div class="media-content">
         <div class="content">
