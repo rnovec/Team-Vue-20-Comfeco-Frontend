@@ -28,9 +28,7 @@
   import Communities from "@/components/Communities";
   import Footer from "@/components/Footer";
   export default {
-    data: () => ({
-      currentTab: "popular",
-    }),
+    name: "DefaultLayout",
     components: {
       Navbar,
       Workshops,

@@ -20,15 +20,19 @@
         placeholder="Correo electrónico"
         v-model="email"
       />
-      <b-button
-        type="is-primary"
-        expanded
-        fullwidth
-        @click="handleSubmit(submit)"
-        :loading="loading"
-      >
-        Enviar enlace
-      </b-button>
+      <div class="is-flex is-justify-content-space-between">
+        <b-button
+          type="is-primary"
+          fullwidth
+          @click="handleSubmit(submit)"
+          :loading="loading"
+        >
+          Enviar enlace
+        </b-button>
+        <b-button tag="router-link" type="is-text" fullwidth to="/sign-in">
+          Iniciar sesión
+        </b-button>
+      </div>
     </ValidationObserver>
     <template v-else>
       <b-message type="is-warning">
@@ -71,7 +75,9 @@
           this.email = "";
           this.$refs.observer.reset();
         } catch (error) {
-          this.$snackbar(error.message);
+          this.$snackbar(
+            "No se ha podido enviar el correo. Intenta más tarde."
+          );
         } finally {
           this.loading = false;
         }

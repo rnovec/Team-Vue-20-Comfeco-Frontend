@@ -30,7 +30,10 @@
         try {
           await this.socialSignIn(service);
         } catch (error) {
-          this.$snackbar(error.toString());
+          console.log(error.toString());
+          this.$snackbar(
+            "Algo ha salido mal, por favor revisa que tus credenciales sean las correctas"
+          );
         }
       },
     },
