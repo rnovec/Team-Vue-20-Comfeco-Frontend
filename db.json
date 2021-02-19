@@ -1,0 +1,67 @@
+{
+  "workshops": [
+    {
+      "id": 1,
+      "title":"The State of Frontend",
+      "description": "A fun event",
+      "organizer": "Juan Pablo Ortiz",
+      "referral": "https://twitter.com/comfeco",
+      "date": "2021-05-25T09:00:15",
+      "area": "Frontend"
+    },
+    {
+      "id": 2,
+      "title":"The State of Backend",
+      "description": "A fun event",
+      "organizer": "Martin Lutero",
+      "referral": "https://twitter.com/comfeco",
+      "date": "2016-05-25T10:24:15",
+      "area": "Backend"
+    },
+    {
+      "id": 3,
+      "title":"The State of Devops",
+      "description": "A fun event",
+      "organizer": "Reina Isabela",
+      "referral": "https://twitter.com/comfeco",
+      "date": "2016-05-25T11:24:15",
+      "area": "Devops"
+    },
+    {
+      "id": 4,
+      "title":"The State of Video Game Developers",
+      "description": "A fun event",
+      "organizer": "Oscar Wilde",
+      "referral": "https://twitter.com/comfeco",
+      "date": "2016-05-25T12:24:15",
+      "area": "Video Game Developers"
+    },
+    {
+      "id": 5,
+      "title":"The State of UI/UX",
+      "description": "A fun event",
+      "organizer": "Gatsby",
+      "referral": "https://twitter.com/comfeco",
+      "date": "2016-05-25T13:24:15",
+      "area": "UI/UX"
+    },
+    {
+      "id": 6,
+      "title":"The State of Database Developer",
+      "description": "A fun event",
+      "organizer": "Maria Estella",
+      "referral": "https://twitter.com/comfeco",
+      "date": "2016-05-25T14:24:15",
+      "area": "Database Developer"
+    },
+    {
+      "id": 7,
+      "title":"The State of Cloud Computing",
+      "description": "A fun event",
+      "organizer": "Juan Aguirre",
+      "referral": "https://twitter.com/comfeco",
+      "date": "2016-05-25T15:24:15",
+      "area": "Cloud Computing"
+    }
+  ]
+}
