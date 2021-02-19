@@ -3,7 +3,7 @@
     <Navbar />
     <section class="hero is-fullheight">
       <div class="hero-body">
-        <div class="container">
+        <div class="container is-fluid">
           <div class="columns">
             <div class="column mt-4 is-3 is-hidden-mobile">
               <Communities />
