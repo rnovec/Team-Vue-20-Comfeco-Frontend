@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Auth from "../layouts/auth.vue";
 import Default from "../layouts/default.vue";
-import { userIsLoggedIn } from "@/store/auth";
+import { userIsLoggedIn } from "@/services/auth";
 
 Vue.use(VueRouter);
 

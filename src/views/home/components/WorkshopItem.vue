@@ -1,7 +1,12 @@
 <template>
   <div class="container is-flex p-2 mb-2">
     <div class="my-4 mx-2">
-      <b-icon pack="fas" :icon="iconState" size="is-medium" />
+      <b-icon
+        :type="{ 'is-success': iconState === 'check' }"
+        pack="fas"
+        :icon="iconState"
+        size="is-medium"
+      />
     </div>
     <div class="ml-5">
       <p class="is-size-6">{{ workshop.title }}</p>

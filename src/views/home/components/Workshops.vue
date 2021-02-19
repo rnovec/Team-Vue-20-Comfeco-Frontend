@@ -33,14 +33,14 @@
 </template>
 
 <script>
-  import WorkshopItem from "@/components/WorkshopItem";
-  import { WorkShopService } from "@/services/workshop-service";
+  import WorkshopItem from "./WorkshopItem";
+  import { getWorkshops } from "@/api/workshops";
 
   export default {
     name: "Workshops",
     components: { WorkshopItem },
     mounted() {
-      WorkShopService.getWorkshops().then(response => {
+      getWorkshops().then(response => {
         this.response = [...response.data];
         this.workshops = [...this.response];
       });

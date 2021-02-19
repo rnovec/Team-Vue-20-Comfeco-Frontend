@@ -4,17 +4,7 @@
     <section class="hero is-fullheight">
       <div class="hero-body">
         <div class="container is-fluid">
-          <div class="columns">
-            <div class="column mt-4 is-3 is-hidden-mobile">
-              <Communities />
-            </div>
-            <div class="column is-6 has-text-centered">
-              <router-view></router-view>
-            </div>
-            <div class="column mt-4 is-3 is-hidden-mobile">
-              <Workshops />
-            </div>
-          </div>
+          <router-view></router-view>
         </div>
       </div>
     </section>
@@ -24,15 +14,11 @@
 
 <script>
   import Navbar from "@/components/Navbar";
-  import Workshops from "@/components/Workshops";
-  import Communities from "@/components/Communities";
   import Footer from "@/components/Footer";
   export default {
     name: "DefaultLayout",
     components: {
       Navbar,
-      Workshops,
-      Communities,
       Footer,
     },
   };

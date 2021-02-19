@@ -6,7 +6,7 @@ import auth, {
   signOut,
   socialLogin,
   passwordRecovery,
-} from "../store/auth";
+} from "../services/auth";
 
 export default {
   install(Vue, options) {
