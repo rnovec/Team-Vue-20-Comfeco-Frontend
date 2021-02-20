@@ -12,8 +12,8 @@
         </b-button>
       </div>
     </article>
-    <b-select size="is-small" v-model="filter" expanded>
-      <option value="Todos">Todos</option>
+    <b-select size="is-small" v-model="query.area" expanded>
+      <option value="">Todos</option>
       <option value="Frontend">Frontend</option>
       <option value="Backend">Backend</option>
       <option value="Devops">Devops</option>
@@ -40,27 +40,28 @@
     name: "Workshops",
     components: { WorkshopItem },
     mounted() {
-      getWorkshops().then(response => {
-        this.response = [...response.data];
-        this.workshops = [...this.response];
-      });
+      this.getData();
     },
     data() {
       return {
-        filter: "Todos",
-        response: [],
+        query: {
+          area: "",
+        },
         workshops: [],
       };
     },
+    methods: {
+      async getData() {
+        const response = await getWorkshops(this.query);
+        this.workshops = response.data.results;
+      },
+    },
     watch: {
-      filter: function() {
-        if (this.filter !== "Todos") {
-          this.workshops = this.response.filter(
-            workshop => workshop.area === this.filter
-          );
-        } else {
-          this.workshops = [...this.response];
-        }
+      query: {
+        handler() {
+          this.getData();
+        },
+        deep: true,
       },
     },
   };
