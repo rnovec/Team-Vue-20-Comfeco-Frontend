@@ -56,7 +56,7 @@
     },
     methods: {
       countdown() {
-        const deadline = new Date("Feb 22 2021 00:16:09 GMT-0600");
+        const deadline = new Date("Feb 22 2022 00:16:09 GMT-0600");
         const t = deadline - Date.parse(new Date());
         const seconds = Math.floor((t / 1000) % 60);
         const minutes = Math.floor((t / 1000 / 60) % 60);
