@@ -1,6 +1,5 @@
 <template>
   <carousel
-    autoplay
     navigationEnabled
     class="is-hidden-touch"
     :perPageCustom="[
