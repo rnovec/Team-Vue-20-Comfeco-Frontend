@@ -9,10 +9,10 @@
       />
     </div>
     <div class="ml-5">
-      <p class="is-size-6">{{ workshop.title }}</p>
+      <p class="is-size-7 has-text-weight-bold">{{ workshop.title }}</p>
       <p class="is-size-7 mt-1">{{ workshop.date | parseDate }}</p>
       <p class="is-size-7 mt-2">
-        By <a :href="workshop.referral">{{ workshop.organizer }}</a>
+        <b>By</b> <a :href="workshop.referral">{{ workshop.organizer }}</a>
       </p>
     </div>
   </div>

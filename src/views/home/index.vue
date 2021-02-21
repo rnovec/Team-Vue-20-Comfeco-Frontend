@@ -38,7 +38,7 @@
         <section class="hero countdown is-primary is-small">
           <div class="hero-body">
             <div class="container">
-              <Counter />
+              <Countdown />
             </div>
           </div>
         </section>
@@ -52,7 +52,7 @@
 
 <script>
   import {
-    Counter,
+    Countdown,
     Speakers,
     Workshops,
     Communities,
@@ -63,7 +63,7 @@
   export default {
     name: "Home",
     components: {
-      Counter,
+      Countdown,
       Speakers,
       Workshops,
       Communities,
