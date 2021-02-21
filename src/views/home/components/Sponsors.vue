@@ -8,21 +8,31 @@
       [768, 10],
     ]"
   >
-    <slide v-for="_ in 20" :key="_">
+    <slide v-for="i in items" :key="i.id">
       <figure class="image is-64x64 mx-4">
-        <img
-          class="is-rounded"
-          src="https://www.comfeco.com/images/sponsors/sponsor-tekkitv.webp"
-        />
+        <img class="is-rounded" :src="img(i.name_image)" />
       </figure>
     </slide>
   </carousel>
 </template>
 
 <script>
-  import { Carousel, Slide } from "vue-carousel";
+import { Carousel, Slide } from "vue-carousel";
+import sponsors from "@/data-sources/sponsors.json";
 
-  export default {
-    components: { Carousel, Slide },
-  };
+export default {
+  components: { Carousel, Slide },
+  computed: {
+    items() {
+      return sponsors.data.map((item) => {
+        return item;
+      });
+    },
+  },
+  methods: {
+    img(data) {
+      return require(`@/assets/sponsors/${data}`);
+    },
+  },
+};
 </script>
