@@ -2,21 +2,164 @@
     "data": [
         {
             "id": 1,
-            "name": "Comunidad de Programadores",
-            "fanpage": "https://twitter.com/comfeco",
-            "date_joined": "2021-05-25T09:00:15"
+            "name": "Bazael Perez",
+            "technology": "Angular",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Bezael_Perez.jpg",
+            "technology_avatar": "angular.jpg"
         },
         {
-            "id": 1,
-            "name": "Comunidad de Programadores",
-            "fanpage": "https://twitter.com/comfeco",
-            "date_joined": "2021-05-25T09:00:15"
+            "id": 2,
+            "name": "Anartz Mugika",
+            "technology": "Angular",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Anartz_Mugika.jpg",
+            "technology_avatar": "angular.jpg"
         },
         {
-            "id": 1,
-            "name": "Comunidad de Programadores",
-            "fanpage": "https://twitter.com/comfeco",
-            "date_joined": "2021-05-25T09:00:15"
+            "id": 3,
+            "name": "Mayra Rodríguez",
+            "technology": "Angular",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Mayra_Rodriguez.jpg",
+            "technology_avatar": "angular.jpg"
+        },
+        {
+            "id": 4,
+            "name": "Nicolas Molina",
+            "technology": "Angular",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Nicolas_Molina.jpg",
+            "technology_avatar": "angular.jpg"
+        },
+        {
+            "id": 5,
+            "name": "Diego Montoya",
+            "technology": "Angular",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Diego_Montoya.jpg",
+            "technology_avatar": "angular.jpg"
+        },
+        {
+            "id": 6,
+            "name": "Diego Plancencia (DIEGOD3V)",
+            "technology": "React",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Diego_Plascencia.jpg",
+            "technology_avatar": "react.jpg"
+        },
+        {
+            "id": 7,
+            "name": "Vanessa Marely",
+            "technology": "React",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Vanessa_Marely.jpg",
+            "technology_avatar": "react.jpg"
+        },
+        {
+            "id": 8,
+            "name": "Lina Maria Montaño",
+            "technology": "React",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Maria_Montanio.jpg",
+            "technology_avatar": "react.jpg"
+        },
+        {
+            "id": 9,
+            "name": "Alejandro Ñañez Ortiz",
+            "technology": "React",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Alejandro_Nianez.jpg",
+            "technology_avatar": "react.jpg"
+        },
+        {
+            "id": 10,
+            "name": "Lara Diaz",
+            "technology": "React",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Lara_Diaz.jpg",
+            "technology_avatar": "react.jpg"
+        },
+        {
+            "id": 11,
+            "name": "Cristopher Paniagua",
+            "technology": "Vue",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Cristopher_Paniagua.jpg",
+            "technology_avatar": "vue.jpg"
+        },
+        {
+            "id": 12,
+            "name": "Manuel Ojeda",
+            "technology": "Vue",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Manuel_Ojeda.jpg",
+            "technology_avatar": "vue.jpg"
+        },
+        {
+            "id": 13,
+            "name": "Fernando de la Rosa",
+            "technology": "Vue",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Fernando_de_la_Rosa.jpg",
+            "technology_avatar": "vue.jpg"
+        },
+        {
+            "id": 14,
+            "name": "Noemi Leon",
+            "technology": "Vue",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Noemi_Leon.jpg",
+            "technology_avatar": "vue.jpg"
+        },
+        {
+            "id": 15,
+            "name": "Ignacio Anaya",
+            "technology": "Vue",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Ignacio_Anaya.jpg",
+            "technology_avatar": "vue.jpg"
+        },
+        {
+            "id": 16,
+            "name": "Marcos Rivas",
+            "technology": "Svelte",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Marcos_Rivas.jpg",
+            "technology_avatar": "svelte.jpg"
+        },
+        {
+            "id": 17,
+            "name": "Manuel Muñoz",
+            "technology": "Svelte",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Manuel_Munios.jpg",
+            "technology_avatar": "svelte.jpg"
+        },
+        {
+            "id": 18,
+            "name": "Noah Kaufman",
+            "technology": "Svelte",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Noah_Kaufman.jpg",
+            "technology_avatar": "svelte.jpg"
+        },
+        {
+            "id": 19,
+            "name": "Silvestre Vivo",
+            "technology": "Svelte",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Silvestre_Vivo.jpg",
+            "technology_avatar": "svelte.jpg"
+        },
+        {
+            "id": 20,
+            "name": "Oscar Barajas",
+            "technology": "Svelte",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Oscar_Barajas.jpg",
+            "technology_avatar": "svelte.jpg"
         }
+
     ]
 }
