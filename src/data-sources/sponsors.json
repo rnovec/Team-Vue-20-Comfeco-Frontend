@@ -2,21 +2,80 @@
     "data": [
         {
             "id": 1,
-            "name": "Comunidad de Programadores",
-            "fanpage": "https://twitter.com/comfeco",
-            "date_joined": "2021-05-25T09:00:15"
+            "name": "Huawei",
+            "fanpage": "",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Huawei.jpg"
         },
         {
-            "id": 1,
-            "name": "Comunidad de Programadores",
-            "fanpage": "https://twitter.com/comfeco",
-            "date_joined": "2021-05-25T09:00:15"
+            "id": 2,
+            "name": "Fernando Herrera",
+            "fanpage": "",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Fernando_Herrera.jpg"
         },
         {
-            "id": 1,
-            "name": "Comunidad de Programadores",
-            "fanpage": "https://twitter.com/comfeco",
-            "date_joined": "2021-05-25T09:00:15"
+            "id": 3,
+            "name": "Leónidas Esteban",
+            "fanpage": "",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Leonidas_Esteban.jpg"
+        },
+        {
+            "id": 4,
+            "name": "Jóse Diman Luján",
+            "fanpage": "",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Jose_Diman_Lujan.jpg"
+        },
+        {
+            "id": 5,
+            "name": "Domini Code",
+            "fanpage": "",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Domini_Code.jpg"
+        },
+        {
+            "id": 6,
+            "name": "TekkiTV",
+            "fanpage": "https://codely.tv/",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"TekkiTV.jpg"
+        },
+        {
+            "id": 7,
+            "name": "CodelyTV",
+            "fanpage": "https://codely.tv/",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"CodelyTV.jpg"
+        },
+        {
+            "id": 8,
+            "name": "Stackly Code",
+            "fanpage": "https://stacklycode.com/",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Stackly_Code.jpg"
+        },
+        {
+            "id": 9,
+            "name": "Latam Dev",
+            "fanpage": "",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Latam_Dev.jpg"
+        },
+        {
+            "id": 10,
+            "name": "Codigo Facilito",
+            "fanpage": "",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Codigo_Facilito.jpg"
+        },
+        {
+            "id": 11,
+            "name": "Egghead",
+            "fanpage": "",
+            "date_joined": "2021-05-25T09:00:15",
+            "name_image":"Egghead.jpg"
         }
     ]
 }

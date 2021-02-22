@@ -1,20 +1,20 @@
 <template>
   <carousel
     autoplay
-    class="is-hidden-touch"
+    :autoplayTimeout="5000"
+    loop
     :perPageCustom="[
-      [480, 1],
-      [768, 4],
+      [320, 2],
+      [480, 2],
+      [768, 3],
+      [1199, 4],
     ]"
   >
-    <slide v-for="_ in 10" :key="_">
+    <slide v-for="speaker in speakers.data" :key="speaker.id">
       <div class="card mx-1">
         <div class="card-image">
           <figure class="image is-1by1">
-            <img
-              src="https://www.comfeco.com/images/sponsors/sponsor-fernando_herrera.webp"
-              alt="Placeholder image"
-            />
+            <img :src="img(speaker.name_image)" alt="Placeholder image" />
           </figure>
         </div>
         <div class="card-content">
@@ -23,10 +23,10 @@
               <figure class="avatar image is-32x32">
                 <img
                   class="is-rounded"
-                  src="https://www.comfeco.com/icons/vue-icon.svg"
+                  :src="technology(speaker.technology_avatar)"
                 />
               </figure>
-              <p class="title is-7 mt-2">John Smith</p>
+              <p class="title is-7 mt-2">{{ speaker.name }}</p>
             </div>
           </div>
         </div>
@@ -37,17 +37,31 @@
 
 <script>
   import { Carousel, Slide } from "vue-carousel";
+  import speakers from "@/data-sources/speakers.json";
 
   export default {
     components: { Carousel, Slide },
+    data() {
+      return {
+        speakers,
+      };
+    },
+    methods: {
+      img(data) {
+        return require(`@/assets/speakers/${data}`);
+      },
+      technology(data) {
+        return require(`@/assets/speakers/technology/${data}`);
+      },
+    },
   };
 </script>
 
 <style>
   .avatar {
-    position: relative;
+    position: absolute;
     margin-top: -40px;
-    margin-left: 30%;
+    margin-left: 20%;
   }
   .avatar img {
     background: #fff;

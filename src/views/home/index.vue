@@ -9,19 +9,18 @@
           Bienvenidos a Community Fest and Code
         </h1>
         <h2 class="subtitle is-6 has-text-centered is-block">
-          Proident veniam consectetur proiden.
+          ¡Conoce gente, aprende y gana!
         </h2>
         <p class="is-size-7 has-text-centered is-block">
-          Veniam occaecat elit et ut consequat Lorem eu ad esse eiusmod ipsum
-          aliqua sint. Velit tempor est labore dolor mollit mollit ullamco
-          cupidatat consequat fugiat ipsum dolore anim.
+          La próxima edición regresa en el 2022, en la cual se planea involucrar
+          a todos los programadores independientemente del área de conocimiento
+          que se encuentre, todo con un mismo proposito aprender en comunidad.
         </p>
         <br />
         <h3 class="title is-5">Ellos creen en esta iniciativa:</h3>
         <Speakers />
-        <SpeakersMobile />
       </section>
-      <section class="">
+      <section>
         <div class="is-flex is-justify-content-space-between">
           <h1 class="title is-5">Sponsors</h1>
           <b-button type="is-primary" outlined size="is-small"
@@ -29,19 +28,16 @@
           >
         </div>
         <Sponsors />
-        <SpeakersMobile />
       </section>
-      <section>
-        <h1 class="has-text-weight-bold is-size-5">
-          Preparate lo bueno esta por venir
-        </h1>
-        <section class="hero countdown is-primary is-small">
-          <div class="hero-body">
-            <div class="container">
-              <Countdown />
-            </div>
+      <h1 class="has-text-weight-bold is-size-5 mb-2">
+        Preparate lo bueno esta por venir
+      </h1>
+      <section class="hero countdown is-primary is-small">
+        <div class="hero-body">
+          <div class="container">
+            <Countdown />
           </div>
-        </section>
+        </div>
       </section>
     </div>
     <div class="column mt-4 is-3 is-hidden-mobile">
@@ -57,7 +53,6 @@
     Workshops,
     Communities,
     Sponsors,
-    SpeakersMobile,
   } from "./components";
 
   export default {
@@ -68,7 +63,6 @@
       Workshops,
       Communities,
       Sponsors,
-      SpeakersMobile,
     },
   };
 </script>
@@ -90,5 +84,8 @@
   }
   .hero.countdown {
     background: $gradient;
+  }
+  .VueCarousel-dot-container {
+    margin-top: 0px;
   }
 </style>
