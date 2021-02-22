@@ -3,9 +3,10 @@
     navigationEnabled
     class="is-hidden-touch"
     :perPageCustom="[
-      [480, 1],
-      [768, 10],
+      [320, 2],
+      [1199, 6],
     ]"
+    
   >
     <slide v-for="i in items" :key="i.id">
       <figure class="image is-64x64 mx-4">
@@ -18,7 +19,6 @@
 <script>
 import { Carousel, Slide } from "vue-carousel";
 import sponsors from "@/data-sources/sponsors.json";
-
 export default {
   components: { Carousel, Slide },
   computed: {
