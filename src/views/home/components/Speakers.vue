@@ -1,9 +1,9 @@
 <template>
   <carousel
     autoplay
-    class="is-hidden-touch"
     :perPageCustom="[
-      [480, 1],
+      [240, 2],
+      [480, 3],
       [768, 4],
     ]"
   >

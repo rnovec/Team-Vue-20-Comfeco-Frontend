@@ -1,27 +1,30 @@
 <template>
-  <b-carousel class="is-hidden-desktop">
-    <b-carousel-item v-for="(carousel, i) in carousels" :key="i">
-      <section :class="`hero is-medium is-${carousel.color}`">
-        <div class="hero-body has-text-centered">
-          <h1 class="title">{{ carousel.text }}</h1>
-        </div>
-      </section>
+  <b-carousel class="is-hidden-desktop mb-4">
+    <b-carousel-item
+      class="is-flex is-justify-content-center"
+      v-for="(sponsor, i) in sponsors.data"
+      :key="i"
+    >
+      <figure class="image is-128x128 mx-4">
+        <img class="is-rounded" :src="img(sponsor.name_image)" />
+      </figure>
     </b-carousel-item>
   </b-carousel>
 </template>
 
 <script>
+  import sponsors from "@/data-sources/sponsors.json";
+
   export default {
     data() {
       return {
-        carousels: [
-          { text: "Slide 1", color: "primary" },
-          { text: "Slide 2", color: "info" },
-          { text: "Slide 3", color: "success" },
-          { text: "Slide 4", color: "warning" },
-          { text: "Slide 5", color: "danger" },
-        ],
+        sponsors,
       };
+    },
+    methods: {
+      img(data) {
+        return require(`@/assets/sponsors/${data}`);
+      },
     },
   };
 </script>

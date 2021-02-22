@@ -19,9 +19,8 @@
         <br />
         <h3 class="title is-5">Ellos creen en esta iniciativa:</h3>
         <Speakers />
-        <SpeakersMobile />
       </section>
-      <section class="">
+      <section>
         <div class="is-flex is-justify-content-space-between">
           <h1 class="title is-5">Sponsors</h1>
           <b-button type="is-primary" outlined size="is-small"
@@ -29,10 +28,9 @@
           >
         </div>
         <Sponsors />
-        <SpeakersMobile />
       </section>
       <section>
-        <h1 class="has-text-weight-bold is-size-5">
+        <h1 class="has-text-weight-bold is-size-5 mb-2">
           Preparate lo bueno esta por venir
         </h1>
         <section class="hero countdown is-primary is-small">
@@ -57,7 +55,6 @@
     Workshops,
     Communities,
     Sponsors,
-    SpeakersMobile,
   } from "./components";
 
   export default {
@@ -68,7 +65,6 @@
       Workshops,
       Communities,
       Sponsors,
-      SpeakersMobile,
     },
   };
 </script>
