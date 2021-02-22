@@ -3,17 +3,18 @@
     autoplay
     :autoplayTimeout="5000"
     loop
-    class="is-hidden-touch"
     :perPageCustom="[
-      [480, 1],
-      [768, 4],
+      [320, 2],
+      [480, 2],
+      [768, 3],
+      [1199, 4],
     ]"
   >
-    <slide v-for="i in items" :key="i.id">
+    <slide v-for="speaker in speakers.data" :key="speaker.id">
       <div class="card mx-1">
         <div class="card-image">
           <figure class="image is-1by1">
-            <img :src="img(i.name_image)" alt="Placeholder image" />
+            <img :src="img(speaker.name_image)" alt="Placeholder image" />
           </figure>
         </div>
         <div class="card-content">
@@ -22,10 +23,10 @@
               <figure class="avatar image is-32x32">
                 <img
                   class="is-rounded"
-                  :src="technology(i.technology_avatar)"
+                  :src="technology(speaker.technology_avatar)"
                 />
               </figure>
-              <p class="title is-7 mt-2">{{ i.name }}</p>
+              <p class="title is-7 mt-2">{{ speaker.name }}</p>
             </div>
           </div>
         </div>
@@ -37,14 +38,13 @@
 <script>
   import { Carousel, Slide } from "vue-carousel";
   import speakers from "@/data-sources/speakers.json";
+
   export default {
     components: { Carousel, Slide },
-    computed: {
-      items() {
-        return speakers.data.map(item => {
-          return item;
-        });
-      },
+    data() {
+      return {
+        speakers,
+      };
     },
     methods: {
       img(data) {
@@ -59,9 +59,9 @@
 
 <style>
   .avatar {
-    position: relative;
+    position: absolute;
     margin-top: -40px;
-    margin-left: 30%;
+    margin-left: 20%;
   }
   .avatar img {
     background: #fff;
