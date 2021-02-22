@@ -6,7 +6,6 @@
       [320, 2],
       [1199, 6],
     ]"
-    
   >
     <slide v-for="i in items" :key="i.id">
       <figure class="image is-64x64 mx-4">
@@ -17,21 +16,21 @@
 </template>
 
 <script>
-import { Carousel, Slide } from "vue-carousel";
-import sponsors from "@/data-sources/sponsors.json";
-export default {
-  components: { Carousel, Slide },
-  computed: {
-    items() {
-      return sponsors.data.map((item) => {
-        return item;
-      });
+  import { Carousel, Slide } from "vue-carousel";
+  import sponsors from "@/data-sources/sponsors.json";
+  export default {
+    components: { Carousel, Slide },
+    computed: {
+      items() {
+        return sponsors.data.map(item => {
+          return item;
+        });
+      },
     },
-  },
-  methods: {
-    img(data) {
-      return require(`@/assets/sponsors/${data}`);
+    methods: {
+      img(data) {
+        return require(`@/assets/sponsors/${data}`);
+      },
     },
-  },
-};
+  };
 </script>

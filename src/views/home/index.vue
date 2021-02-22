@@ -12,7 +12,9 @@
           ¡Conoce gente, aprende y gana!
         </h2>
         <p class="is-size-7 has-text-centered is-block">
-          La próxima edición regresa en el 2022, en la cual se planea involucrar a todos los programadores independientemente del área de conocimiento que se encuentre, todo con un mismo proposito aprender en comunidad.
+          La próxima edición regresa en el 2022, en la cual se planea involucrar
+          a todos los programadores independientemente del área de conocimiento
+          que se encuentre, todo con un mismo proposito aprender en comunidad.
         </p>
         <br />
         <h3 class="title is-5">Ellos creen en esta iniciativa:</h3>
@@ -89,7 +91,7 @@
   .hero.countdown {
     background: $gradient;
   }
-  .VueCarousel-dot-container{
+  .VueCarousel-dot-container {
     margin-top: 0px;
   }
 </style>
