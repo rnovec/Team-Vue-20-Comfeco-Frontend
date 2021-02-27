@@ -3,7 +3,7 @@
     <section class="hero is-primary">
       <div class="hero-body"></div>
       <div class="hero-foot">
-        <ProfileTabs />
+        <ProfileTabs v-model="state" @input="changeValue" />
       </div>
     </section>
     <div class="container">
@@ -12,7 +12,7 @@
           <ProfilePreview />
         </div>
         <div class="column is-6 mb-3">
-          <Activity />
+          <Activity v-if="state === 'Profile'" />
         </div>
         <div class="column is-3 is-hidden-mobile">
           <Events />
@@ -30,5 +30,15 @@
 
   export default {
     components: { Activity, ProfileTabs, ProfilePreview, Events },
+    data() {
+      return {
+        state: "Profile",
+      };
+    },
+    methods: {
+      changeValue(val) {
+        console.log(val);
+      },
+    },
   };
 </script>
