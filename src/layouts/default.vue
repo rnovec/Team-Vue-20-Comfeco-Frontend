@@ -1,13 +1,7 @@
 <template>
   <div>
     <Navbar />
-    <section class="hero is-fullheight">
-      <div class="hero-body">
-        <div class="container is-fluid">
-          <router-view></router-view>
-        </div>
-      </div>
-    </section>
+    <router-view />
     <Footer />
   </div>
 </template>
