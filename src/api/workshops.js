@@ -1,6 +1,10 @@
 import request from "@/services/axios-client";
 
-export const getWorkshops = params => {
+export const getWorkshops = () => {
+  return request.get("/workshops");
+};
+
+export const getWorkshopsByQuery = params => {
   return request({
     url: "/workshops",
     method: "GET",
