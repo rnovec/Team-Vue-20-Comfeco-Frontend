@@ -1,7 +1,7 @@
 <template>
   <b-navbar fixed-top centered shadow>
     <template #brand>
-      <b-navbar-item tag="router-link" :to="{ path: '/' }">
+      <b-navbar-item tag="router-link" :to="{ name: 'Home' }">
         <img src="../assets/logo.png" width="112" height="28" />
       </b-navbar-item>
     </template>
@@ -42,7 +42,7 @@
             </div>
           </div>
         </template>
-        <b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ name: 'Profile' }">
           <b-icon icon="account"> </b-icon>
           <span>Mi Cuenta</span>
         </b-navbar-item>
