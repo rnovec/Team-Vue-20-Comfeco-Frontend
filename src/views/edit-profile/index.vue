@@ -22,7 +22,7 @@
       </div>
       <!-- End Top Header -->
       <!-- Start Edit Form -->
-      <div class="mt-2 container card p-4 pt-5 mb-6">
+      <div class="mt-2 container is-fluid card p-4 pt-5 mb-6">
         <form @submit.prevent="handleSubmit">
           <div class="columns">
             <div class="column">
