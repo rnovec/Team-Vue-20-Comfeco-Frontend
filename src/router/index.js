@@ -53,6 +53,22 @@ const routes = [
         name: "Home",
         component: () => import("../views/home/index.vue"),
       },
+      {
+        path: "/profile",
+        name: "Profile",
+        meta: {
+          requiresAuth: true,
+        },
+        component: () => import("../views/profile/index.vue"),
+      },
+      {
+        path: "/edit-profile",
+        name: "EditProfile",
+        meta: {
+          requiresAuth: true,
+        },
+        component: () => import("../views/edit-profile/index.vue"),
+      },
     ],
   },
   {
