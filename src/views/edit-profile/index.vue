@@ -1,21 +1,17 @@
 <template>
   <div>
-    <section class="hero is-primary">
-      <div class="hero-body"></div>
-      <div class="hero-foot">
-        <ProfileTabs v-model="state" @input="changeValue" />
-      </div>
-    </section>
     <div class="mt-4 container is-fluid">
       <!-- Start Top Header -->
       <div class="columns">
         <div class="column is-half">
-          <span style="cursor: pointer" @click="goBack">
-            <b-icon pack="fas" icon="arrow-left" size="is-medium" />
-          </span>
+          <b-tooltip label="Regresar a Mi Perfil" position="is-right">
+            <span style="cursor: pointer" @click="goBack">
+              <b-icon pack="fas" icon="arrow-left" size="is-medium" />
+            </span>
+          </b-tooltip>
         </div>
         <div class="column">
-          <p class="title is-5 is-align-content-baseline">
+          <p class="title is-4 is-align-content-baseline">
             Editar Perfil
           </p>
         </div>
@@ -23,13 +19,17 @@
       <!-- End Top Header -->
       <!-- Start Edit Form -->
       <div class="mt-2 container is-fluid card p-4 pt-5 mb-6">
-        <form @submit.prevent="handleSubmit">
+        <ValidationObserver ref="observer" v-slot="{ handleSubmit }">
           <div class="columns">
             <div class="column">
               <div class="is-flex is-flex-direction-column">
                 <div class="mb-2 card-image is-flex is-justify-content-center">
-                  <figure class="image my-2">
-                    <img :src="userInfo.photoUrl" alt="Foto de Perfil" />
+                  <figure class="image is-128x128 my-2">
+                    <img
+                      class="is-rounded"
+                      :src="avatarURL"
+                      alt="Foto de Perfil"
+                    />
                   </figure>
                 </div>
                 <input
@@ -42,7 +42,7 @@
                     <!-- A falta de un icono de github... -->
                     <b-input
                       type="text"
-                      icon="google"
+                      icon="github-circle"
                       placeholder="@ghuser"
                       v-model="form.ghprofile"
                     ></b-input>
@@ -77,46 +77,55 @@
             <div class="column is-two-thirds">
               <div class="columns">
                 <div class="column">
-                  <b-field label="Nick">
-                    <b-input
-                      type="text"
-                      icon="account"
-                      placeholder="Nick"
-                      v-model="userInfo.nick"
-                    ></b-input>
-                  </b-field>
+                  <InputWithValidation
+                    icon="account"
+                    rules="required"
+                    name="nick"
+                    label="Nick"
+                    placeholder="Nickname"
+                    v-model="userInfo.nick"
+                  />
                 </div>
                 <div class="column">
-                  <b-field label="Email">
-                    <b-input
-                      type="email"
-                      icon="email"
-                      placeholder="Email"
-                      v-model="userInfo.email"
-                    ></b-input>
-                  </b-field>
+                  <InputWithValidation
+                    icon="email"
+                    rules="required|email"
+                    type="email"
+                    name="email"
+                    label="Correo electrónico"
+                    placeholder="Correo electrónico"
+                    v-model="userInfo.email"
+                  />
                 </div>
               </div>
               <div class="columns">
                 <div class="column">
-                  <b-field label="Contraseña">
-                    <b-input
-                      type="password"
-                      icon="lock"
-                      v-model="userInfo.password"
-                      password-reveal
-                    ></b-input>
-                  </b-field>
+                  <InputWithValidation
+                    rules="min:8"
+                    type="password"
+                    name="password"
+                    label="Contraseña"
+                    placeholder="Contraseña"
+                    password-reveal
+                    icon="lock"
+                    v-model="userInfo.password"
+                  />
                 </div>
                 <div class="column">
-                  <b-field label="Repetir contraseña">
-                    <b-input
-                      type="password"
-                      icon="lock"
-                      v-model="userInfo.passwordRepeat"
-                      password-reveal
-                    ></b-input>
-                  </b-field>
+                  <InputWithValidation
+                    :rules="
+                      `${
+                        userInfo.password ? 'required|' : ''
+                      }confirmed:password`
+                    "
+                    name="confirmation"
+                    type="password"
+                    label="Repetir contraseña"
+                    placeholder="Repetir contraseña"
+                    password-reveal
+                    icon="lock"
+                    v-model="form.passwordRepeat"
+                  />
                 </div>
               </div>
               <div class="columns">
@@ -124,7 +133,7 @@
                   <b-field label="Genero">
                     <b-input
                       type="text"
-                      icon="account"
+                      icon="gender-male-female"
                       v-model="form.gender"
                       placeholder="Genero"
                     ></b-input>
@@ -177,13 +186,14 @@
                   outlined
                   expanded
                   :loading="loading"
+                  @click="handleSubmit(submit)"
                 >
                   Guardar
                 </b-button>
               </div>
             </div>
           </div>
-        </form>
+        </ValidationObserver>
       </div>
       <!-- End Edit Form -->
     </div>
@@ -191,34 +201,15 @@
 </template>
 
 <script>
-  import ProfileTabs from "./../profile/components/ProfileTabs";
   import auth from "@/services/auth";
   import { Firebase, usersCollection } from "@/firebaseconfig";
   export default {
     name: "index",
-    components: {
-      ProfileTabs,
-    },
     async mounted() {
-      const result = await usersCollection
-        .where("userId", "==", auth.user.uid)
-        .get();
-      const data = result.docs.length === 0 ? {} : result.docs[0].data();
-      this.form = {
-        gender: data.gender ?? "",
-        birthday: data.birthday ?? "",
-        country: data.country ?? "",
-        area: data.area ?? "Frontend",
-        biography: data.biography ?? "",
-        ghprofile: data.ghprofile ?? "",
-        twprofile: data.twprofile ?? "",
-        fbprofile: data.fbprofile ?? "",
-        lnprofile: data.lnprofile ?? "",
-      };
+      this.form = await this.getUserInfo();
     },
     data() {
       return {
-        state: "Profile",
         loading: false,
         // Este objeto retendrá el objeto File de la foto que suba el usuario
         profilePhotoFile: undefined,
@@ -249,9 +240,8 @@
         this.profilePhotoFile = event.target.files[0];
         fileReader.readAsDataURL(this.profilePhotoFile);
       },
-      handleSubmit: async function() {
+      submit: async function() {
         this.loading = true;
-        let canSubmit = true;
 
         // Lo primero es verificar si el usuario quiere cambiar su contraseña
         // Si quiere hacerlo, entonces hay que verificar que todo esté en orden antes de proseguir con lo demás
@@ -260,61 +250,49 @@
           this.userInfo.password !== "" ||
           this.userInfo.passwordRepeat !== ""
         ) {
-          if (this.userInfo.password !== this.userInfo.passwordRepeat) {
-            this.$buefy.snackbar.open({
-              message: "Las contraseñas deben ser iguales!",
-              type: "is-danger",
-              position: "is-top",
-              actionText: "Reintentar",
-              indefinite: true,
-            });
-            this.loading = false;
-            canSubmit = false;
-          } else {
-            await auth.user.updatePassword(this.userInfo.password);
-          }
+          await auth.user.updatePassword(this.userInfo.password);
         }
 
-        if (canSubmit) {
-          if (this.profilePhotoFile) {
-            const ref = `profilePictures/${auth.user.uid}.jpg`;
-            const storageRef = Firebase.storage().ref(ref);
-            await storageRef.put(this.profilePhotoFile);
-            const url = await storageRef.getDownloadURL();
-            await auth.user.updateProfile({
-              photoURL: url,
-            });
-          }
-
+        if (this.profilePhotoFile) {
+          const ref = `profilePictures/${auth.user.uid}.jpg`;
+          const storageRef = Firebase.storage().ref(ref);
+          await storageRef.put(this.profilePhotoFile);
+          const url = await storageRef.getDownloadURL();
           await auth.user.updateProfile({
-            displayName: this.userInfo.nick,
+            photoURL: url,
           });
-
-          await auth.user.updateEmail(this.userInfo.email);
-
-          // Fin de sección
-          const result = await usersCollection
-            .where("userId", "==", auth.user.uid)
-            .get();
-
-          if (result.docs.length !== 0) {
-            await usersCollection.doc(result.docs[0].id).set(
-              {
-                ...this.form,
-              },
-              { merge: true }
-            );
-          } else {
-            await usersCollection.add({
-              userId: auth.user.uid,
-              ...this.form,
-            });
-          }
-
-          await this.$router.push("/profile");
-          location.reload();
-          this.loading = false;
         }
+
+        await auth.user.updateProfile({
+          displayName: this.userInfo.nick,
+        });
+
+        await auth.user.updateEmail(this.userInfo.email);
+
+        // Fin de sección
+        const result = await usersCollection
+          .where("userId", "==", auth.user.uid)
+          .get();
+
+        if (result.docs.length !== 0) {
+          await usersCollection.doc(result.docs[0].id).set(
+            {
+              ...this.form,
+            },
+            { merge: true }
+          );
+        } else {
+          await usersCollection.add({
+            userId: auth.user.uid,
+            ...this.form,
+          });
+        }
+        this.$snackbar("Perfil actualizado correctamente!", {
+          type: "is-success",
+          position: "is-bottom-right",
+          queue: false,
+        });
+        this.loading = false;
       },
     },
   };

@@ -4,15 +4,15 @@
       <RouterLink
         to="/edit-profile"
         tag="a"
-        class="is-flex is-justify-content-center"
+        class="is-flex mt-2 is-justify-content-center"
       >
-        Editar
-        <b-icon pack="fas" icon="cog" />
+        <small>Editar perfil</small>
+        <b-icon icon="account-edit" />
       </RouterLink>
     </div>
     <div class="card-image is-flex is-justify-content-center">
-      <figure class="image my-2">
-        <img :src="photoUrl" alt="Foto de Perfil" />
+      <figure class="image is-128x128 my-2">
+        <img class="is-rounded" :src="photoUrl" alt="Foto de Perfil" />
       </figure>
     </div>
     <div class="card-content has-text-centered">
@@ -22,24 +22,24 @@
       <h2 class="subtitle is-7 is-block">
         {{ userInfo.area }}
       </h2>
-      <div class="content">
+      <div v-if="userInfo.biography" class="content">
         <p>
           {{ userInfo.biography }}
         </p>
       </div>
     </div>
     <div class="card-footer p-3 is-justify-content-center">
-      <a :href="facebookReferral" v-if="facebookReferral">
-        <b-icon icon="facebook" />
+      <a target="_blank" title="facebook" :href="facebookReferral">
+        <b-icon class="ml-2" type="is-facebook" icon="facebook" />
       </a>
-      <a :href="twitterReferral" v-if="twitterReferral">
-        <b-icon icon="twitter" />
+      <a target="_blank" title="twitter" :href="twitterReferral">
+        <b-icon class="ml-2" type="is-twitter" icon="twitter" />
       </a>
-      <a :href="githubReferral" v-if="githubReferral">
-        <b-icon pack="fas" icon="code-branch" />
+      <a target="_blank" title="github" :href="githubReferral">
+        <b-icon class="ml-2" type="is-dark" icon="github-circle" />
       </a>
-      <a :href="linkedInReferral" v-if="linkedInReferral">
-        <b-icon icon="linkedin" />
+      <a target="_blank" title="linkedin" :href="linkedInReferral">
+        <b-icon class="ml-2" type="is-linkedin" icon="linkedin" />
       </a>
     </div>
   </div>
@@ -47,22 +47,10 @@
 
 <script>
   import auth from "@/services/auth";
-  import { usersCollection } from "@/firebaseconfig";
   export default {
     name: "ProfilePreview",
     async mounted() {
-      const result = await usersCollection
-        .where("userId", "==", auth.user.uid)
-        .get();
-      const data = result.docs.length === 0 ? {} : result.docs[0].data();
-      this.userInfo = {
-        area: data.area ?? "Frontend",
-        biography: data.biography ?? "Tu increíble descripción!",
-        ghprofile: data.ghprofile ?? "",
-        twprofile: data.twprofile ?? "",
-        fbprofile: data.fbprofile ?? "",
-        lnprofile: data.lnprofile ?? "",
-      };
+      this.userInfo = await this.getUserInfo();
     },
     data() {
       return {

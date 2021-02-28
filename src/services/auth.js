@@ -17,6 +17,42 @@ export const userIsLoggedIn = () => {
   return fb.auth.currentUser;
 };
 
+export const getUserProfile = async () => {
+  const result = await fb.usersCollection
+    .where("userId", "==", fb.auth.currentUser.uid)
+    .get();
+  const data = result.docs.length === 0 ? {} : result.docs[0].data();
+  return {
+    gender: data.gender ?? "",
+    birthday: data.birthday ?? "",
+    country: data.country ?? "",
+    area: data.area ?? "Frontend",
+    biography: data.biography ?? "",
+    ghprofile: data.ghprofile ?? "",
+    twprofile: data.twprofile ?? "",
+    fbprofile: data.fbprofile ?? "",
+    lnprofile: data.lnprofile ?? "",
+  };
+};
+
+export const updateUserProfile = async () => {
+  const result = await fb.usersCollection
+    .where("userId", "==", fb.auth.user.uid)
+    .get();
+  const data = result.docs.length === 0 ? {} : result.docs[0].data();
+  return {
+    gender: data.gender ?? "",
+    birthday: data.birthday ?? "",
+    country: data.country ?? "",
+    area: data.area ?? "Frontend",
+    biography: data.biography ?? "",
+    ghprofile: data.ghprofile ?? "",
+    twprofile: data.twprofile ?? "",
+    fbprofile: data.fbprofile ?? "",
+    lnprofile: data.lnprofile ?? "",
+  };
+};
+
 /**
  * User login
  * @param {String} email
