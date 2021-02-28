@@ -24,15 +24,12 @@
       <b-navbar-item v-if="loguedUser">
         <b-icon class="has-update-mark" icon="bell"> </b-icon>
       </b-navbar-item>
-      <b-navbar-dropdown boxed v-if="loguedUser">
+      <b-navbar-dropdown v-if="loguedUser">
         <template #label>
           <div class="media">
             <div class="media-left">
-              <figure class="image is-rounded is-32x32">
-                <img
-                  class="is-rounded"
-                  src="https://avatars.dicebear.com/4.5/api/gridy/.svg"
-                />
+              <figure class="image is-32x32">
+                <img class="is-rounded" :src="avatarURL" />
               </figure>
             </div>
             <div class="media-content">

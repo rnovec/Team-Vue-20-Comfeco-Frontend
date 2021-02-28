@@ -34,7 +34,7 @@
 
 <script>
   import WorkshopItem from "./WorkshopItem";
-  import { getWorkshops } from "@/api/workshops";
+  import { getWorkshops, getWorkshopsByQuery } from "@/api/workshops";
 
   export default {
     name: "Workshops",
@@ -52,8 +52,19 @@
     },
     methods: {
       async getData() {
-        const response = await getWorkshops(this.query);
-        this.workshops = response.data.results;
+        const response = this.isQueryEmpty()
+          ? await getWorkshops()
+          : await getWorkshopsByQuery(this.query);
+        this.workshops = [...response.data];
+      },
+      isQueryEmpty: function() {
+        for (const key in this.query) {
+          if (this.query[key] !== "") {
+            return false;
+          }
+        }
+
+        return true;
       },
     },
     watch: {

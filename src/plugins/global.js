@@ -1,6 +1,7 @@
 import { SnackbarProgrammatic as Snackbar } from "buefy";
 import auth, {
   setUser,
+  getUserProfile,
   signIn,
   signUp,
   signOut,
@@ -18,6 +19,12 @@ export default {
         loguedUser() {
           return auth.user;
         },
+        avatarURL() {
+          return (
+            auth.user.photoURL ??
+            `https://avatars.dicebear.com/4.5/api/identicon/${auth.user.displayName}.svg`
+          );
+        },
       },
       methods: {
         async socialSignIn(service) {
@@ -28,6 +35,10 @@ export default {
           const { email, password, rememberMe } = form;
           await signIn(email, password, rememberMe);
           this.$router.push("/home");
+        },
+        async getUserInfo() {
+          const userInfo = await getUserProfile();
+          return userInfo;
         },
         async register(form) {
           await signUp(form);

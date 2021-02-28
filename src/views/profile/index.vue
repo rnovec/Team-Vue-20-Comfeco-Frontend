@@ -8,13 +8,14 @@
     </section>
     <div class="container">
       <div class="columns mt-4">
-        <div class="column is-3 is-hidden-mobile">
+        <div class="column is-3 is-hidden-touch">
           <ProfilePreview />
         </div>
         <div class="column is-6 mb-3">
-          <Activity v-if="state === 'Profile'" />
+          <ProfilePreview class="is-hidden-desktop" />
+          <Activity v-if="state === 'Perfil'" />
         </div>
-        <div class="column is-3 is-hidden-mobile">
+        <div class="column is-3 is-hidden-touch">
           <Events />
         </div>
       </div>
@@ -32,7 +33,7 @@
     components: { Activity, ProfileTabs, ProfilePreview, Events },
     data() {
       return {
-        state: "Profile",
+        state: "Perfil",
       };
     },
     methods: {

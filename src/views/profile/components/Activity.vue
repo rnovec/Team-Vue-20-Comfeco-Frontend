@@ -15,7 +15,7 @@
         </div>
       </nav>
     </div>
-    <div class="is-flex is-justify-content-space-between">
+    <div class="is-flex is-justify-content-space-between mb-3">
       <h1 class="title is-6">Actividad</h1>
     </div>
     <article class="media box">

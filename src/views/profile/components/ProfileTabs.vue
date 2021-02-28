@@ -25,7 +25,7 @@
       return {
         tabs: [
           {
-            name: "Profile",
+            name: "Perfil",
             icon: "account",
           },
           {
@@ -33,11 +33,11 @@
             icon: "certificate",
           },
           {
-            name: "Groups",
+            name: "Groupos",
             icon: "account-multiple",
           },
           {
-            name: "Events",
+            name: "Eventos",
             icon: "calendar",
           },
         ],

@@ -1,11 +1,18 @@
 <template>
   <div class="card">
     <div class="is-flex is-justify-content-flex-end mt-2 mr-3">
-      <a href=""><small>Editar perfil</small></a>
+      <RouterLink
+        to="/edit-profile"
+        tag="a"
+        class="is-flex mt-2 is-justify-content-center"
+      >
+        <small>Editar perfil</small>
+        <b-icon icon="account-edit" />
+      </RouterLink>
     </div>
     <div class="card-image is-flex is-justify-content-center">
-      <figure class="image my-2 is-128x128">
-        <img class="is-rounded" src="https://placehold.it/128x128" />
+      <figure class="image is-128x128 my-2">
+        <img class="is-rounded" :src="photoUrl" alt="Foto de Perfil" />
       </figure>
     </div>
     <div class="card-content has-text-centered">
@@ -13,19 +20,69 @@
         {{ loguedUser.displayName }}
       </h1>
       <h2 class="subtitle is-7 is-block">
-        Frontend Developer / UX
+        {{ userInfo.area }}
       </h2>
-      <div class="content">
+      <div v-if="userInfo.biography" class="content">
         <p>
-          Laborum quis anim velit laboris ea est id mollit nulla qui. Do
-          cupidatat mollit irure aliqua in eu sint culpa non Lorem dolor tempor
-          sint consequat. Ullamco Lorem magna dolor laboris id Lorem adipisicing
-          commodo consequat officia.
+          {{ userInfo.biography }}
         </p>
       </div>
     </div>
-    <div class="card">
-      <footer class="card-footer"></footer>
+    <div class="card-footer p-3 is-justify-content-center">
+      <a target="_blank" title="facebook" :href="facebookReferral">
+        <b-icon class="ml-2" type="is-facebook" icon="facebook" />
+      </a>
+      <a target="_blank" title="twitter" :href="twitterReferral">
+        <b-icon class="ml-2" type="is-twitter" icon="twitter" />
+      </a>
+      <a target="_blank" title="github" :href="githubReferral">
+        <b-icon class="ml-2" type="is-dark" icon="github-circle" />
+      </a>
+      <a target="_blank" title="linkedin" :href="linkedInReferral">
+        <b-icon class="ml-2" type="is-linkedin" icon="linkedin" />
+      </a>
     </div>
   </div>
 </template>
+
+<script>
+  import auth from "@/services/auth";
+  export default {
+    name: "ProfilePreview",
+    async mounted() {
+      this.userInfo = await this.getUserInfo();
+    },
+    data() {
+      return {
+        photoUrl: auth.user.photoURL ?? "https://placehold.it/128x128",
+        userInfo: {},
+      };
+    },
+    computed: {
+      facebookReferral: function() {
+        if (this.userInfo.fbprofile) {
+          return `https://facebook.com/${this.userInfo.fbprofile}`;
+        }
+        return null;
+      },
+      twitterReferral: function() {
+        if (this.userInfo.twprofile) {
+          return `https://twitter.com/${this.userInfo.twprofile}`;
+        }
+        return null;
+      },
+      githubReferral: function() {
+        if (this.userInfo.ghprofile) {
+          return `https://github.com/${this.userInfo.ghprofile}`;
+        }
+        return null;
+      },
+      linkedInReferral: function() {
+        if (this.userInfo.lnprofile) {
+          return `https://linkedin.com/in/${this.userInfo.lnprofile}`;
+        }
+        return null;
+      },
+    },
+  };
+</script>
