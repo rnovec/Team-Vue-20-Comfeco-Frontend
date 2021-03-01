@@ -1,5 +1,10 @@
+import Vue from "vue";
+import { ValidationObserver, extend } from "vee-validate";
+import InputWithValidation from "@/components/InputWithValidation";
 import { required, confirmed, email } from "vee-validate/dist/rules";
-import { extend } from "vee-validate";
+
+Vue.component("ValidationObserver", ValidationObserver);
+Vue.component("InputWithValidation", InputWithValidation);
 
 extend("required", {
   ...required,

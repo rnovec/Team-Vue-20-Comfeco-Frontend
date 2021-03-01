@@ -1,11 +1,12 @@
 import Vue from "vue";
-import * as fb from "@/firebaseconfig";
+import * as fb from "@/services/firebaseconfig";
 
 const state = Vue.observable({
   user: fb.auth.currentUser,
 });
 
 export const setUser = () => {
+  state.user = {}; // dummy user reset
   state.user = fb.auth.currentUser;
 };
 
