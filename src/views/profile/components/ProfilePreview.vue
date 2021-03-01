@@ -17,7 +17,7 @@
     </div>
     <div class="card-content has-text-centered">
       <h1 class="title is-6 is-block">
-        {{ loguedUser.displayName }}
+        {{ currentUser.displayName }}
       </h1>
       <h2 class="subtitle is-7 is-block">
         {{ userInfo.area }}
@@ -29,16 +29,36 @@
       </div>
     </div>
     <div class="card-footer p-3 is-justify-content-center">
-      <a target="_blank" title="facebook" :href="facebookReferral">
+      <a
+        target="_blank"
+        title="facebook"
+        :href="facebookReferral"
+        v-if="facebookReferral"
+      >
         <b-icon class="ml-2" type="is-facebook" icon="facebook" />
       </a>
-      <a target="_blank" title="twitter" :href="twitterReferral">
+      <a
+        target="_blank"
+        title="twitter"
+        :href="twitterReferral"
+        v-if="twitterReferral"
+      >
         <b-icon class="ml-2" type="is-twitter" icon="twitter" />
       </a>
-      <a target="_blank" title="github" :href="githubReferral">
+      <a
+        target="_blank"
+        title="github"
+        :href="githubReferral"
+        v-if="githubReferral"
+      >
         <b-icon class="ml-2" type="is-dark" icon="github-circle" />
       </a>
-      <a target="_blank" title="linkedin" :href="linkedInReferral">
+      <a
+        target="_blank"
+        title="linkedin"
+        :href="linkedInReferral"
+        v-if="linkedInReferral"
+      >
         <b-icon class="ml-2" type="is-linkedin" icon="linkedin" />
       </a>
     </div>
@@ -46,15 +66,15 @@
 </template>
 
 <script>
-  import auth from "@/services/auth";
   export default {
     name: "ProfilePreview",
     async mounted() {
       this.userInfo = await this.getUserInfo();
+      this.photoUrl = this.avatarURL;
     },
     data() {
       return {
-        photoUrl: auth.user.photoURL ?? "https://placehold.it/128x128",
+        photoUrl: "",
         userInfo: {},
       };
     },

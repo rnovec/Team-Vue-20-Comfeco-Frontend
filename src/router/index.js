@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Auth from "../layouts/auth.vue";
 import Default from "../layouts/default.vue";
-import { userIsLoggedIn } from "@/services/auth";
+import { userIsLoggedIn } from "@/api/auth";
 
 Vue.use(VueRouter);
 
@@ -57,6 +57,7 @@ const routes = [
         path: "/profile",
         name: "Profile",
         meta: {
+          title: "Mi Perfil",
           requiresAuth: true,
         },
         component: () => import("../views/profile/index.vue"),
@@ -65,6 +66,7 @@ const routes = [
         path: "/edit-profile",
         name: "EditProfile",
         meta: {
+          title: "Editar Perfil",
           requiresAuth: true,
         },
         component: () => import("../views/edit-profile/index.vue"),

@@ -2,12 +2,14 @@ import { SnackbarProgrammatic as Snackbar } from "buefy";
 import auth, {
   setUser,
   getUserProfile,
+  updateUserProfile,
   signIn,
   signUp,
   signOut,
   socialLogin,
   passwordRecovery,
-} from "../services/auth";
+} from "@/api/auth";
+import ContentLoader from "@/components/ContentLoader";
 
 export default {
   install(Vue, options) {
@@ -16,7 +18,7 @@ export default {
         setUser();
       },
       computed: {
-        loguedUser() {
+        currentUser() {
           return auth.user;
         },
         avatarURL() {
@@ -40,6 +42,10 @@ export default {
           const userInfo = await getUserProfile();
           return userInfo;
         },
+        async updateProfile(userInfo, profileInfo, profilePhotoFile) {
+          await updateUserProfile(userInfo, profileInfo, profilePhotoFile);
+          setUser();
+        },
         async register(form) {
           await signUp(form);
           this.$router.push("/home");
@@ -53,6 +59,9 @@ export default {
         },
       },
     });
+
+    // Register global components
+    Vue.component("ContentLoader", ContentLoader);
 
     Vue.prototype.$snackbar = function(
       message,
