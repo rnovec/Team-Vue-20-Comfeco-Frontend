@@ -23,10 +23,11 @@
       <option value="Cloud Computing">Cloud Computing</option>
     </b-select>
     <div class="mt-4">
+      <ContentLoader v-if="isLoading" />
       <WorkshopItem
         v-for="workshop in workshops"
         :workshop="workshop"
-        :key="workshop.id"
+        :key="workshop._id"
       />
     </div>
   </aside>
@@ -47,15 +48,23 @@
         query: {
           area: "",
         },
+        isLoading: false,
         workshops: [],
       };
     },
     methods: {
       async getData() {
-        const response = this.isQueryEmpty()
-          ? await getWorkshops()
-          : await getWorkshopsByQuery(this.query);
-        this.workshops = [...response.data];
+        this.isLoading = true;
+        try {
+          const response = this.isQueryEmpty()
+            ? await getWorkshops()
+            : await getWorkshopsByQuery(this.query);
+          this.workshops = response.data.results;
+        } catch (error) {
+          console.log(error);
+        } finally {
+          this.isLoading = false;
+        }
       },
       isQueryEmpty: function() {
         for (const key in this.query) {
@@ -63,7 +72,6 @@
             return false;
           }
         }
-
         return true;
       },
     },

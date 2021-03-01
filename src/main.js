@@ -11,6 +11,7 @@ import { auth } from "./firebaseconfig";
 
 import { ValidationObserver } from "vee-validate";
 import InputWithValidation from "@/components/InputWithValidation";
+import ContentLoader from "@/components/ContentLoader";
 
 import "./vee-validate";
 import "./assets/scss/app.scss";
@@ -34,6 +35,7 @@ router.afterEach(to => {
 
 Vue.component("ValidationObserver", ValidationObserver);
 Vue.component("InputWithValidation", InputWithValidation);
+Vue.component("ContentLoader", ContentLoader);
 
 Vue.config.productionTip = false;
 
