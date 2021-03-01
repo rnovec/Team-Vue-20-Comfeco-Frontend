@@ -29,16 +29,36 @@
       </div>
     </div>
     <div class="card-footer p-3 is-justify-content-center">
-      <a target="_blank" title="facebook" :href="facebookReferral">
+      <a
+        target="_blank"
+        title="facebook"
+        :href="facebookReferral"
+        v-if="facebookReferral"
+      >
         <b-icon class="ml-2" type="is-facebook" icon="facebook" />
       </a>
-      <a target="_blank" title="twitter" :href="twitterReferral">
+      <a
+        target="_blank"
+        title="twitter"
+        :href="twitterReferral"
+        v-if="twitterReferral"
+      >
         <b-icon class="ml-2" type="is-twitter" icon="twitter" />
       </a>
-      <a target="_blank" title="github" :href="githubReferral">
+      <a
+        target="_blank"
+        title="github"
+        :href="githubReferral"
+        v-if="githubReferral"
+      >
         <b-icon class="ml-2" type="is-dark" icon="github-circle" />
       </a>
-      <a target="_blank" title="linkedin" :href="linkedInReferral">
+      <a
+        target="_blank"
+        title="linkedin"
+        :href="linkedInReferral"
+        v-if="linkedInReferral"
+      >
         <b-icon class="ml-2" type="is-linkedin" icon="linkedin" />
       </a>
     </div>
