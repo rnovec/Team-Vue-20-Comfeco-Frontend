@@ -135,6 +135,7 @@
                       v-model="form.gender"
                       expanded
                     >
+                      <option value="">Selecciona una opción</option>
                       <option value="Masculino">Masculino</option>
                       <option value="Femenino">Femenino</option>
                       <option value="Prefiero no decirlo">
@@ -154,15 +155,33 @@
                 </div>
                 <div class="column">
                   <b-field label="Pais">
-                    <b-select icon="flag" v-model="form.country" expanded>
-                      <option
-                        v-for="(country, i) in countries"
-                        :key="country.code + i"
-                        :value="country.name"
-                      >
-                        {{ country.name }}
-                      </option>
-                    </b-select>
+                    <b-autocomplete
+                      icon="flag"
+                      :data="filteredCountries"
+                      v-model="form.country"
+                      clearable
+                      placeholder="ej. México"
+                      field="name"
+                      open-on-focus
+                      @select="option => (selected = option)"
+                    >
+                      <template v-slot="props">
+                        <div class="media">
+                          <div class="media-left">
+                            <img
+                              width="32"
+                              :src="
+                                `https://raw.githubusercontent.com/hampusborgos/country-flags/master/svg/${props.option.code.toLowerCase()}.svg`
+                              "
+                            />
+                          </div>
+                          <div class="media-content">
+                            {{ props.option.name }} ({{ props.option.code }})
+                          </div>
+                        </div>
+                      </template>
+                      <template #empty>No results found</template>
+                    </b-autocomplete>
                   </b-field>
                 </div>
               </div>
@@ -208,37 +227,49 @@
 </template>
 
 <script>
-  import auth from "@/services/auth";
-  import { Firebase, usersCollection } from "@/firebaseconfig";
-  import * as countries from "@/data-sources/countries.json";
+  import countries from "@/data-sources/countries.json";
+
   export default {
     name: "index",
     async mounted() {
       this.form = await this.getUserInfo();
-      this.countries = countries.default;
+      this.userInfo.photoUrl = this.avatarURL;
+      this.userInfo.nick = this.currentUser.displayName;
+      this.userInfo.email = this.currentUser.email;
+      this.countries = countries;
     },
     data() {
       return {
         loading: false,
         // Este objeto retendrá el objeto File de la foto que suba el usuario
-        profilePhotoFile: undefined,
+        profilePhotoFile: null,
         // El objeto user info retiene la información que se recolecta del user de firebase
         userInfo: {
-          photoUrl: auth.user.photoURL ?? "https://placehold.it/1920x1080",
-          nick: auth.user.displayName ?? "",
-          email: auth.user.email ?? "",
+          photoUrl: "",
+          nick: "",
+          email: "",
           password: "",
           passwordRepeat: "",
         },
         // El objeto form retendrá la información del usuario del usersCollection
         form: {},
         countries: [],
+        selected: null,
       };
     },
-    methods: {
-      changeValue(val) {
-        console.log(val);
+    computed: {
+      filteredCountries() {
+        return this.countries.filter(option => {
+          return (
+            option.name
+              .toString()
+              .toLowerCase()
+              .indexOf(this.form.country.toLowerCase()) >= 0
+          );
+        });
       },
+    },
+    methods: {
       goBack: function() {
         this.$router.push("/profile");
       },
@@ -252,50 +283,11 @@
       },
       submit: async function() {
         this.loading = true;
-
-        // Lo primero es verificar si el usuario quiere cambiar su contraseña
-        // Si quiere hacerlo, entonces hay que verificar que todo esté en orden antes de proseguir con lo demás
-        // Si no quiere hacerlo, no debe ser impedimento para actualizar los demás datos
-        if (
-          this.userInfo.password !== "" ||
-          this.userInfo.passwordRepeat !== ""
-        ) {
-          await auth.user.updatePassword(this.userInfo.password);
-        }
-
-        if (this.profilePhotoFile) {
-          const ref = `profilePictures/${auth.user.uid}.jpg`;
-          const storageRef = Firebase.storage().ref(ref);
-          await storageRef.put(this.profilePhotoFile);
-          const url = await storageRef.getDownloadURL();
-          await auth.user.updateProfile({
-            photoURL: url,
-          });
-        }
-
-        await auth.user.updateProfile({
-          displayName: this.userInfo.nick,
-        });
-
-        await auth.user.updateEmail(this.userInfo.email);
-
-        const result = await usersCollection
-          .where("userId", "==", auth.user.uid)
-          .get();
-
-        if (result.docs.length !== 0) {
-          await usersCollection.doc(result.docs[0].id).set(
-            {
-              ...this.form,
-            },
-            { merge: true }
-          );
-        } else {
-          await usersCollection.add({
-            userId: auth.user.uid,
-            ...this.form,
-          });
-        }
+        await this.updateProfile(
+          this.userInfo,
+          this.form,
+          this.profilePhotoFile
+        );
         this.$snackbar("Perfil actualizado correctamente!", {
           type: "is-success",
           position: "is-bottom-right",
@@ -306,5 +298,3 @@
     },
   };
 </script>
-
-<style scoped></style>

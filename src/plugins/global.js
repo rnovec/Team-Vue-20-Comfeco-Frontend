@@ -2,12 +2,13 @@ import { SnackbarProgrammatic as Snackbar } from "buefy";
 import auth, {
   setUser,
   getUserProfile,
+  updateUserProfile,
   signIn,
   signUp,
   signOut,
   socialLogin,
   passwordRecovery,
-} from "../services/auth";
+} from "@/services/auth";
 
 export default {
   install(Vue, options) {
@@ -16,7 +17,7 @@ export default {
         setUser();
       },
       computed: {
-        loguedUser() {
+        currentUser() {
           return auth.user;
         },
         avatarURL() {
@@ -39,6 +40,9 @@ export default {
         async getUserInfo() {
           const userInfo = await getUserProfile();
           return userInfo;
+        },
+        async updateProfile(userInfo, profileInfo, profilePhotoFile) {
+          await updateUserProfile(userInfo, profileInfo, profilePhotoFile);
         },
         async register(form) {
           await signUp(form);

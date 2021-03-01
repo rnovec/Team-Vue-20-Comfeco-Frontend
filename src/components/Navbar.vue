@@ -5,7 +5,7 @@
         <img src="../assets/logo.png" width="112" height="28" />
       </b-navbar-item>
     </template>
-    <template v-if="loguedUser || $route.name === 'Home'" #start>
+    <template v-if="currentUser || $route.name === 'Home'" #start>
       <b-navbar-item href="#">
         Inicio
       </b-navbar-item>
@@ -21,10 +21,10 @@
     </template>
 
     <template #end>
-      <b-navbar-item v-if="loguedUser">
+      <b-navbar-item class="is-hidden-touch" v-if="currentUser">
         <b-icon class="has-update-mark" icon="bell"> </b-icon>
       </b-navbar-item>
-      <b-navbar-dropdown v-if="loguedUser">
+      <b-navbar-dropdown v-if="currentUser">
         <template #label>
           <div class="media">
             <div class="media-left">
@@ -34,14 +34,14 @@
             </div>
             <div class="media-content">
               <div class="content mt-1">
-                {{ loguedUser.displayName }}
+                {{ currentUser.displayName }}
               </div>
             </div>
           </div>
         </template>
         <b-navbar-item tag="router-link" :to="{ name: 'Profile' }">
           <b-icon icon="account"> </b-icon>
-          <span>Mi Cuenta</span>
+          <span>Mi Perfil</span>
         </b-navbar-item>
         <hr class="dropdown-divider" />
         <b-navbar-item
@@ -50,7 +50,7 @@
           @click="logout"
         >
           <b-icon icon="logout"></b-icon>
-          <span>Salir</span>
+          <span>Cerrar sesión</span>
         </b-navbar-item>
       </b-navbar-dropdown>
       <b-navbar-item

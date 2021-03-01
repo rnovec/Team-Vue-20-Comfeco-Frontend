@@ -17,7 +17,7 @@
     </div>
     <div class="card-content has-text-centered">
       <h1 class="title is-6 is-block">
-        {{ loguedUser.displayName }}
+        {{ currentUser.displayName }}
       </h1>
       <h2 class="subtitle is-7 is-block">
         {{ userInfo.area }}
@@ -66,15 +66,15 @@
 </template>
 
 <script>
-  import auth from "@/services/auth";
   export default {
     name: "ProfilePreview",
     async mounted() {
       this.userInfo = await this.getUserInfo();
+      this.photoUrl = this.avatarURL;
     },
     data() {
       return {
-        photoUrl: auth.user.photoURL ?? "https://placehold.it/128x128",
+        photoUrl: "",
         userInfo: {},
       };
     },
