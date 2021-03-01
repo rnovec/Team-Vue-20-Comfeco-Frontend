@@ -39,7 +39,6 @@
                 />
                 <div class="mt-5 is-flex-is-flex-direction-column">
                   <b-field label="Perfil de GitHub" class="mb-5">
-                    <!-- A falta de un icono de github... -->
                     <b-input
                       type="text"
                       icon="github-circle"
@@ -131,12 +130,17 @@
               <div class="columns">
                 <div class="column is-one-third">
                   <b-field label="Genero">
-                    <b-input
-                      type="text"
+                    <b-select
                       icon="gender-male-female"
                       v-model="form.gender"
-                      placeholder="Genero"
-                    ></b-input>
+                      expanded
+                    >
+                      <option value="Masculino">Masculino</option>
+                      <option value="Femenino">Femenino</option>
+                      <option value="Prefiero no decirlo">
+                        Prefiero no decirlo
+                      </option>
+                    </b-select>
                   </b-field>
                 </div>
                 <div class="column">
@@ -150,12 +154,15 @@
                 </div>
                 <div class="column">
                   <b-field label="Pais">
-                    <b-input
-                      type="text"
-                      icon="flag"
-                      v-model="form.country"
-                      placeholder="Pais"
-                    ></b-input>
+                    <b-select icon="flag" v-model="form.country" expanded>
+                      <option
+                        v-for="(country, i) in countries"
+                        :key="country.code + i"
+                        :value="country.name"
+                      >
+                        {{ country.name }}
+                      </option>
+                    </b-select>
                   </b-field>
                 </div>
               </div>
@@ -203,10 +210,12 @@
 <script>
   import auth from "@/services/auth";
   import { Firebase, usersCollection } from "@/firebaseconfig";
+  import * as countries from "@/data-sources/countries.json";
   export default {
     name: "index",
     async mounted() {
       this.form = await this.getUserInfo();
+      this.countries = countries.default;
     },
     data() {
       return {
@@ -223,6 +232,7 @@
         },
         // El objeto form retendrá la información del usuario del usersCollection
         form: {},
+        countries: [],
       };
     },
     methods: {
@@ -269,7 +279,6 @@
 
         await auth.user.updateEmail(this.userInfo.email);
 
-        // Fin de sección
         const result = await usersCollection
           .where("userId", "==", auth.user.uid)
           .get();
