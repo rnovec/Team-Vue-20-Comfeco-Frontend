@@ -23,7 +23,7 @@ export const getUserProfile = async () => {
     .get();
   const data = result.docs.length === 0 ? {} : result.docs[0].data();
   return {
-    gender: data.gender ?? "",
+    gender: data.gender ?? "Prefiero no decirlo",
     birthday: data.birthday ?? "",
     country: data.country ?? "",
     area: data.area ?? "Frontend",
