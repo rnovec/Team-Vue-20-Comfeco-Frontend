@@ -46,7 +46,7 @@ export const updateUserProfile = async (
   // Lo primero es verificar si el usuario quiere cambiar su contraseña
   // Si quiere hacerlo, entonces hay que verificar que todo esté en orden antes de proseguir con lo demás
   // Si no quiere hacerlo, no debe ser impedimento para actualizar los demás datos
-  if (userInfo.password !== "" || userInfo.passwordRepeat !== "") {
+  if (userInfo.password && userInfo.passwordRepeat) {
     await state.user.updatePassword(userInfo.password);
   }
 
