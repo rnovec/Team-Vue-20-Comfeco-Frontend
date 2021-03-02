@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card mb-4">
     <div class="is-flex is-justify-content-flex-end mt-2 mr-3">
       <RouterLink
         to="/edit-profile"

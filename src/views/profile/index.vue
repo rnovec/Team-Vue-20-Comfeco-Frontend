@@ -6,7 +6,7 @@
         <ProfileTabs v-model="state" @input="changeValue" />
       </div>
     </section>
-    <div class="container">
+    <div class="container section">
       <div class="columns mt-4">
         <div class="column is-3 is-hidden-touch">
           <ProfilePreview />
