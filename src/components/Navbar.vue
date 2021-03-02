@@ -2,7 +2,12 @@
   <b-navbar fixed-top centered shadow>
     <template #brand>
       <b-navbar-item tag="router-link" :to="{ name: 'Home' }">
-        <img src="../assets/logo.png" width="112" height="28" />
+        <img
+          src="../assets/logo.png"
+          alt="Logo de COMFECO horizontal"
+          width="112"
+          height="28"
+        />
       </b-navbar-item>
     </template>
     <template v-if="currentUser || $route.name === 'Home'" #start>

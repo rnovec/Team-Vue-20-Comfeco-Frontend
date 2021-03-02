@@ -14,16 +14,17 @@
       <div class="card mx-1">
         <div class="card-image">
           <figure class="image is-1by1">
-            <img :src="img(speaker.name_image)" alt="Placeholder image" />
+            <img :src="img(speaker.name_image)" :alt="speaker.name" />
           </figure>
         </div>
         <div class="card-content">
           <div class="media">
-            <div class="media-content">
+            <div class="media-content framework-icon">
               <figure class="avatar image is-32x32">
                 <img
                   class="is-rounded"
                   :src="technology(speaker.technology_avatar)"
+                  :alt="speaker.technology_avatar"
                 />
               </figure>
               <p class="title is-7 mt-2">{{ speaker.name }}</p>
@@ -57,14 +58,21 @@
   };
 </script>
 
-<style>
+<style scoped>
   .avatar {
     position: absolute;
-    margin-top: -40px;
-    margin-left: 20%;
+    margin-top: -50px;
   }
   .avatar img {
     background: #fff;
     border-radius: 50%;
+  }
+  .framework-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card-content {
+    padding: 1rem 0.5rem;
   }
 </style>

@@ -3,7 +3,13 @@
     <div class="columns">
       <div class="column has-text-centered mb-1">
         <router-link tag="a" class="" to="/home">
-          <img src="../assets/logo3.png" width="75" height="40" />
+          <img
+            src="../assets/logo3.png"
+            alt="Logo de COMFECO vertical"
+            title="Community Fest and Code"
+            width="75"
+            height="40"
+          />
         </router-link>
       </div>
       <div class="columns has-text-centered copyr flex">
@@ -18,21 +24,24 @@
           <a href=""
             ><img
               src="../assets/facebook_icon-icons.com_59205.svg"
-              alt=""
+              alt="Facebook"
+              title="Facebook"
               width="40"
               height="40"
           /></a>
           <a href=""
             ><img
               src="../assets/discord_101785.svg"
-              alt=""
+              alt="Discord"
+              title="Discord"
               width="40"
               height="40"
           /></a>
           <a href=""
             ><img
               src="../assets/youtube_47003.png"
-              alt=""
+              alt="Youtube"
+              title="Youtube"
               width="40"
               height="40"
           /></a>

@@ -10,7 +10,12 @@
   >
     <slide v-for="sponsor in sponsors.data" :key="sponsor.id">
       <figure class="image is-64x64 mx-4">
-        <img class="is-rounded" :src="img(sponsor.name_image)" />
+        <img
+          class="is-rounded"
+          :src="img(sponsor.name_image)"
+          :alt="sponsor.name"
+          :title="sponsor.name"
+        />
       </figure>
     </slide>
   </carousel>
