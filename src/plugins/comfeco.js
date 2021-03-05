@@ -1,14 +1,17 @@
 import { SnackbarProgrammatic as Snackbar } from "buefy";
-import auth, {
-  setUser,
-  getUserProfile,
-  updateUserProfile,
+import {
   signIn,
   signUp,
   signOut,
   socialLogin,
   passwordRecovery,
 } from "@/api/auth";
+import state, {
+  setUser,
+  getUserProfile,
+  updateUserProfile,
+  updateUserPassword,
+} from "@/api/users";
 import ContentLoader from "@/components/ContentLoader";
 
 export default {
@@ -19,23 +22,25 @@ export default {
       },
       computed: {
         currentUser() {
-          return auth.user;
+          return state.user;
         },
         avatarURL() {
           return (
-            auth.user.photoURL ??
-            `https://avatars.dicebear.com/4.5/api/identicon/${auth.user.displayName}.svg`
+            state.user.photoURL ??
+            `https://avatars.dicebear.com/4.5/api/identicon/${state.user.displayName}.svg`
           );
         },
       },
       methods: {
         async socialSignIn(service) {
           await socialLogin(service);
+          setUser();
           this.$router.push("/home");
         },
         async login(form) {
           const { email, password, rememberMe } = form;
           await signIn(email, password, rememberMe);
+          setUser();
           this.$router.push("/home");
         },
         async getUserInfo() {
@@ -48,7 +53,11 @@ export default {
         },
         async register(form) {
           await signUp(form);
+          setUser();
           this.$router.push("/home");
+        },
+        async updatePassword(password, passwordRepeat) {
+          await updateUserPassword(password, passwordRepeat);
         },
         async resetPassword(email) {
           await passwordRecovery(email);

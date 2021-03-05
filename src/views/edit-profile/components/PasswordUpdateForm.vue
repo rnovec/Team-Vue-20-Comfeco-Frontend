@@ -14,10 +14,10 @@
       placeholder="Contraseña"
       password-reveal
       icon="lock"
-      v-model="userInfo.password"
+      v-model="form.password"
     />
     <InputWithValidation
-      :rules="`${userInfo.password ? 'required|' : ''}confirmed:password`"
+      :rules="`${form.password ? 'required|' : ''}confirmed:password`"
       horizontal
       name="confirmation"
       type="password"
@@ -25,7 +25,7 @@
       placeholder="Repetir contraseña"
       password-reveal
       icon="lock"
-      v-model="userInfo.passwordRepeat"
+      v-model="form.passwordRepeat"
     />
     <b-field horizontal class="mt-5">
       <b-button
@@ -47,7 +47,7 @@
     data() {
       return {
         loading: false,
-        userInfo: {
+        form: {
           password: "",
           passwordRepeat: "",
         },
@@ -56,10 +56,9 @@
     methods: {
       submit: async function() {
         this.loading = true;
-        await this.updateProfile(
-          this.userInfo,
-          this.form,
-          this.profilePhotoFile
+        await this.updateUserPassword(
+          this.form.password,
+          this.form.passwordRepeat
         );
         this.$snackbar("Perfil actualizado correctamente!", {
           type: "is-success",
