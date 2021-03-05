@@ -16,7 +16,7 @@
           <Activity v-if="state === 'Perfil'" />
         </div>
         <div class="column is-3 is-hidden-touch">
-          <Events />
+          <Events v-model="state" @input="changeValue" />
         </div>
       </div>
     </div>
