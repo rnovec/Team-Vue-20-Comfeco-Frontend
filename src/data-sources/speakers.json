@@ -5,7 +5,7 @@
             "name": "Bazael Perez",
             "technology": "Angular",
             "date_joined": "2021-05-25T09:00:15",
-            "name_image":"Bezael_Perez.jpg",
+            "name_image": "Bezael_Perez.jpg",
             "technology_avatar": "angular.jpg"
         },
         {
@@ -13,7 +13,7 @@
             "name": "Anartz Mugika",
             "technology": "Angular",
             "date_joined": "2021-05-25T09:00:15",
-            "name_image":"Anartz_Mugika.jpg",
+            "name_image": "Anartz_Mugika.jpg",
             "technology_avatar": "angular.jpg"
         },
         {
@@ -21,7 +21,7 @@
             "name": "Mayra Rodríguez",
             "technology": "Angular",
             "date_joined": "2021-05-25T09:00:15",
-            "name_image":"Mayra_Rodriguez.jpg",
+            "name_image": "Mayra_Rodriguez.jpg",
             "technology_avatar": "angular.jpg"
         },
         {
@@ -29,7 +29,7 @@
             "name": "Nicolas Molina",
             "technology": "Angular",
             "date_joined": "2021-05-25T09:00:15",
-            "name_image":"Nicolas_Molina.jpg",
+            "name_image": "Nicolas_Molina.jpg",
             "technology_avatar": "angular.jpg"
         },
         {
@@ -37,7 +37,7 @@
             "name": "Diego Montoya",
             "technology": "Angular",
             "date_joined": "2021-05-25T09:00:15",
-            "name_image":"Diego_Montoya.jpg",
+            "name_image": "Diego_Montoya.jpg",
             "technology_avatar": "angular.jpg"
         },
         {
@@ -45,7 +45,7 @@
             "name": "Diego Plancencia (DIEGOD3V)",
             "technology": "React",
             "date_joined": "2021-05-25T09:00:15",
-            "name_image":"Diego_Plascencia.jpg",
+            "name_image": "Diego_Plascencia.jpg",
             "technology_avatar": "react.jpg"
         },
         {
@@ -53,7 +53,7 @@
             "name": "Vanessa Marely",
             "technology": "React",
             "date_joined": "2021-05-25T09:00:15",
-            "name_image":"Vanessa_Marely.jpg",
+            "name_image": "Vanessa_Marely.jpg",
             "technology_avatar": "react.jpg"
         },
         {
@@ -61,7 +61,7 @@
             "name": "Lina Maria Montaño",
             "technology": "React",
             "date_joined": "2021-05-25T09:00:15",
-            "name_image":"Maria_Montanio.jpg",
+            "name_image": "Maria_Montanio.jpg",
             "technology_avatar": "react.jpg"
         },
         {
@@ -69,7 +69,7 @@
             "name": "Alejandro Ñañez Ortiz",
             "technology": "React",
             "date_joined": "2021-05-25T09:00:15",
-            "name_image":"Alejandro_Nianez.jpg",
+            "name_image": "Alejandro_Nianez.jpg",
             "technology_avatar": "react.jpg"
         },
         {
@@ -77,7 +77,7 @@
             "name": "Lara Diaz",
             "technology": "React",
             "date_joined": "2021-05-25T09:00:15",
-            "name_image":"Lara_Diaz.jpg",
+            "name_image": "Lara_Diaz.jpg",
             "technology_avatar": "react.jpg"
         },
         {
@@ -85,7 +85,7 @@
             "name": "Cristopher Paniagua",
             "technology": "Vue",
             "date_joined": "2021-05-25T09:00:15",
-            "name_image":"Cristopher_Paniagua.jpg",
+            "name_image": "Cristopher_Paniagua.jpg",
             "technology_avatar": "vue.jpg"
         },
         {
@@ -93,7 +93,7 @@
             "name": "Manuel Ojeda",
             "technology": "Vue",
             "date_joined": "2021-05-25T09:00:15",
-            "name_image":"Manuel_Ojeda.jpg",
+            "name_image": "Manuel_Ojeda.jpg",
             "technology_avatar": "vue.jpg"
         },
         {
@@ -101,7 +101,7 @@
             "name": "Fernando de la Rosa",
             "technology": "Vue",
             "date_joined": "2021-05-25T09:00:15",
-            "name_image":"Fernando_de_la_Rosa.jpg",
+            "name_image": "Fernando_de_la_Rosa.jpg",
             "technology_avatar": "vue.jpg"
         },
         {
@@ -109,7 +109,7 @@
             "name": "Noemi Leon",
             "technology": "Vue",
             "date_joined": "2021-05-25T09:00:15",
-            "name_image":"Noemi_Leon.jpg",
+            "name_image": "Noemi_Leon.jpg",
             "technology_avatar": "vue.jpg"
         },
         {
@@ -117,7 +117,7 @@
             "name": "Ignacio Anaya",
             "technology": "Vue",
             "date_joined": "2021-05-25T09:00:15",
-            "name_image":"Ignacio_Anaya.jpg",
+            "name_image": "Ignacio_Anaya.jpg",
             "technology_avatar": "vue.jpg"
         },
         {
@@ -125,7 +125,7 @@
             "name": "Marcos Rivas",
             "technology": "Svelte",
             "date_joined": "2021-05-25T09:00:15",
-            "name_image":"Marcos_Rivas.jpg",
+            "name_image": "Marcos_Rivas.jpg",
             "technology_avatar": "svelte.jpg"
         },
         {
@@ -133,7 +133,7 @@
             "name": "Manuel Muñoz",
             "technology": "Svelte",
             "date_joined": "2021-05-25T09:00:15",
-            "name_image":"Manuel_Munios.jpg",
+            "name_image": "Manuel_Munios.jpg",
             "technology_avatar": "svelte.jpg"
         },
         {
@@ -141,7 +141,7 @@
             "name": "Noah Kaufman",
             "technology": "Svelte",
             "date_joined": "2021-05-25T09:00:15",
-            "name_image":"Noah_Kaufman.jpg",
+            "name_image": "Noah_Kaufman.jpg",
             "technology_avatar": "svelte.jpg"
         },
         {
@@ -149,7 +149,7 @@
             "name": "Silvestre Vivo",
             "technology": "Svelte",
             "date_joined": "2021-05-25T09:00:15",
-            "name_image":"Silvestre_Vivo.jpg",
+            "name_image": "Silvestre_Vivo.jpg",
             "technology_avatar": "svelte.jpg"
         },
         {
@@ -157,9 +157,8 @@
             "name": "Oscar Barajas",
             "technology": "Svelte",
             "date_joined": "2021-05-25T09:00:15",
-            "name_image":"Oscar_Barajas.jpg",
+            "name_image": "Oscar_Barajas.jpg",
             "technology_avatar": "svelte.jpg"
         }
-
     ]
 }

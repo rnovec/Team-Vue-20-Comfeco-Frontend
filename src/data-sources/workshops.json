@@ -2,7 +2,7 @@
   "workshops": [
     {
       "id": 1,
-      "title":"The State of Frontend",
+      "title": "The State of Frontend",
       "description": "A fun event",
       "organizer": "Juan Pablo Ortiz",
       "referral": "https://twitter.com/comfeco",
@@ -11,7 +11,7 @@
     },
     {
       "id": 2,
-      "title":"The State of Backend",
+      "title": "The State of Backend",
       "description": "A fun event",
       "organizer": "Martin Lutero",
       "referral": "https://twitter.com/comfeco",
@@ -20,7 +20,7 @@
     },
     {
       "id": 3,
-      "title":"The State of Devops",
+      "title": "The State of Devops",
       "description": "A fun event",
       "organizer": "Reina Isabela",
       "referral": "https://twitter.com/comfeco",
@@ -29,7 +29,7 @@
     },
     {
       "id": 4,
-      "title":"The State of Video Game Developers",
+      "title": "The State of Video Game Developers",
       "description": "A fun event",
       "organizer": "Oscar Wilde",
       "referral": "https://twitter.com/comfeco",
@@ -38,7 +38,7 @@
     },
     {
       "id": 5,
-      "title":"The State of UI/UX",
+      "title": "The State of UI/UX",
       "description": "A fun event",
       "organizer": "Gatsby",
       "referral": "https://twitter.com/comfeco",
@@ -47,7 +47,7 @@
     },
     {
       "id": 6,
-      "title":"The State of Database Developer",
+      "title": "The State of Database Developer",
       "description": "A fun event",
       "organizer": "Maria Estella",
       "referral": "https://twitter.com/comfeco",
@@ -56,7 +56,7 @@
     },
     {
       "id": 7,
-      "title":"The State of Cloud Computing",
+      "title": "The State of Cloud Computing",
       "description": "A fun event",
       "organizer": "Juan Aguirre",
       "referral": "https://twitter.com/comfeco",
