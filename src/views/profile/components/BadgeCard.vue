@@ -2,12 +2,7 @@
   <div class="card">
     <div class="is-flex mt-4 is-justify-content-center">
       <figure class="image is-96x96">
-        <img
-          src="https://bulma.io/images/placeholders/96x96.png"
-          alt="Placeholder image"
-          class="is-rounded"
-          data-target="modal-image2"
-        />
+        <BadgeImage />
       </figure>
     </div>
     <div class="card-content">
@@ -30,3 +25,12 @@
     </div>
   </div>
 </template>
+
+<script>
+  import BadgeImage from "./BadgeImage";
+  export default {
+    components: {
+      BadgeImage,
+    },
+  };
+</script>

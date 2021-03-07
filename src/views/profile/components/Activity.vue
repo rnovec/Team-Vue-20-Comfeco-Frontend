@@ -7,10 +7,7 @@
       <nav class="level is-mobile">
         <div class="level-item" v-for="_ in 4" :key="_">
           <figure class="image is-64x64">
-            <img
-              class="is-rounded"
-              src="https://bulma.io/images/placeholders/64x64.png"
-            />
+            <BadgeImage />
           </figure>
         </div>
       </nav>
@@ -32,3 +29,12 @@
     </article>
   </section>
 </template>
+
+<script>
+  import BadgeImage from "./BadgeImage";
+  export default {
+    components: {
+      BadgeImage,
+    },
+  };
+</script>
