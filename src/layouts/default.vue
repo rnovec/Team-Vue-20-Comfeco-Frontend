@@ -19,11 +19,6 @@
 </script>
 
 <style>
-  .is-fixed-at-top {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 90px;
-  }
   .m-l-5 {
     margin-left: 5px !important;
   }

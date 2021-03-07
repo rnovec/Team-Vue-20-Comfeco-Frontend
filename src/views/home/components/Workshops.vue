@@ -33,6 +33,14 @@
   </aside>
 </template>
 
+<style scoped>
+  .is-fixed-at-top {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 90px;
+  }
+</style>
+
 <script>
   import WorkshopItem from "./WorkshopItem";
   import { getWorkshops, getWorkshopsByQuery } from "@/api/workshops";
