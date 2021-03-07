@@ -8,7 +8,7 @@
           :class="{ 'is-active has-text-black': value === tab.name }"
         >
           <a @click="innerValue = tab.name"
-            ><b-icon :icon="tab.icon"></b-icon> {{ tab.name }}</a
+            ><b-icon :icon="tab.icon"></b-icon> {{ tab.label }}</a
           >
         </li>
       </ul>
@@ -25,19 +25,23 @@
       return {
         tabs: [
           {
-            name: "Perfil",
+            label: "Perfil",
+            name: "Profile",
             icon: "account",
           },
           {
+            label: "Insignias",
             name: "Insignias",
             icon: "certificate",
           },
           {
-            name: "Groupos",
+            label: "Grupos",
+            name: "Groups",
             icon: "account-multiple",
           },
           {
-            name: "Eventos",
+            label: "Eventos",
+            name: "Events",
             icon: "calendar",
           },
         ],
