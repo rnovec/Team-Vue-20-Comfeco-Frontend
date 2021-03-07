@@ -1,48 +1,68 @@
 <template>
-  <aside class="menu is-medium is-fixed-at-top is-hidden-mobile">
-    <article class="media">
-      <div class="media-content">
-        <div class="content">
-          <p class="menu-label">Comunidades</p>
-        </div>
+  <aside class="card group-card is-fixed-at-top">
+    <header class="card-header">
+      <p class="card-header-title">
+        Comunidades
+      </p>
+      <a class="card-header-icon" aria-label="more options">
+        <small>Ver más</small>
+      </a>
+    </header>
+    <div class="card-table">
+      <div class="content">
+        <table class="table is-fullwidth is-striped tableFixHead">
+          <tbody>
+            <tr v-for="item in items" :key="item.id">
+              <td class="level is-mobile">
+                <div class="level-left">
+                  <article class="media">
+                    <figure class="media-left">
+                      <p class="image is-rounded is-32x32">
+                        <img :src="item.img" class="is-rounded" />
+                      </p>
+                    </figure>
+                    <div class="media-content">
+                      <div class="content">
+                        <p class="is-size-7">
+                          <small
+                            ><strong>{{ item.name }}</strong></small
+                          >
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <small class="level-right">
+                  <b-button type="is-primary" outlined size="is-small" rounded
+                    >Unirme</b-button
+                  >
+                </small>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="media-right">
-        <b-button type="is-text is-info is-inverted" size="is-small">
-          Ver más
-        </b-button>
-      </div>
-    </article>
-
-    <ul class="menu-list">
-      <li
-        class="has-text-light is-right m-t-10"
-        v-for="item in items"
-        :key="item.id"
-      >
-        <article class="media">
-          <figure class="media-left">
-            <p class="image is-rounded is-32x32">
-              <img class="is-rounded" :src="item.img" />
-            </p>
-          </figure>
-          <div class="media-content">
-            <div class="content">
-              <p class="title is-7">{{ item.name }}</p>
-            </div>
-          </div>
-          <div class="media-right">
-            <a
-              class="button is-small is-rounded is-primary is-outlined"
-              target="_blank"
-              :href="item.fanpage"
-              >Unirme</a
-            >
-          </div>
-        </article>
-      </li>
-    </ul>
+    </div>
   </aside>
 </template>
+
+<style scoped>
+  .is-fixed-at-top {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 90px;
+  }
+  .media-content {
+    max-width: 150px;
+  }
+  .content figure {
+    margin-left: 0.2em;
+    margin-right: 0.3em;
+    margin-bottom: 0.5em;
+    text-align: center;
+  }
+</style>
+
 <script>
   import communities from "@/data-sources/communities.json";
 

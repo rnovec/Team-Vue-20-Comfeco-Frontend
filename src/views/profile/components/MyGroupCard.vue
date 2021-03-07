@@ -78,6 +78,9 @@
     position: sticky;
     top: 0;
   }
+  .media-content {
+    max-width: 150px;
+  }
   .content figure {
     margin-left: 0.2em;
     margin-right: 0.3em;
