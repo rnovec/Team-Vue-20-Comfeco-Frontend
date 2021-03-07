@@ -7,7 +7,7 @@
       <a
         class="card-header-icon"
         aria-label="more options"
-        @click="innerValue = Eventos"
+        @click="innerValue = 'Events'"
       >
         <small>Ver más</small>
       </a>
