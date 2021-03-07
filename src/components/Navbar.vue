@@ -45,17 +45,29 @@
           </div>
         </template>
         <b-navbar-item tag="router-link" :to="{ name: 'Profile' }">
-          <b-icon icon="account"> </b-icon>
-          <span>Mi Perfil</span>
+          <div class="level is-mobile">
+            <div class="level-left">
+              <b-icon icon="account"></b-icon>&nbsp;<span>Mi Perfil</span>
+            </div>
+          </div>
+        </b-navbar-item>
+        <b-navbar-item tag="a" class="is-hidden-desktop">
+          <div class="level is-mobile">
+            <div class="level-left">
+              <b-icon icon="bell"></b-icon>&nbsp;<span>Notificaciones</span>
+            </div>
+          </div>
         </b-navbar-item>
         <hr class="dropdown-divider" />
         <b-navbar-item
           aria-role="menuitem"
-          class="has-text-danger"
+          class="has-text-danger level is-mobile"
           @click="logout"
         >
-          <b-icon icon="logout"></b-icon>
-          <span>Cerrar sesión</span>
+          <div class="level-left">
+            <b-icon icon="logout"></b-icon>&nbsp;
+            <span>Cerrar sesión</span>
+          </div>
         </b-navbar-item>
       </b-navbar-dropdown>
       <b-navbar-item
