@@ -4,7 +4,7 @@
       <div class="container is-fluid">
         <div class="columns">
           <div class="column mt-4 is-3 is-hidden-mobile">
-            <Communities />
+            <Communities class="is-hidden-touch" />
           </div>
           <div class="column is-6 has-text-centered">
             <section>
