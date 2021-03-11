@@ -3,7 +3,7 @@
     <div class="card-image">
       <figure class="image is-4by3">
         <img
-          src="https://bulma.io/images/placeholders/96x96.png"
+          :src="data.banner"
           alt="Placeholder image"
           data-target="modal-image2"
         />
@@ -11,12 +11,10 @@
     </div>
     <div class="card-content">
       <div class="content">
-        <b class="tag mb-4">Typescript</b>
-        <h5>Los crypto</h5>
+        <b class="tag mb-4">{{ data.lang }}</b>
+        <h5>{{ data.name }}</h5>
         <p class="is-size-7">
-          Purus semper eget duis at tellus at urna condimentum mattis. Non
-          blandit massa enim nec. Integer enim neque volutpat ac tincidunt vitae
-          semper quis.
+          {{ data.description }}
         </p>
       </div>
     </div>
@@ -25,3 +23,11 @@
     </div>
   </div>
 </template>
+
+<script>
+  export default {
+    props: {
+      data: Object,
+    },
+  };
+</script>

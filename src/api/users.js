@@ -28,6 +28,14 @@ export const getUserProfile = async () => {
   };
 };
 
+export const isProfileComplete = profile => {
+  let completed = false;
+  for (const key of Object.keys(profile)) {
+    completed = profile[key].trim() === "";
+  }
+  return !!completed;
+};
+
 /**
  * Update user info, profile and avatar
  * @param {Object} userInfo
@@ -58,6 +66,8 @@ export const updateUserProfile = async (
   const result = await fb.usersCollection
     .where("userId", "==", state.user.uid)
     .get();
+
+  console.log(isProfileComplete(profileInfo));
 
   if (result.docs.length !== 0) {
     await fb.usersCollection.doc(result.docs[0].id).set(
