@@ -8,13 +8,16 @@
         <small>Ver grupo</small>
       </a>
     </header>
-    <div class="card-table">
+    <div
+      class="card-table"
+      :style="`${!currentGroup.id || 'overflow-y: scroll;'}`"
+    >
       <div class="content">
         <table class="table is-fullwidth is-striped tableFixHead">
-          <thead>
+          <thead v-if="currentGroup.id">
             <th class="level is-mobile">
               <div class="level-left">
-                Javascript
+                {{ currentGroup.name }}
               </div>
               <div class="level-left">
                 <p class="image is-rounded is-32x32">
@@ -27,22 +30,35 @@
             </th>
           </thead>
           <tbody>
-            <tr v-for="_ in 10" :key="_">
+            <tr v-if="!currentGroup.id">
+              <div class="content pt-6 has-text-grey has-text-centered">
+                <template>
+                  <p>
+                    <b-icon icon="emoticon-sad" size="is-large" />
+                  </p>
+                  <p>Aún no haces parte de ningún grupo&hellip;</p>
+                </template>
+              </div>
+            </tr>
+            <tr v-for="member in members" :key="member.uid">
               <td class="level is-mobile">
                 <div class="level-left">
                   <article class="media">
                     <figure class="media-left">
                       <p class="image is-rounded is-32x32">
-                        <img :src="avatarURL" class="is-rounded" />
+                        <img
+                          :src="
+                            member.photoURL || defaultAvatar(member.displayName)
+                          "
+                          class="is-rounded"
+                        />
                       </p>
                     </figure>
                     <div class="media-content">
                       <div class="content">
                         <p class="is-size-7">
                           <strong
-                            ><small>{{
-                              currentUser.displayName
-                            }}</small></strong
+                            ><small>{{ member.displayName }}</small></strong
                           >
                           <br />
                           <small>Avanzado</small>
@@ -58,17 +74,52 @@
         </table>
       </div>
     </div>
-    <footer class="card-footer">
-      <a href="#" class="card-footer-item has-text-danger">Abandonar</a>
+    <footer v-if="currentGroup.id" class="card-footer">
+      <a href="#" class="card-footer-item has-text-danger" @click="leaveGroup"
+        >Abandonar</a
+      >
       <a href="#" class="card-footer-item has-text-info">Ir a chat</a>
     </footer>
   </div>
 </template>
 
+<script>
+  import { getUsersByGroup } from "@/api/users";
+  export default {
+    data() {
+      return {
+        members: [],
+      };
+    },
+    async mounted() {
+      this.getMembers();
+    },
+    methods: {
+      async getMembers() {
+        if (this.currentGroup.id) {
+          const data = await getUsersByGroup();
+          this.members = data.data.users;
+        }
+      },
+    },
+    watch: {
+      currentGroup: {
+        handler() {
+          this.getMembers();
+
+          if (!this.currentGroup.id) {
+            this.members = [];
+          }
+        },
+        deep: true,
+      },
+    },
+  };
+</script>
+
 <style scoped>
   .group-card .card-table {
-    max-height: 250px;
-    overflow-y: scroll;
+    height: 250px;
   }
   .tableFixHead {
     overflow-y: auto;
@@ -79,7 +130,7 @@
     top: 0;
   }
   .media-content {
-    max-width: 150px;
+    max-width: 100px;
   }
   .content figure {
     margin-left: 0.2em;

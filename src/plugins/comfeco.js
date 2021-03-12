@@ -24,14 +24,19 @@ export default {
         currentUser() {
           return state.user;
         },
+        currentGroup() {
+          return state.profile.group ?? {};
+        },
         avatarURL() {
           return (
-            state.user.photoURL ??
-            `https://avatars.dicebear.com/4.5/api/identicon/${state.user.displayName}.svg`
+            state.user.photoURL ?? this.defaultAvatar(state.user.displayName)
           );
         },
       },
       methods: {
+        defaultAvatar(displayName) {
+          return `https://avatars.dicebear.com/4.5/api/identicon/${displayName}.svg`;
+        },
         async socialSignIn(service) {
           await socialLogin(service);
           setUser();
@@ -65,6 +70,26 @@ export default {
         async logout() {
           await signOut();
           this.$router.push("/sign-in");
+        },
+        async leaveGroup() {
+          if (this.currentGroup.id) {
+            this.$swal
+              .fire({
+                title: "¿Estas seguro de abandonar tu grupo?",
+                text: "¡Esta acción es irreversible!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Si, abandonar!",
+                cancelButtonText: "Cancelar",
+              })
+              .then(async result => {
+                if (result.isConfirmed) {
+                  await this.updateProfile(null, { group: null });
+                }
+              });
+          }
         },
       },
     });

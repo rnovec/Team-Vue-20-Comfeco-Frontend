@@ -3,7 +3,7 @@
     <section class="hero is-primary">
       <div class="hero-body"></div>
       <div class="hero-foot">
-        <ProfileTabs v-model="state" @input="changeValue" />
+        <ProfileTabs v-model="state" />
       </div>
     </section>
     <div class="container section" v-if="state === 'Profile'">
@@ -31,38 +31,7 @@
         </div>
       </div>
     </div>
-    <div class="container section" v-if="state === 'Groups'">
-      <div class="has-text-centered">
-        <h1 class="title">Grupos</h1>
-      </div>
-      <div class="columns mt-4">
-        <div class="column is-3">
-          <MyGroupCard />
-        </div>
-        <div class="column is-9 mb-3">
-          <b-field grouped group-multiline>
-            <b-input
-              size="is-small"
-              rounded
-              placeholder="Search...."
-              icon="magnify"
-              expanded
-            >
-            </b-input>
-            <b-select size="is-small" placeholder="Select an option" expanded>
-              <option value="Javascript">Javascript</option>
-              <option value="Vue">Vue</option>
-              <option value="Vue">Typescript</option>
-            </b-select>
-          </b-field>
-          <div class="columns is-multiline">
-            <div class="column is-one-quarter" v-for="_ in 10" :key="_">
-              <GroupCard />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Groups v-if="state === 'Groups'" />
     <div class="container section" v-if="state === 'Events'">
       <div class="has-text-centered">
         <h1 class="title">Eventos activos</h1>
@@ -82,8 +51,7 @@
   import ProfilePreview from "./components/ProfilePreview";
   import Events from "./components/Events";
   import BadgeCard from "./components/BadgeCard";
-  import MyGroupCard from "./components/MyGroupCard";
-  import GroupCard from "./components/GroupCard";
+  import Groups from "./groups";
   import EventCard from "./components/EventCard";
 
   export default {
@@ -93,19 +61,13 @@
       ProfilePreview,
       Events,
       BadgeCard,
-      MyGroupCard,
-      GroupCard,
+      Groups,
       EventCard,
     },
     data() {
       return {
         state: "Profile",
       };
-    },
-    methods: {
-      changeValue(val) {
-        console.log(val);
-      },
     },
   };
 </script>

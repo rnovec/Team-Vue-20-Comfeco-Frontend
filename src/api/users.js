@@ -1,14 +1,11 @@
 import Vue from "vue";
 import * as fb from "@/services/firebaseconfig";
+import request from "@/services/axios-client";
 
 const state = Vue.observable({
   user: fb.auth.currentUser,
+  profile: {},
 });
-
-export const setUser = () => {
-  state.user = {}; // dummy user reset
-  state.user = fb.auth.currentUser;
-};
 
 export const getUserProfile = async () => {
   const result = await fb.usersCollection
@@ -16,6 +13,7 @@ export const getUserProfile = async () => {
     .get();
   const data = result.docs.length === 0 ? {} : result.docs[0].data();
   return {
+    group: data.group ?? {},
     gender: data.gender ?? "",
     birthday: data.birthday ?? "",
     country: data.country ?? "",
@@ -26,6 +24,20 @@ export const getUserProfile = async () => {
     fbprofile: data.fbprofile ?? "",
     lnprofile: data.lnprofile ?? "",
   };
+};
+
+export const setUser = async () => {
+  state.user = {}; // dummy user reset
+  state.user = fb.auth.currentUser;
+  state.profile = await getUserProfile();
+};
+
+export const isProfileComplete = profile => {
+  let completed = false;
+  for (const key of Object.keys(profile)) {
+    completed = profile[key].trim() === "";
+  }
+  return !!completed;
 };
 
 /**
@@ -49,17 +61,20 @@ export const updateUserProfile = async (
     });
   }
 
-  await state.user.updateProfile({
-    displayName: userInfo.nick,
-  });
+  if (userInfo) {
+    await state.user.updateProfile({
+      displayName: userInfo.nick,
+    });
 
-  await state.user.updateEmail(userInfo.email);
+    await state.user.updateEmail(userInfo.email);
+  }
 
   const result = await fb.usersCollection
     .where("userId", "==", state.user.uid)
     .get();
 
   if (result.docs.length !== 0) {
+    console.log(result);
     await fb.usersCollection.doc(result.docs[0].id).set(
       {
         ...profileInfo,
@@ -72,6 +87,13 @@ export const updateUserProfile = async (
       ...profileInfo,
     });
   }
+};
+
+export const getUsersByGroup = async () => {
+  return request({
+    url: "/users",
+    method: "GET",
+  });
 };
 
 export const updateUserPassword = async (password, passwordRepeat) => {
