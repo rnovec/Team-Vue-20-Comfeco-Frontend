@@ -116,9 +116,6 @@
         this.groups = res.data.results;
         this.isLoading = false;
       },
-      changeValue(val) {
-        console.log(val);
-      },
     },
     watch: {
       listQuery: {

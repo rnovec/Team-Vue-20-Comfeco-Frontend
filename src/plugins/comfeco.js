@@ -24,14 +24,19 @@ export default {
         currentUser() {
           return state.user;
         },
+        currentGroup() {
+          return state.profile.group ?? {};
+        },
         avatarURL() {
           return (
-            state.user.photoURL ??
-            `https://avatars.dicebear.com/4.5/api/identicon/${state.user.displayName}.svg`
+            state.user.photoURL ?? this.defaultAvatar(state.user.displayName)
           );
         },
       },
       methods: {
+        defaultAvatar(displayName) {
+          return `https://avatars.dicebear.com/4.5/api/identicon/${displayName}.svg`;
+        },
         async socialSignIn(service) {
           await socialLogin(service);
           setUser();
