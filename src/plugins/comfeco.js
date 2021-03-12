@@ -71,6 +71,26 @@ export default {
           await signOut();
           this.$router.push("/sign-in");
         },
+        async leaveGroup() {
+          if (this.currentGroup.id) {
+            this.$swal
+              .fire({
+                title: "¿Estas seguro de abandonar tu grupo?",
+                text: "¡Esta acción es irreversible!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Si, abandonar!",
+                cancelButtonText: "Cancelar",
+              })
+              .then(async result => {
+                if (result.isConfirmed) {
+                  await this.updateProfile(null, { group: null });
+                }
+              });
+          }
+        },
       },
     });
 

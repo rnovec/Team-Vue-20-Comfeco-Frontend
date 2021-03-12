@@ -101,32 +101,15 @@
           this.members = data.data.users;
         }
       },
-      async leaveGroup() {
-        if (this.currentGroup.id) {
-          this.$swal
-            .fire({
-              title: "¿Estas seguro de abandonar tu grupo?",
-              text: "¡Esta acción es irreversible!",
-              icon: "warning",
-              showCancelButton: true,
-              confirmButtonColor: "#3085d6",
-              cancelButtonColor: "#d33",
-              confirmButtonText: "Si, abandonar!",
-              cancelButtonText: "Cancelar",
-            })
-            .then(async result => {
-              if (result.isConfirmed) {
-                await this.updateProfile(null, { group: null });
-                this.members = [];
-              }
-            });
-        }
-      },
     },
     watch: {
       currentGroup: {
         handler() {
           this.getMembers();
+
+          if (!this.currentGroup.id) {
+            this.members = [];
+          }
         },
         deep: true,
       },

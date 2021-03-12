@@ -19,7 +19,13 @@
       </div>
     </div>
     <div class="card-footer">
-      <a class="card-footer-item" @click="joinToGroup">Unirse</a>
+      <a
+        class="card-footer-item has-text-danger"
+        v-if="currentGroup.id === data.id"
+        @click="leaveGroup"
+        >Abandonar</a
+      >
+      <a class="card-footer-item" v-else @click="joinToGroup">Unirse</a>
     </div>
   </div>
 </template>
