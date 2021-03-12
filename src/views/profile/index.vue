@@ -3,7 +3,7 @@
     <section class="hero is-primary">
       <div class="hero-body"></div>
       <div class="hero-foot">
-        <ProfileTabs v-model="state" @input="changeValue" />
+        <ProfileTabs v-model="state" />
       </div>
     </section>
     <div class="container section" v-if="state === 'Profile'">
@@ -66,7 +66,7 @@
     },
     data() {
       return {
-        state: "Groups",
+        state: "Profile",
       };
     },
   };

@@ -19,7 +19,13 @@
       </div>
     </div>
     <div class="card-footer">
-      <a class="card-footer-item">Unirse</a>
+      <a
+        class="card-footer-item has-text-danger"
+        v-if="currentGroup.id === data.id"
+        @click="leaveGroup"
+        >Abandonar</a
+      >
+      <a class="card-footer-item" v-else @click="joinToGroup">Unirse</a>
     </div>
   </div>
 </template>
@@ -28,6 +34,24 @@
   export default {
     props: {
       data: Object,
+    },
+    methods: {
+      async joinToGroup() {
+        const group = {
+          id: this.data.id,
+          name: this.data.name,
+          role: "Participante",
+        };
+
+        // update user profile without UserInfo
+        await this.updateProfile(null, { group });
+        this.$swal.fire({
+          icon: "success",
+          title: "Se ha unido al grupo!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      },
     },
   };
 </script>
