@@ -16,7 +16,7 @@
           <Activity />
         </div>
         <div class="column is-3 is-hidden-touch">
-          <Events v-model="state" @input="changeValue" />
+          <InterestedEvents />
         </div>
       </div>
     </div>
@@ -32,16 +32,7 @@
       </div>
     </div>
     <Groups v-if="state === 'Groups'" />
-    <div class="container section" v-if="state === 'Events'">
-      <div class="has-text-centered">
-        <h1 class="title">Eventos activos</h1>
-      </div>
-      <div class="columns is-multiline mt-4">
-        <div class="column is-one-third" v-for="_ in 10" :key="_">
-          <EventCard />
-        </div>
-      </div>
-    </div>
+    <Events v-if="state === 'Events'" />
   </div>
 </template>
 
@@ -49,10 +40,10 @@
   import Activity from "./components/Activity";
   import ProfileTabs from "./components/ProfileTabs";
   import ProfilePreview from "./components/ProfilePreview";
-  import Events from "./components/Events";
   import BadgeCard from "./components/BadgeCard";
+  import InterestedEvents from "./components/InterestedEvents";
   import Groups from "./groups";
-  import EventCard from "./components/EventCard";
+  import Events from "./events";
 
   export default {
     components: {
@@ -61,8 +52,8 @@
       ProfilePreview,
       Events,
       BadgeCard,
+      InterestedEvents,
       Groups,
-      EventCard,
     },
     data() {
       return {
