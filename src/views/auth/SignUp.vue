@@ -35,7 +35,7 @@
         name="confirmation"
         type="password"
         label="Confirmar contraseña"
-        message="Escriba la contraseña anterior"
+        message="Repita la contraseña anterior"
         password-reveal
         icon="lock"
         v-model="form.confirmation"
@@ -51,7 +51,7 @@
         Crear una cuenta
       </b-button>
     </ValidationObserver>
-    <social-buttons class="mt-4">
+    <social-buttons class="mt-4" scope="register">
       O regístrate usando
     </social-buttons>
     <TermsAndConditions class="mt-4" />

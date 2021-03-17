@@ -25,10 +25,16 @@
 </template>
 <script>
   export default {
+    props: {
+      scope: {
+        type: String,
+        default: "login",
+      },
+    },
     methods: {
       async handleSocialLogin(service) {
         try {
-          await this.socialSignIn(service);
+          await this.socialSignIn(service, this.scope);
         } catch (error) {
           console.log(error.toString());
           this.$snackbar(

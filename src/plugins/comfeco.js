@@ -37,8 +37,8 @@ export default {
         defaultAvatar(displayName) {
           return `https://avatars.dicebear.com/4.5/api/identicon/${displayName}.svg`;
         },
-        async socialSignIn(service) {
-          await socialLogin(service);
+        async socialSignIn(service, scope) {
+          await socialLogin(service, scope);
           setUser();
           this.$router.push("/home");
         },
