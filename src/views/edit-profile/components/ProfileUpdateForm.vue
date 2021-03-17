@@ -236,6 +236,27 @@
           queue: false,
         });
         this.loading = false;
+        // Añadiendo insignia si el perfil esta completo
+        if (this.userInfo) {
+          if (this.userInfo.fbprofile) {
+            if (this.userInfo.twprofile) {
+              if (this.userInfo.ghprofile) {
+                if (this.userInfo.lnprofile) {
+                  const badgeProfile = {
+                    id: 1,
+                    title: "Sociable",
+                    logo: "check.png",
+                    status: "activate",
+                  };
+                  localStorage.setItem(
+                    "badgesWin",
+                    JSON.stringify(badgeProfile)
+                  );
+                }
+              }
+            }
+          }
+        }
       },
     },
   };
