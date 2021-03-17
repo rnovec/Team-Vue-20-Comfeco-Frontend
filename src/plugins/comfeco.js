@@ -48,6 +48,15 @@ export default {
           setUser();
           this.$router.push("/home");
         },
+        async register(form) {
+          await signUp(form);
+          setUser();
+          this.$router.push("/home");
+        },
+        async logout() {
+          await signOut();
+          this.$router.push("/sign-in");
+        },
         async getUserInfo() {
           const userInfo = await getUserProfile();
           return userInfo;
@@ -56,20 +65,11 @@ export default {
           await updateUserProfile(userInfo, profileInfo, profilePhotoFile);
           setUser();
         },
-        async register(form) {
-          await signUp(form);
-          setUser();
-          this.$router.push("/home");
-        },
         async updatePassword(password, passwordRepeat) {
           await updateUserPassword(password, passwordRepeat);
         },
         async resetPassword(email) {
           await passwordRecovery(email);
-        },
-        async logout() {
-          await signOut();
-          this.$router.push("/sign-in");
         },
         async leaveGroup() {
           if (this.currentGroup.id) {

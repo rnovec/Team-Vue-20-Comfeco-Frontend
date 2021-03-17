@@ -7,16 +7,18 @@
         type="email"
         name="email"
         icon="email"
+        label="Correo electrónico"
         placeholder="Correo electrónico"
         v-model="form.email"
       />
       <InputWithValidation
         rules="required"
+        icon="lock"
         type="password"
         name="password"
-        placeholder="Contraseña"
+        label="Contraseña"
+        placeholder="************"
         password-reveal
-        icon="lock"
         v-model="form.password"
       />
       <b-field>

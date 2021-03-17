@@ -6,7 +6,8 @@
         icon="account"
         rules="required"
         name="nick"
-        placeholder="Nick"
+        label="Nickname"
+        placeholder="comfeco98"
         v-model="form.nickname"
       />
       <InputWithValidation
@@ -14,28 +15,33 @@
         rules="required|email"
         type="email"
         name="email"
-        placeholder="Correo electrónico"
+        label="Correo electrónico"
+        placeholder="comfeco@example.com"
         v-model="form.email"
       />
       <InputWithValidation
         rules="required|min:8"
         type="password"
         name="password"
-        placeholder="Contraseña"
+        label="Contraseña"
+        placeholder="***********"
+        message="Utilice 8 o más carácteres con una combinación de letras, números y símbolos"
         password-reveal
         icon="lock"
-        v-model="form.password"
+        v-model.trim="form.password"
       />
       <InputWithValidation
         rules="required|confirmed:password"
         name="confirmation"
         type="password"
-        placeholder="Confirmar contraseña"
+        label="Confirmar contraseña"
+        message="Escriba la contraseña anterior"
         password-reveal
         icon="lock"
         v-model="form.confirmation"
       />
       <b-button
+        class="mt-3"
         type="is-primary"
         expanded
         fullwidth

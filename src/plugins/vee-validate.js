@@ -36,7 +36,7 @@ extend("min", {
     return value.length >= length;
   },
   params: ["length"],
-  message: fieldName => {
+  message: (fieldName, { length }) => {
     let msg = `Este campo debe contener al menos ${length} carácteres`;
     switch (fieldName) {
       case "password":

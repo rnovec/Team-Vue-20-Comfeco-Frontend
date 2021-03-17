@@ -2,16 +2,17 @@
   <ValidationObserver ref="observer" v-slot="{ handleSubmit }">
     <h1 class="title is-4">Cambiar contraseña</h1>
     <h2 class="subtitle is-6">
-      Si te registraste con usuario y contraseña puedes actulizarla en el
+      Si te registraste con usuario y contraseña puedes actualizarla en el
       siguiente formulario
     </h2>
     <InputWithValidation
       horizontal
-      rules="min:8"
+      rules="required|min:8"
       type="password"
       name="password"
       label="Nueva contraseña"
-      placeholder="Contraseña"
+      placeholder="***********"
+      message="Utilice 8 o más carácteres con una combinación de letras, números y símbolos"
       password-reveal
       icon="lock"
       v-model="form.password"
@@ -22,7 +23,8 @@
       name="confirmation"
       type="password"
       label="Repetir contraseña"
-      placeholder="Repetir contraseña"
+      placeholder="***********"
+      message="Repita la nueva contraseña"
       password-reveal
       icon="lock"
       v-model="form.passwordRepeat"
@@ -56,11 +58,8 @@
     methods: {
       submit: async function() {
         this.loading = true;
-        await this.updateUserPassword(
-          this.form.password,
-          this.form.passwordRepeat
-        );
-        this.$snackbar("Perfil actualizado correctamente!", {
+        await this.updatePassword(this.form.password, this.form.passwordRepeat);
+        this.$snackbar("Contraseña actualizada correctamente!", {
           type: "is-success",
           position: "is-bottom-right",
           queue: false,
