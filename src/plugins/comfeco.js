@@ -98,6 +98,20 @@ export default {
                 }
               }
               break;
+            case "friendly":
+              if (data) {
+                const socialBadgeID = data;
+                await updateUserProfile(null, {
+                  badges: [...state.profile.badges, socialBadgeID],
+                });
+                setUser();
+                this.$swal.fire(
+                  "Bien hecho!",
+                  "Te haz unido a un grupo!",
+                  "success"
+                );
+              }
+              break;
             default:
               break;
           }
