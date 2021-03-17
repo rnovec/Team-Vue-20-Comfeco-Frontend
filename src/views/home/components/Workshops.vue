@@ -14,13 +14,9 @@
     </article>
     <b-select size="is-small" v-model="query.area" expanded>
       <option value="">Todos</option>
-      <option value="Frontend">Frontend</option>
-      <option value="Backend">Backend</option>
-      <option value="Devops">Devops</option>
-      <option value="Video Game Developers">Video Game Developers</option>
-      <option value="UI/UX">UI/UX</option>
-      <option value="Database Developer">Database Developer</option>
-      <option value="Cloud Computing">Cloud Computing</option>
+      <option v-for="option in areas" :key="option.value" :value="option.value">
+        {{ option.name }}
+      </option>
     </b-select>
     <div class="mt-4">
       <ContentLoader v-if="isLoading" />
@@ -42,8 +38,9 @@
 </style>
 
 <script>
-  import WorkshopItem from "./WorkshopItem";
   import { getWorkshops, getWorkshopsByQuery } from "@/api/workshops";
+  import WorkshopItem from "./WorkshopItem";
+  import areas from "@/data-sources/areas.json";
 
   export default {
     name: "Workshops",
@@ -58,6 +55,7 @@
         },
         isLoading: false,
         workshops: [],
+        areas,
       };
     },
     methods: {

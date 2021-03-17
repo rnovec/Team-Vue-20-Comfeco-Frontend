@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Frontend",
+        "value": "Frontend"
+    },
+    {
+        "name": "Backend",
+        "value": "Backend"
+    },
+    {
+        "name": "Devops",
+        "value": "Devops"
+    },
+    {
+        "name": "Video Game Developer",
+        "value": "Video Game Developer"
+    },
+    {
+        "name": "UI/UX",
+        "value": "UI/UX"
+    },
+    {
+        "name": "Database Developer",
+        "value": "Database Developer"
+    },
+    {
+        "name": "Cloud Computing",
+        "value": "Cloud Computing"
+    }
+]
