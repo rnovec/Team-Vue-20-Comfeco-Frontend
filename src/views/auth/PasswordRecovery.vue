@@ -17,10 +17,11 @@
         rules="required|email"
         type="email"
         name="email"
-        placeholder="Correo electrónico"
+        label="Correo electrónico"
+        placeholder="comfeco@example.com"
         v-model="email"
       />
-      <div class="is-flex is-justify-content-space-between">
+      <div class="is-flex is-justify-content-space-between mt-2">
         <b-button
           type="is-primary"
           fullwidth

@@ -9,14 +9,16 @@
         />
       </figure>
     </div>
-    <div class="card-content">
-      <div class="content">
+    <div class="card-content" v-if="data.title">
+      <h1 class="title is-6">{{ data.title }}</h1>
+      <div class="content" v-if="data.description">
         <p>
           {{ data.description }}
         </p>
       </div>
     </div>
     <div class="card-footer">
+<<<<<<< HEAD
       <a class="card-footer-item" :href="data.referral" target="_blanck"
         >Más info</a
       >
@@ -30,11 +32,22 @@
     </div>
   </div>
 </template>
+=======
+      <a class="card-footer-item" target="_blank" :href="data.referral"
+        >Más info</a
+      >
+      <a class="card-footer-item">Participar</a>
+    </div>
+  </div>
+</template>
+
+>>>>>>> ec934e965f34835da778efc3aac76382d02f558f
 <script>
   export default {
     props: {
       data: Object,
     },
+<<<<<<< HEAD
     methods: {
       async joinToevent() {
         const events = {
@@ -53,5 +66,7 @@
         });
       },
     },
+=======
+>>>>>>> ec934e965f34835da778efc3aac76382d02f558f
   };
 </script>

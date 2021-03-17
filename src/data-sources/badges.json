@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "title": "Sociable",
+        "description": "Deja que todos te conozcan",
+        "win": "Está insignia se obtiene al completar todos los campos del perfil",
+        "logo": "check.png"
+    },
+    {
+        "id": 2,
+        "title": "Friendly",
+        "description": "Conoce a más comunidades",
+        "win": "Está insignia se obtiene al unirse a un grupo",
+        "logo": "social.png"
+    },
+    {
+        "id": 3,
+        "title": "Curioso",
+        "description": "¿Te intereso esto?",
+        "win": "Está insignia se obtiene al inscribirte a un evento",
+        "logo": "vue.png"
+    },
+    {
+        "id": 4,
+        "title": "Calendarizando",
+        "description": "Tantas cosas por hacer",
+        "win": "Únete a dos eventos en el mismo mes",
+        "logo": "participant.png"
+    }
+]

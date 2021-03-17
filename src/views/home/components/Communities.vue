@@ -50,7 +50,7 @@
   .is-fixed-at-top {
     position: -webkit-sticky;
     position: sticky;
-    top: 90px;
+    top: 20px;
   }
   .media-content {
     max-width: 150px;
