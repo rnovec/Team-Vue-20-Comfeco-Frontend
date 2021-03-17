@@ -2,7 +2,10 @@
   <div class="card has-text-centered">
     <div class="is-flex mt-4 is-justify-content-center">
       <figure class="image is-96x96">
-        <BadgeImage :unlocked="data.id === 1" :imageUrl="data.logo" />
+        <BadgeImage
+          :unlocked="earnedBadges.indexOf(data.id) !== -1"
+          :imageUrl="data.logo"
+        />
       </figure>
     </div>
     <div class="card-content">

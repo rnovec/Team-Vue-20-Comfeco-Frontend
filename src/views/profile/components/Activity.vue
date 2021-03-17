@@ -6,7 +6,7 @@
         <div class="level-item" v-for="item in badges" :key="item.id">
           <figure class="image is-64x64">
             <BadgeImage
-              :unlocked="item.id === 1"
+              :unlocked="earnedBadges.indexOf(item.id) !== -1"
               :title="item.title"
               :imageUrl="item.logo"
             />
