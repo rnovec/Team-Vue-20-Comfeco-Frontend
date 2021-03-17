@@ -37,8 +37,12 @@
         <h1 class="title">Eventos activos</h1>
       </div>
       <div class="columns is-multiline mt-4">
-        <div class="column is-one-third" v-for="_ in 10" :key="_">
-          <EventCard />
+        <div
+          class="column is-one-third"
+          v-for="event in Events"
+          :key="event._id"
+        >
+          <EventCard :data="event" />
         </div>
       </div>
     </div>
@@ -53,7 +57,7 @@
   import BadgeCard from "./components/BadgeCard";
   import Groups from "./groups";
   import EventCard from "./components/EventCard";
-
+  import { getEvents } from "@/api/events";
   export default {
     components: {
       Activity,
@@ -67,7 +71,19 @@
     data() {
       return {
         state: "Profile",
+        Events: [],
       };
+    },
+    mounted() {
+      this.getData();
+    },
+    methods: {
+      async getData() {
+        this.isLoading = true;
+        const res = await getEvents(this.listQuery);
+        this.Events = res.data.results;
+        this.isLoading = false;
+      },
     },
   };
 </script>

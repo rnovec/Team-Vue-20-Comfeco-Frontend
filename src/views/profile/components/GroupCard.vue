@@ -29,7 +29,6 @@
     </div>
   </div>
 </template>
-
 <script>
   export default {
     props: {
@@ -42,7 +41,6 @@
           name: this.data.name,
           role: "Participante",
         };
-
         // update user profile without UserInfo
         await this.updateProfile(null, { group });
         this.$swal.fire({

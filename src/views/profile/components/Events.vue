@@ -12,7 +12,12 @@
         <small>Ver más</small>
       </a>
     </header>
-    <div class="box card mb-2" v-for="item in items" :key="item.id">
+    <div
+      class="box card mb-2"
+      v-for="item in items"
+      :key="item.id"
+      :data="item"
+    >
       <div class="card-image">
         <figure class="image">
           <img :src="item.src" alt="Placeholder image" />

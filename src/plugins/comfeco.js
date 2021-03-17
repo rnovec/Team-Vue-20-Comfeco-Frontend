@@ -27,6 +27,9 @@ export default {
         currentGroup() {
           return state.profile.group ?? {};
         },
+        currentEvent() {
+          return state.profile.event ?? {};
+        },
         avatarURL() {
           return (
             state.user.photoURL ?? this.defaultAvatar(state.user.displayName)
@@ -87,6 +90,26 @@ export default {
               .then(async result => {
                 if (result.isConfirmed) {
                   await this.updateProfile(null, { group: null });
+                }
+              });
+          }
+        },
+        async leaveEvent() {
+          if (this.currentEvent.id) {
+            this.$swal
+              .fire({
+                title: "¿Estas seguro de abandonar el evento?",
+                text: "¡Esta acción es irreversible!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Si, abandonar!",
+                cancelButtonText: "Cancelar",
+              })
+              .then(async result => {
+                if (result.isConfirmed) {
+                  await this.updateProfile(null, { event: null });
                 }
               });
           }
