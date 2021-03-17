@@ -31,7 +31,7 @@
           },
           {
             label: "Insignias",
-            name: "Insignias",
+            name: "Badges",
             icon: "certificate",
           },
           {

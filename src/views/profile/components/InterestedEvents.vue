@@ -12,7 +12,7 @@
         <small>Ver más</small>
       </a>
     </header>
-    <div class="box mb-2" v-for="event in events" :key="event.id">
+    <div class="m-2" v-for="event in events" :key="event.id">
       <EventCard :data="event" />
     </div>
   </div>
