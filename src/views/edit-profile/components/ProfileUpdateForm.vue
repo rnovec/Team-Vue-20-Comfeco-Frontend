@@ -27,7 +27,8 @@
           rules="required"
           name="nick"
           label="Nick"
-          placeholder="Nickname"
+          placeholder="comfeco98"
+          message="comfeco98"
           v-model="userInfo.nick"
         />
       </div>
@@ -45,19 +46,20 @@
     </div>
     <div class="columns">
       <div class="column">
-        <b-field label="Genero">
+        <b-field label="Genero" message="Selecciona un género">
           <b-select icon="gender-male-female" v-model="form.gender" expanded>
             <option value="">Selecciona una opción</option>
             <option value="Masculino">Masculino</option>
             <option value="Femenino">Femenino</option>
-            <option value="Prefiero no decirlo">
-              Prefiero no decirlo
-            </option>
+            <option value="Prefiero no decirlo">Prefiero no decirlo</option>
           </b-select>
         </b-field>
       </div>
       <div class="column">
-        <b-field label="Fecha de nacimiento">
+        <b-field
+          label="Fecha de nacimiento"
+          message="Indica tu fecha de nacimiento"
+        >
           <b-input
             type="date"
             icon="calendar"
@@ -69,7 +71,7 @@
 
     <div class="columns">
       <div class="column">
-        <b-field label="Pais">
+        <b-field label="Pais" message="Selecciona tu país de origen">
           <b-autocomplete
             icon="flag"
             :data="filteredCountries"
@@ -100,17 +102,18 @@
         </b-field>
       </div>
       <div class="column">
-        <b-field label="Área de Conocimiento">
+        <b-field
+          label="Área de Conocimiento"
+          message="Selecciona el área con el que te identificas"
+        >
           <b-select v-model="form.area" expanded>
-            <option value="Frontend">Frontend</option>
-            <option value="Backend">Backend</option>
-            <option value="Devops">Devops</option>
-            <option value="Video Game Developers">
-              Video Game Developers
+            <option
+              v-for="option in areas"
+              :key="option.value"
+              :value="option.value"
+            >
+              {{ option.name }}
             </option>
-            <option value="UI/UX">UI/UX</option>
-            <option value="Database Developer">Database Developer</option>
-            <option value="Cloud Computing">Cloud Computing</option>
           </b-select>
         </b-field>
       </div>
@@ -123,7 +126,7 @@
       ></b-input>
     </b-field>
     <div class="columns">
-      <b-field class="column" label="GitHub">
+      <b-field class="column" label="GitHub" message="Tu usuario de Github">
         <b-input
           type="text"
           icon="github-circle"
@@ -131,7 +134,7 @@
           v-model="form.ghprofile"
         ></b-input>
       </b-field>
-      <b-field class="column" label="Twitter">
+      <b-field class="column" label="Twitter" message="Tu usuario de Twitter">
         <b-input
           type="text"
           icon="twitter"
@@ -141,7 +144,7 @@
       </b-field>
     </div>
     <div class="columns">
-      <b-field class="column" label="Facebook">
+      <b-field class="column" label="Facebook" message="Tu usuario de Facebook">
         <b-input
           type="text"
           icon="facebook"
@@ -149,7 +152,7 @@
           v-model="form.fbprofile"
         ></b-input>
       </b-field>
-      <b-field class="column" label="LinkedIn">
+      <b-field class="column" label="LinkedIn" message="Tu usuario de LinkedIn">
         <b-input
           type="text"
           icon="linkedin"
@@ -175,6 +178,7 @@
 
 <script>
   import countries from "@/data-sources/countries.json";
+  import areas from "@/data-sources/areas.json";
 
   export default {
     name: "ProfileUpdateForm",
@@ -184,6 +188,7 @@
       this.userInfo.nick = this.currentUser.displayName;
       this.userInfo.email = this.currentUser.email;
       this.countries = countries;
+      this.areas = areas;
     },
     data() {
       return {
@@ -199,6 +204,7 @@
         // El objeto form retendrá la información del usuario del usersCollection
         form: {},
         countries: [],
+        areas: [],
         selected: null,
       };
     },
@@ -236,6 +242,8 @@
           queue: false,
         });
         this.loading = false;
+        // Añadiendo insignia si el perfil esta completo
+        this.updateBadges("sociable", this.form);
       },
     },
   };

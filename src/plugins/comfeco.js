@@ -27,6 +27,9 @@ export default {
         currentGroup() {
           return state.profile.group ?? {};
         },
+        earnedBadges() {
+          return state.profile.badges ?? [];
+        },
         avatarURL() {
           return (
             state.user.photoURL ?? this.defaultAvatar(state.user.displayName)
@@ -37,8 +40,8 @@ export default {
         defaultAvatar(displayName) {
           return `https://avatars.dicebear.com/4.5/api/identicon/${displayName}.svg`;
         },
-        async socialSignIn(service) {
-          await socialLogin(service);
+        async socialSignIn(service, scope) {
+          await socialLogin(service, scope);
           setUser();
           this.$router.push("/home");
         },
@@ -48,6 +51,15 @@ export default {
           setUser();
           this.$router.push("/home");
         },
+        async register(form) {
+          await signUp(form);
+          setUser();
+          this.$router.push("/home");
+        },
+        async logout() {
+          await signOut();
+          this.$router.push("/sign-in");
+        },
         async getUserInfo() {
           const userInfo = await getUserProfile();
           return userInfo;
@@ -56,20 +68,42 @@ export default {
           await updateUserProfile(userInfo, profileInfo, profilePhotoFile);
           setUser();
         },
-        async register(form) {
-          await signUp(form);
-          setUser();
-          this.$router.push("/home");
-        },
         async updatePassword(password, passwordRepeat) {
           await updateUserPassword(password, passwordRepeat);
         },
+        async updateBadges(badge, data) {
+          const socialBadgeID = 1;
+          switch (badge) {
+            case "sociable":
+              if (data) {
+                let isProfileComplete = true;
+                for (const key of Object.keys(data)) {
+                  if (data[key] === "" || data[key] === null) {
+                    isProfileComplete = false;
+                  }
+                }
+                if (
+                  isProfileComplete &&
+                  state.profile.badges.indexOf(socialBadgeID) === -1
+                ) {
+                  await updateUserProfile(null, {
+                    badges: [...state.profile.badges, socialBadgeID],
+                  });
+                  setUser();
+                  this.$swal.fire(
+                    "Buen trabajo!",
+                    "Haz completado tu perfil!",
+                    "success"
+                  );
+                }
+              }
+              break;
+            default:
+              break;
+          }
+        },
         async resetPassword(email) {
           await passwordRecovery(email);
-        },
-        async logout() {
-          await signOut();
-          this.$router.push("/sign-in");
         },
         async leaveGroup() {
           if (this.currentGroup.id) {

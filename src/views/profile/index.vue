@@ -8,40 +8,20 @@
     </section>
     <div class="container section" v-if="state === 'Profile'">
       <div class="columns mt-4">
-        <div class="column is-3 is-hidden-touch">
+        <div class="column is-3">
           <ProfilePreview />
         </div>
         <div class="column is-6 mb-3">
-          <ProfilePreview class="is-hidden-desktop" />
           <Activity />
         </div>
         <div class="column is-3 is-hidden-touch">
-          <Events v-model="state" @input="changeValue" />
+          <InterestedEvents />
         </div>
       </div>
     </div>
-    <div
-      class="container section has-text-centered"
-      v-if="state === 'Insignias'"
-    >
-      <h1 class="title">Mis Insignias</h1>
-      <div class="columns has-text-centered">
-        <div v-for="_ in 4" :key="_" class="column is-3">
-          <BadgeCard />
-        </div>
-      </div>
-    </div>
+    <Badges v-if="state === 'Badges'" />
     <Groups v-if="state === 'Groups'" />
-    <div class="container section" v-if="state === 'Events'">
-      <div class="has-text-centered">
-        <h1 class="title">Eventos activos</h1>
-      </div>
-      <div class="columns is-multiline mt-4">
-        <div class="column is-one-third" v-for="_ in 10" :key="_">
-          <EventCard />
-        </div>
-      </div>
-    </div>
+    <Events v-if="state === 'Events'" />
   </div>
 </template>
 
@@ -49,20 +29,20 @@
   import Activity from "./components/Activity";
   import ProfileTabs from "./components/ProfileTabs";
   import ProfilePreview from "./components/ProfilePreview";
-  import Events from "./components/Events";
-  import BadgeCard from "./components/BadgeCard";
+  import InterestedEvents from "./components/InterestedEvents";
+  import Badges from "./badges";
   import Groups from "./groups";
-  import EventCard from "./components/EventCard";
+  import Events from "./events";
 
   export default {
     components: {
       Activity,
       ProfileTabs,
       ProfilePreview,
+      InterestedEvents,
       Events,
-      BadgeCard,
+      Badges,
       Groups,
-      EventCard,
     },
     data() {
       return {

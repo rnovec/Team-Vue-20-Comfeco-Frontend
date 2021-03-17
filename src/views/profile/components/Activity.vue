@@ -1,13 +1,15 @@
 <template>
   <section>
     <div class="notification">
-      <h1 class="title is-6 is-block">
-        Insignias
-      </h1>
+      <h1 class="title is-6 is-block">Insignias</h1>
       <nav class="level is-mobile">
-        <div class="level-item" v-for="_ in 4" :key="_">
+        <div class="level-item" v-for="item in badges" :key="item.id">
           <figure class="image is-64x64">
-            <BadgeImage />
+            <BadgeImage
+              :unlocked="earnedBadges.indexOf(item.id) !== -1"
+              :title="item.title"
+              :imageUrl="item.logo"
+            />
           </figure>
         </div>
       </nav>
@@ -18,9 +20,7 @@
     <article class="media box">
       <div class="media-content">
         <div class="content">
-          <p>
-            Te has unido al evento Community Fest and Code
-          </p>
+          <p>Te has unido al evento Community Fest and Code</p>
         </div>
       </div>
       <div class="media-right">
@@ -32,9 +32,16 @@
 
 <script>
   import BadgeImage from "./BadgeImage";
+  import badges from "@/data-sources/badges.json";
+
   export default {
     components: {
       BadgeImage,
+    },
+    data() {
+      return {
+        badges,
+      };
     },
   };
 </script>

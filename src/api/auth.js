@@ -47,7 +47,7 @@ export const signUp = async form => {
  * Login with Social Networks
  * @param {String} service `facebook` or `google`
  */
-export const socialLogin = async service => {
+export const socialLogin = async (service, scope = "login") => {
   let provider = null;
 
   if (service === "facebook") {
@@ -60,6 +60,14 @@ export const socialLogin = async service => {
 
   fb.Firebase.auth().languageCode = "es";
   const result = await fb.Firebase.auth().signInWithPopup(provider);
+
+  if (scope === "register") {
+    // El usuario se ha registrado correctamente
+    // establecemos nickname
+    await fb.auth.currentUser.updateProfile({
+      displayName: fb.auth.currentUser.email.split("@")[0],
+    });
+  }
 
   // get valid tokens
   const idToken = await fb.auth.currentUser.getIdToken();

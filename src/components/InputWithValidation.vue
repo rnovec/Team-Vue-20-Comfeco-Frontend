@@ -6,9 +6,10 @@
     v-slot="{ errors, valid }"
   >
     <b-field
+      class="mb-2"
       v-bind="$attrs"
       :type="{ 'is-danger': errors[0], 'is-success': valid }"
-      :message="errors"
+      :message="getMessage(errors, valid, $attrs.message)"
     >
       <b-input v-model="innerValue" v-bind="$attrs"></b-input>
     </b-field>
@@ -31,6 +32,13 @@
       rules: {
         type: [Object, String],
         default: "",
+      },
+    },
+    methods: {
+      getMessage(errors, valid, message) {
+        if (errors[0]) return errors[0];
+        if (valid) return "";
+        return message;
       },
     },
   };
