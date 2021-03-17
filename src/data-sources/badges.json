@@ -4,27 +4,27 @@
         "title":"Sociable",
         "description":"Deja que todos te conozcan",
         "win":"Está insignia se obtiene al completar todos los campos del perfil",
-        "logo":"../assets/badges/check.png"
+        "logo":"check.png"
     },
     {
         "id":2,
         "title":"Friendly",
         "description":"Conoce a más comunidades",
         "win":"Está insignia se obtiene al unirse a un grupo",
-        "logo":"../assets/badges/social.png"
+        "logo":"social.png"
     },
     {
         "id":3,
         "title":"Curioso",
         "description":"¿Te intereso esto?",
         "win":"Está insignia se obtiene al inscribirte a un evento",
-        "logo":"../assets/badges/vue.png"
+        "logo":"vue.png"
     },
     {
         "id":4,
         "title":"Calendarizando",
         "description":"Tantas cosas por hacer",
         "win":"Únete a dos eventos en el mismo mes",
-        "logo":"../assets/badges/participant.png"
+        "logo":"participant.png"
     }
 ]

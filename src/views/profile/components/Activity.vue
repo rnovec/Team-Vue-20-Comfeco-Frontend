@@ -5,9 +5,9 @@
         Insignias
       </h1>
       <nav class="level is-mobile">
-        <div class="level-item" v-for="_ in 4" :key="_">
+        <div class="level-item" v-for="item in badge" :key="item">
           <figure class="image is-64x64">
-            <BadgeImage />
+            <BadgeImage :imageUrl="item.logo" />
           </figure>
         </div>
       </nav>
@@ -35,6 +35,15 @@
   export default {
     components: {
       BadgeImage,
+    },
+    badge: [],
+    created: function() {
+      const badgeDB = JSON.parse(localStorage.getItem("badgesWin"));
+      if (badgeDB === null) {
+        this.badge = [];
+      } else {
+        this.badge = badgeDB;
+      }
     },
   };
 </script>

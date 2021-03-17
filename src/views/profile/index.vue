@@ -25,8 +25,8 @@
       v-if="state === 'Insignias'"
     >
       <h1 class="title">Mis Insignias</h1>
-      <div class="columns has-text-centered">
-        <div v-for="_ in 4" :key="_" class="column is-3">
+      <div>
+        <div>
           <BadgeCard />
         </div>
       </div>
