@@ -3,7 +3,11 @@
     <div class="is-flex is-flex-direction-column">
       <div class="mb-2 card-image is-flex is-justify-content-center">
         <figure class="image is-128x128 my-2 outer">
-          <img class="is-rounded" :src="avatarURL" alt="Foto de Perfil" />
+          <img
+            class="is-rounded is-128x128"
+            :src="[newAvatar ? newAvatar : avatarURL]"
+            alt="Foto de Perfil"
+          />
           <label
             for="avatar"
             class="inner is-flex is-justify-content-center is-align-items-center"
@@ -206,6 +210,7 @@
         countries: [],
         areas: [],
         selected: null,
+        newAvatar: null,
       };
     },
     computed: {
@@ -223,11 +228,11 @@
     methods: {
       handleImageUpload: function(event) {
         const fileReader = new FileReader();
-        fileReader.onload = () => {
-          this.userInfo.photoUrl = fileReader.result;
-        };
         this.profilePhotoFile = event.target.files[0];
         fileReader.readAsDataURL(this.profilePhotoFile);
+        fileReader.onload = () => {
+          this.newAvatar = this.userInfo.photoUrl = fileReader.result;
+        };
       },
       submit: async function() {
         this.loading = true;
