@@ -49,6 +49,9 @@
           showConfirmButton: false,
           timer: 1500,
         });
+
+        // Añadiendo insignia por unirse a un grupo
+        this.updateBadges("friendly", 2);
       },
     },
   };
