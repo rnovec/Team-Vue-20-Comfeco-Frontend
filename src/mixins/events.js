@@ -3,6 +3,7 @@ module.exports = {
     async joinToEvent(eventId) {
       const events = [eventId];
       // update user profile without UserInfo
+      // TODO: consumir API para saber si no esta baneado de ese evento
       await this.updateProfile(null, { events });
       this.$swal.fire({
         icon: "success",

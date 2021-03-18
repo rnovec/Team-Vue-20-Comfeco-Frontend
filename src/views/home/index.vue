@@ -11,10 +11,10 @@
               <h1 class="title is-4 has-text-centered is-block">
                 Bienvenidos a Community Fest and Code
               </h1>
-              <h2 class="subtitle is-6 has-text-centered is-block">
+              <h2 class="subtitle is-5 has-text-centered is-block">
                 ¡Conoce gente, aprende y gana!
               </h2>
-              <p class="is-size-7 has-text-centered is-block">
+              <p class="is-size-6 has-text-centered is-block">
                 La próxima edición regresa en el 2022, en la cual se planea
                 involucrar a todos los programadores independientemente del área
                 de conocimiento que se encuentre, todo con un mismo proposito
@@ -44,7 +44,7 @@
               </div>
             </section>
           </div>
-          <div class="column mt-4 is-3 is-hidden-mobile">
+          <div class="column mt-4 is-3">
             <Workshops />
           </div>
         </div>
@@ -91,6 +91,9 @@
   }
   .hero.countdown {
     background: $gradient;
+  }
+  .hero-body .container {
+    padding: 0.7em 0;
   }
   .VueCarousel-dot-container {
     margin-top: 0px;
