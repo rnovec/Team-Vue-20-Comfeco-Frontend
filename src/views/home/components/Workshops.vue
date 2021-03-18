@@ -1,32 +1,34 @@
 <template>
-  <aside class="menu is-medium is-fixed-at-top is-hidden-mobile">
-    <article class="media">
-      <div class="media-content">
-        <div class="content">
-          <p class="menu-label">Talleres</p>
-        </div>
+  <div class="card is-fixed-at-top ">
+    <header class="card-header">
+      <p class="card-header-title">
+        Talleres
+      </p>
+      <a class="card-header-icon" aria-label="more options">
+        <small>Ver más</small>
+      </a>
+    </header>
+    <div class="card-body p-2">
+      <b-select size="is-small" v-model="query.area" expanded>
+        <option value="">Todos</option>
+        <option
+          v-for="option in areas"
+          :key="option.value"
+          :value="option.value"
+        >
+          {{ option.name }}
+        </option>
+      </b-select>
+      <div class="mt-4">
+        <ContentLoader v-if="isLoading" />
+        <WorkshopItem
+          v-for="workshop in workshops"
+          :workshop="workshop"
+          :key="workshop._id"
+        />
       </div>
-      <div class="media-right">
-        <b-button type="is-text is-info is-inverted" size="is-small">
-          Ver más
-        </b-button>
-      </div>
-    </article>
-    <b-select size="is-small" v-model="query.area" expanded>
-      <option value="">Todos</option>
-      <option v-for="option in areas" :key="option.value" :value="option.value">
-        {{ option.name }}
-      </option>
-    </b-select>
-    <div class="mt-4">
-      <ContentLoader v-if="isLoading" />
-      <WorkshopItem
-        v-for="workshop in workshops"
-        :workshop="workshop"
-        :key="workshop._id"
-      />
     </div>
-  </aside>
+  </div>
 </template>
 
 <style scoped>
@@ -34,6 +36,10 @@
     position: -webkit-sticky;
     position: sticky;
     top: 90px;
+  }
+  .card-body {
+    height: 350px;
+    overflow-y: scroll;
   }
 </style>
 
