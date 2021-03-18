@@ -22,10 +22,10 @@
       <a
         class="card-footer-item has-text-danger"
         v-if="currentGroup.id === data.id"
-        @click="leaveGroup"
+        @click="onGroupLeave"
         >Abandonar</a
       >
-      <a class="card-footer-item" v-else @click="joinToGroup">Unirse</a>
+      <a class="card-footer-item" v-else @click="onGroupJoin">Unirse</a>
     </div>
   </div>
 </template>
@@ -35,20 +35,11 @@
       data: Object,
     },
     methods: {
-      async joinToGroup() {
-        const group = {
-          id: this.data.id,
-          name: this.data.name,
-          role: "Participante",
-        };
-        // update user profile without UserInfo
-        await this.updateProfile(null, { group });
-        this.$swal.fire({
-          icon: "success",
-          title: "Se ha unido al grupo!",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+      onGroupJoin() {
+        this.$emit("join", this.data);
+      },
+      onGroupLeave() {
+        this.$emit("leave", this.data);
       },
     },
   };

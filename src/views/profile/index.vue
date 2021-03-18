@@ -15,30 +15,13 @@
           <Activity />
         </div>
         <div class="column is-3 is-hidden-touch">
-          <InterestedEvents />
+          <InterestedEvents v-model="state" />
         </div>
       </div>
     </div>
     <Badges v-if="state === 'Badges'" />
     <Groups v-if="state === 'Groups'" />
-<<<<<<< HEAD
-    <div class="container section" v-if="state === 'Events'">
-      <div class="has-text-centered">
-        <h1 class="title">Eventos activos</h1>
-      </div>
-      <div class="columns is-multiline mt-4">
-        <div
-          class="column is-one-third"
-          v-for="event in Events"
-          :key="event._id"
-        >
-          <EventCard :data="event" />
-        </div>
-      </div>
-    </div>
-=======
     <Events v-if="state === 'Events'" />
->>>>>>> ec934e965f34835da778efc3aac76382d02f558f
   </div>
 </template>
 
@@ -47,15 +30,10 @@
   import ProfileTabs from "./components/ProfileTabs";
   import ProfilePreview from "./components/ProfilePreview";
   import InterestedEvents from "./components/InterestedEvents";
+  import Events from "./events";
   import Badges from "./badges";
   import Groups from "./groups";
-<<<<<<< HEAD
-  import EventCard from "./components/EventCard";
-  import { getEvents } from "@/api/events";
-=======
-  import Events from "./events";
-
->>>>>>> ec934e965f34835da778efc3aac76382d02f558f
+  import { getEventsByQuery } from "@/api/events";
   export default {
     components: {
       Activity,
@@ -78,7 +56,7 @@
     methods: {
       async getData() {
         this.isLoading = true;
-        const res = await getEvents(this.listQuery);
+        const res = await getEventsByQuery(this.listQuery);
         this.Events = res.data.results;
         this.isLoading = false;
       },

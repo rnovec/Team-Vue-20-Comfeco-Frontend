@@ -13,7 +13,7 @@
       </a>
     </header>
     <div class="m-2" v-for="event in events" :key="event.id">
-      <EventCard :data="event" />
+      <EventCard :data="event" :show-join-button="false" />
     </div>
   </div>
 </template>
