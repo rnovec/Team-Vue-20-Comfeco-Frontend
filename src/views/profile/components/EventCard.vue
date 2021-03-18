@@ -18,10 +18,21 @@
       </div>
     </div>
     <div class="card-footer">
-      <a class="card-footer-item" target="_blank" :href="data.referral"
+      <a class="card-footer-item" :href="data.referral" target="_blanck"
         >Más info</a
       >
-      <a class="card-footer-item">Participar</a>
+      <a
+        class="card-footer-item has-text-danger"
+        v-if="currentEvents.indexOf(data._id) !== -1"
+        @click="onEventLeave"
+        >Abandonar</a
+      >
+      <a
+        class="card-footer-item"
+        v-else-if="showJoinButton"
+        @click="onEventJoin"
+        >Participar</a
+      >
     </div>
   </div>
 </template>
@@ -30,6 +41,18 @@
   export default {
     props: {
       data: Object,
+      showJoinButton: {
+        type: Boolean,
+        default: true,
+      },
+    },
+    methods: {
+      onEventLeave() {
+        this.$emit("leave", this.data._id);
+      },
+      onEventJoin() {
+        this.$emit("join", this.data._id);
+      },
     },
   };
 </script>

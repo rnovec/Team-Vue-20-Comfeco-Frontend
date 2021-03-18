@@ -15,6 +15,7 @@ export const getUserProfile = async () => {
   return {
     group: data.group ?? {},
     badges: data.badges ?? [],
+    events: data.events ?? [],
     gender: data.gender ?? "",
     birthday: data.birthday ?? "",
     country: data.country ?? "",

@@ -27,6 +27,9 @@ export default {
         currentGroup() {
           return state.profile.group ?? {};
         },
+        currentEvents() {
+          return state.profile.events ?? [];
+        },
         earnedBadges() {
           return state.profile.badges ?? [];
         },

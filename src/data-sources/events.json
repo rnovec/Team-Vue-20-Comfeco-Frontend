@@ -1,18 +1,18 @@
 [
     {
-        "id": 1,
+        "_id": 1,
         "banner": "https://media.discordapp.net/attachments/775925840289726474/817168441512296469/Marzo-4.png?width=430&height=430",
         "referral": "https://tekki.tv/vidamrr",
         "date": "2021-03-25T09:00:15"
     },
     {
-        "id": 2,
+        "_id": 2,
         "banner": "https://media.discordapp.net/attachments/775925840289726474/816865022641963008/Marzo-3.3.png?width=430&height=430",
         "referral": "https://tekki.tv/dianmonblan",
         "date": "2021-03-25T09:00:15"
     },
     {
-        "id": 3,
+        "_id": 3,
         "banner": "https://media.discordapp.net/attachments/775925840289726474/816834408089911336/Marzo-3.2.png?width=430&height=430",
         "referral": "https://tekki.tv/ps-cristopher",
         "date": "2021-03-25T09:00:15"

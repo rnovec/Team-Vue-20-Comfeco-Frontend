@@ -15,7 +15,7 @@
           <Activity />
         </div>
         <div class="column is-3 is-hidden-touch">
-          <InterestedEvents />
+          <InterestedEvents v-model="state" />
         </div>
       </div>
     </div>
@@ -30,10 +30,10 @@
   import ProfileTabs from "./components/ProfileTabs";
   import ProfilePreview from "./components/ProfilePreview";
   import InterestedEvents from "./components/InterestedEvents";
+  import Events from "./events";
   import Badges from "./badges";
   import Groups from "./groups";
-  import Events from "./events";
-
+  import { getEventsByQuery } from "@/api/events";
   export default {
     components: {
       Activity,
@@ -47,7 +47,19 @@
     data() {
       return {
         state: "Profile",
+        Events: [],
       };
+    },
+    mounted() {
+      this.getData();
+    },
+    methods: {
+      async getData() {
+        this.isLoading = true;
+        const res = await getEventsByQuery(this.listQuery);
+        this.Events = res.data.results;
+        this.isLoading = false;
+      },
     },
   };
 </script>
