@@ -5,19 +5,21 @@
     </div>
     <div class="columns is-multiline mt-4">
       <div class="column is-one-third" v-for="event in events" :key="event._id">
-        <EventCard :data="event" />
+        <EventCard :data="event" @join="joinToEvent" @leave="leaveEvent" />
       </div>
     </div>
   </div>
 </template>
 <script>
   import { getEventsByQuery } from "@/api/events";
+  import eventMixin from "@/mixins/events";
   import EventCard from "./components/EventCard";
 
   export default {
     components: {
       EventCard,
     },
+    mixins: [eventMixin],
     data() {
       return {
         events: [],
