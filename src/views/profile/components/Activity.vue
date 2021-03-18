@@ -2,17 +2,21 @@
   <section>
     <div class="notification">
       <h1 class="title is-6 is-block">Insignias</h1>
-      <nav class="level is-mobile">
-        <div class="level-item" v-for="item in badges" :key="item.id">
-          <figure class="image is-64x64">
-            <BadgeImage
-              :unlocked="earnedBadges.indexOf(item.id) !== -1"
-              :title="item.title"
-              :imageUrl="item.logo"
-            />
-          </figure>
-        </div>
-      </nav>
+      <carousel
+        :pagination-enabled="false"
+        :perPageCustom="[
+          [320, 3],
+          [480, 4],
+        ]"
+      >
+        <slide v-for="item in badges" :key="item.id">
+          <BadgeImage
+            :unlocked="earnedBadges.indexOf(item.id) !== -1"
+            :title="item.title"
+            :imageUrl="item.logo"
+          />
+        </slide>
+      </carousel>
     </div>
     <div class="is-flex is-justify-content-space-between mb-3">
       <h1 class="title is-6">Actividad</h1>
@@ -31,11 +35,14 @@
 </template>
 
 <script>
+  import { Carousel, Slide } from "vue-carousel";
   import BadgeImage from "./BadgeImage";
   import badges from "@/data-sources/badges.json";
 
   export default {
     components: {
+      Carousel,
+      Slide,
       BadgeImage,
     },
     data() {

@@ -9,39 +9,37 @@
       </a>
     </header>
     <div class="card-table">
-      <div class="content">
-        <table class="table is-fullwidth is-striped tableFixHead">
-          <tbody>
-            <tr v-for="item in items" :key="item.id">
-              <td class="level is-mobile">
-                <div class="level-left">
-                  <article class="media">
-                    <figure class="media-left">
-                      <p class="image is-rounded is-32x32">
-                        <img :src="item.img" class="is-rounded" />
+      <table class="table is-fullwidth is-striped tableFixHead">
+        <tbody>
+          <tr v-for="item in items" :key="item.id">
+            <td class="level is-mobile">
+              <div class="level-left">
+                <article class="media">
+                  <figure class="media-left">
+                    <p class="image is-rounded is-32x32">
+                      <img :src="item.img" class="is-rounded" />
+                    </p>
+                  </figure>
+                  <div class="media-content">
+                    <div class="content">
+                      <p class="is-size-7">
+                        <small
+                          ><strong>{{ item.name }}</strong></small
+                        >
                       </p>
-                    </figure>
-                    <div class="media-content">
-                      <div class="content">
-                        <p class="is-size-7">
-                          <small
-                            ><strong>{{ item.name }}</strong></small
-                          >
-                        </p>
-                      </div>
                     </div>
-                  </article>
-                </div>
-                <small class="level-right">
-                  <b-button type="is-primary" outlined size="is-small" rounded
-                    >Unirme</b-button
-                  >
-                </small>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+                  </div>
+                </article>
+              </div>
+              <small class="level-right">
+                <b-button type="is-primary" outlined size="is-small" rounded
+                  >Unirme</b-button
+                >
+              </small>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </aside>
 </template>
@@ -50,10 +48,10 @@
   .is-fixed-at-top {
     position: -webkit-sticky;
     position: sticky;
-    top: 20px;
+    top: 70px;
   }
   .media-content {
-    max-width: 150px;
+    max-width: 130px;
   }
   .content figure {
     margin-left: 0.2em;

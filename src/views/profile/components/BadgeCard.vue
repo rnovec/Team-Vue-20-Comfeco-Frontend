@@ -3,6 +3,7 @@
     <div class="is-flex mt-4 is-justify-content-center">
       <figure class="image is-96x96">
         <BadgeImage
+          :title="data.title"
           :unlocked="earnedBadges.indexOf(data.id) !== -1"
           :imageUrl="data.logo"
         />
