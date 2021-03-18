@@ -49,6 +49,11 @@
     methods: {
       onEventJoin() {
         this.$emit("join", this.data._id);
+        this.$snackbar("Te has inscrito en el evento: " + this.data.title, {
+          type: "is-success",
+          position: "is-bottom-right",
+          queue: false,
+        });
       },
       onEventLeave() {
         this.$emit("leave", this.data._id);
