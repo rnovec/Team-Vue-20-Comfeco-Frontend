@@ -40,45 +40,48 @@
                 </template>
               </div>
             </tr>
-            <tr v-for="member in members" :key="member.uid">
-              <td class="level is-mobile">
-                <div class="level-left">
-                  <article class="media">
-                    <figure class="media-left">
-                      <p class="image is-rounded is-32x32">
-                        <img
-                          :src="
-                            member.photoURL || defaultAvatar(member.displayName)
-                          "
-                          class="is-rounded"
-                        />
-                      </p>
-                    </figure>
-                    <div class="media-content">
-                      <div class="content">
-                        <p class="is-size-7">
-                          <strong
-                            ><small>{{ member.displayName }}</small></strong
-                          >
-                          <br />
-                          <small>Avanzado</small>
+            <template v-else>
+              <tr v-for="member in members" :key="member.uid">
+                <td class="level is-mobile">
+                  <div class="level-left">
+                    <article class="media">
+                      <figure class="media-left">
+                        <p class="image is-rounded is-32x32">
+                          <img
+                            :src="
+                              member.photoURL ||
+                                defaultAvatar(member.displayName)
+                            "
+                            class="is-rounded"
+                          />
                         </p>
+                      </figure>
+                      <div class="media-content">
+                        <div class="content">
+                          <p class="is-size-7">
+                            <strong
+                              ><small>{{ member.displayName }}</small></strong
+                            >
+                            <br />
+                            <small>Avanzado</small>
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                  </article>
-                </div>
-                <small class="level-right tag">Integrante</small>
-              </td>
-            </tr>
+                    </article>
+                  </div>
+                  <small class="level-right tag">Integrante</small>
+                </td>
+              </tr>
+            </template>
           </tbody>
         </table>
       </div>
     </div>
     <footer v-if="currentGroup.id" class="card-footer">
-      <a href="#" class="card-footer-item has-text-danger" @click="leaveGroup"
+      <a class="card-footer-item has-text-danger" @click="onGroupLeave"
         >Abandonar</a
       >
-      <a href="#" class="card-footer-item has-text-info">Ir a chat</a>
+      <a class="card-footer-item has-text-info">Ir a chat</a>
     </footer>
   </div>
 </template>
@@ -100,6 +103,9 @@
           const data = await getUsersByGroup();
           this.members = data.data.users;
         }
+      },
+      onGroupLeave() {
+        this.$emit("leave", this.currentGroup.id);
       },
     },
     watch: {

@@ -5,7 +5,7 @@
     </div>
     <div class="columns mt-4">
       <div class="column is-3">
-        <MyGroupCard />
+        <MyGroupCard @leave="leaveGroup" />
       </div>
       <div class="column is-9 mb-3">
         <!-- Main container -->
@@ -72,7 +72,7 @@
             v-for="group in groups"
             :key="group._id"
           >
-            <GroupCard :data="group" />
+            <GroupCard :data="group" @join="joinToGroup" @leave="leaveGroup" />
           </div>
         </div>
       </div>
@@ -82,6 +82,7 @@
 
 <script>
   import { getGroupsByQuery } from "@/api/groups";
+  import groupMixin from "@/mixins/groups";
   import MyGroupCard from "./components/MyGroupCard";
   import GroupCard from "./components/GroupCard";
   import GroupSkeleton from "./components/GroupSkeleton";
@@ -92,6 +93,7 @@
       GroupCard,
       GroupSkeleton,
     },
+    mixins: [groupMixin],
     data() {
       return {
         groups: [],

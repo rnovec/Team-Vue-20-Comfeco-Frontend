@@ -103,9 +103,9 @@ export default {
               break;
             case "friendly":
               if (data) {
-                const socialBadgeID = data;
+                const friendlyBadgeID = 2;
                 await updateUserProfile(null, {
-                  badges: [...state.profile.badges, socialBadgeID],
+                  badges: [...state.profile.badges, friendlyBadgeID],
                 });
                 setUser();
                 this.$swal.fire(
@@ -121,26 +121,6 @@ export default {
         },
         async resetPassword(email) {
           await passwordRecovery(email);
-        },
-        async leaveGroup() {
-          if (this.currentGroup.id) {
-            this.$swal
-              .fire({
-                title: "¿Estas seguro de abandonar tu grupo?",
-                text: "¡Esta acción es irreversible!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Si, abandonar!",
-                cancelButtonText: "Cancelar",
-              })
-              .then(async result => {
-                if (result.isConfirmed) {
-                  await this.updateProfile(null, { group: null });
-                }
-              });
-          }
         },
       },
     });

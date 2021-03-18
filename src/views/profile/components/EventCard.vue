@@ -47,11 +47,11 @@
       },
     },
     methods: {
-      onEventLeave() {
-        this.$emit("leave", this.data._id);
-      },
       onEventJoin() {
         this.$emit("join", this.data._id);
+      },
+      onEventLeave() {
+        this.$emit("leave", this.data._id);
       },
     },
   };
