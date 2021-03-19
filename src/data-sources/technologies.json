@@ -3,22 +3,22 @@
     {
       "name": "Javascript",
       "color": "#F7DF1E",
-      "image": ""
+      "image": "javascript.jpg"
     },
     {
       "name": "Vue",
       "color": "#43B885",
-      "image": ""
+      "image": "vue.jpg"
     },
     {
       "name": "Typescript",
       "color": "#2F74C0",
-      "image": ""
+      "image": "typescript.jpg"
     },
     {
       "name": "Python",
       "color": "#007BEC",
-      "image": ""
+      "image": "python.jpg"
     }
       
   ]
