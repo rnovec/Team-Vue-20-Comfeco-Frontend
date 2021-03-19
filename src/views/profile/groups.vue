@@ -34,10 +34,12 @@
                   placeholder="Selecciona un lenguaje"
                   expanded
                 >
-                  <option value="Javascript">Javascript</option>
-                  <option value="Vue">Vue</option>
-                  <option value="Typescript">Typescript</option>
-                  <option value="Python">Python</option>
+                  <option
+                    v-for="option in technologies.data"
+                    :value="option.name"
+                    :key="option.id">
+                    {{ option.name}}
+                  </option>
                 </b-select>
               </b-field>
             </div>
@@ -86,7 +88,7 @@
   import MyGroupCard from "./components/MyGroupCard";
   import GroupCard from "./components/GroupCard";
   import GroupSkeleton from "./components/GroupSkeleton";
-
+  import technologies from "@/data-sources/technologies.json";
   export default {
     components: {
       MyGroupCard,
@@ -96,6 +98,7 @@
     mixins: [groupMixin],
     data() {
       return {
+        technologies,
         groups: [],
         total: 0,
         isLoading: false,
