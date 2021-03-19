@@ -76,6 +76,7 @@ export default {
         },
         async updateBadges(badge, data) {
           const socialBadgeID = 1;
+          const friendlyBadgeID = 2;
           switch (badge) {
             case "sociable":
               if (data) {
@@ -102,8 +103,7 @@ export default {
               }
               break;
             case "friendly":
-              if (data) {
-                const friendlyBadgeID = 2;
+              if (!this.currentGroup.id) {
                 await updateUserProfile(null, {
                   badges: [...state.profile.badges, friendlyBadgeID],
                 });
