@@ -1,0 +1,39 @@
+{
+  "data": [
+    {
+      "name": "Javascript",
+      "color": "#F7DF1E",
+      "image": "javascript.jpg"
+    },
+    {
+      "name": "Vue",
+      "color": "#42b883",
+      "image": "vue.jpg"
+    },
+    {
+      "name": "React",
+      "color": "#00d8ff",
+      "image": "react.jpg"
+    },
+    {
+      "name": "Angular",
+      "color": "#dd1b16",
+      "image": "angular.jpg"
+    },
+    {
+      "name": "Svelte",
+      "color": "#aa1e1e",
+      "image": "svelte.jpg"
+    },
+    {
+      "name": "Typescript",
+      "color": "#007acc",
+      "image": "typescript.jpg"
+    },
+    {
+      "name": "Python",
+      "color": "#52A736",
+      "image": "python.jpg"
+    }
+  ]
+}
