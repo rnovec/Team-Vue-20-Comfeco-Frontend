@@ -52,7 +52,7 @@
         return require(`@/assets/speakers/${data}`);
       },
       technology(data) {
-        return require(`@/assets/speakers/technology/${data}`);
+        return require(`@/assets/technology/${data}`);
       },
     },
   };
