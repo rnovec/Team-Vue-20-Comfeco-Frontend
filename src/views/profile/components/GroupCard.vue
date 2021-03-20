@@ -2,16 +2,14 @@
   <div class="card">
     <div class="card-image">
       <figure class="image is-4by3">
-        <img
-          :src="data.banner"
-          alt="Placeholder image"
-          data-target="modal-image2"
-        />
+        <img :src="data.banner" alt="Banner del grupo" />
       </figure>
     </div>
+    <b class="tag mt-3" :style="`background-color: ${techColor(data.lang)}`">{{
+      data.lang
+    }}</b>
     <div class="card-content">
       <div class="content">
-        <b class="tag mb-4">{{ data.lang }}</b>
         <h5>{{ data.name }}</h5>
         <p class="is-size-7">
           {{ data.description }}
@@ -30,10 +28,13 @@
   </div>
 </template>
 <script>
+  import sourcesMixin from "@/mixins/sources";
+
   export default {
     props: {
       data: Object,
     },
+    mixins: [sourcesMixin],
     methods: {
       onGroupJoin() {
         this.$emit("join", this.data);

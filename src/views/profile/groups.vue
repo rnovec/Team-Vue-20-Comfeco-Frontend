@@ -14,7 +14,7 @@
           <div class="level-left">
             <div class="level-item">
               <p class="subtitle is-5">
-                <strong>{{ total }}</strong> grupos
+                <strong>{{ groups.length }}</strong> grupos
               </p>
             </div>
             <div class="level-item">
@@ -28,20 +28,45 @@
                   expanded
                 >
                 </b-input>
-                <b-select
+                <b-dropdown
                   v-model="listQuery.lang"
-                  size="is-small"
-                  placeholder="Selecciona un lenguaje"
-                  expanded
+                  :max-height="500"
+                  scrollable
+                  append-to-body
+                  position="is-bottom-left"
+                  aria-role="list"
                 >
-                  <option
-                    v-for="option in technologies.data"
-                    :value="option.name"
-                    :key="option.id"
+                  <button
+                    class="button is-primary is-rounded is-outlined is-small"
+                    slot="trigger"
+                    slot-scope="{ active }"
                   >
-                    {{ option.name }}
-                  </option>
-                </b-select>
+                    <span>{{
+                      listQuery.lang || "Selecciona una tecnología"
+                    }}</span>
+                    <b-icon :icon="active ? 'menu-up' : 'menu-down'"></b-icon>
+                  </button>
+                  <b-dropdown-item
+                    v-for="item in technologies.data"
+                    :key="item.name"
+                    :value="item.name"
+                    aria-item="listitem"
+                  >
+                    <div class="media" :style="{ color: item.color }">
+                      <div class="media-left">
+                        <figure class="image is-16x16">
+                          <img
+                            class="is-rounded"
+                            :src="technology(item.image)"
+                          />
+                        </figure>
+                      </div>
+                      <div class="media-content">
+                        <h3>{{ item.name }}</h3>
+                      </div>
+                    </div>
+                  </b-dropdown-item>
+                </b-dropdown>
               </b-field>
             </div>
           </div>
@@ -77,6 +102,16 @@
           >
             <GroupCard :data="group" @join="joinToGroup" @leave="leaveGroup" />
           </div>
+          <div class="column" v-if="!groups.length">
+            <div class="content pt-6 has-text-grey has-text-centered">
+              <template>
+                <p>
+                  <b-icon icon="emoticon-sad" size="is-large" />
+                </p>
+                <p>No se encontraron grupos&hellip;</p>
+              </template>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -86,20 +121,20 @@
 <script>
   import { getGroupsByQuery } from "@/api/groups";
   import groupMixin from "@/mixins/groups";
+  import sourcesMixin from "@/mixins/sources";
   import MyGroupCard from "./components/MyGroupCard";
   import GroupCard from "./components/GroupCard";
   import GroupSkeleton from "./components/GroupSkeleton";
-  import technologies from "@/data-sources/technologies.json";
+
   export default {
     components: {
       MyGroupCard,
       GroupCard,
       GroupSkeleton,
     },
-    mixins: [groupMixin],
+    mixins: [groupMixin, sourcesMixin],
     data() {
       return {
-        technologies,
         groups: [],
         total: 0,
         isLoading: false,

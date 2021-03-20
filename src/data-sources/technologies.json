@@ -7,19 +7,33 @@
     },
     {
       "name": "Vue",
-      "color": "#43B885",
+      "color": "#42b883",
       "image": "vue.jpg"
     },
     {
+      "name": "React",
+      "color": "#00d8ff",
+      "image": "react.jpg"
+    },
+    {
+      "name": "Angular",
+      "color": "#dd1b16",
+      "image": "angular.jpg"
+    },
+    {
+      "name": "Svelte",
+      "color": "#aa1e1e",
+      "image": "svelte.jpg"
+    },
+    {
       "name": "Typescript",
-      "color": "#2F74C0",
+      "color": "#007acc",
       "image": "typescript.jpg"
     },
     {
       "name": "Python",
-      "color": "#007BEC",
+      "color": "#52A736",
       "image": "python.jpg"
     }
-      
   ]
 }
