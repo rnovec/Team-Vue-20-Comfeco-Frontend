@@ -13,7 +13,13 @@
         <EventSkeleton />
       </div>
       <div class="column is-one-third" v-for="event in events" :key="event._id">
-        <EventCard :data="event" @join="joinToEvent" @leave="leaveEvent" />
+        <EventCard
+          :data="event"
+          :myActiviti="activity"
+          @join="joinToEvent"
+          @leave="leaveEvent"
+          @newActivity="addActivity"
+        />
       </div>
     </div>
   </div>
@@ -33,6 +39,7 @@
     data() {
       return {
         events: [],
+        activities: [],
         total: 0,
         isLoading: false,
         listQuery: {
@@ -54,6 +61,19 @@
         this.events = res.data.results;
         this.isLoading = false;
       },
+      // Añadir evento inscrito a Activities
+      addActivity(newActivity) {
+        this.activities.push(newActivity);
+        localStorage.setItem("activitiess", JSON.stringify(this.activities));
+      },
+    },
+    created: function() {
+      const datosDB = JSON.parse.localStorage.getItem("activitiess");
+      if (datosDB == null) {
+        this.activities = [];
+      } else {
+        this.activities = datosDB;
+      }
     },
     watch: {
       listQuery: {

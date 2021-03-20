@@ -37,8 +37,9 @@
                   <option
                     v-for="option in technologies.data"
                     :value="option.name"
-                    :key="option.id">
-                    {{ option.name}}
+                    :key="option.id"
+                  >
+                    {{ option.name }}
                   </option>
                 </b-select>
               </b-field>

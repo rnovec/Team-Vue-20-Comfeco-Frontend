@@ -27,15 +27,12 @@
           <p>Te has unido a estos eventos</p>
           <div
             class="column is-one-third"
-            v-for="event in events"
-            :key="event._id"
+            v-for="activity in activities"
+            :key="activity"
           >
-            <div
-              :unlock="earnedEvens.indexOf(event.id) !== -1"
-              :class="[unlock ? '' : 'display-none']"
-            >
-              <h3>{{ event.title }}</h3>
-              <p>{{ event.description }}</p>
+            <div>
+              <h3>{{ activity.title }}</h3>
+              <p>{{ activity.description }}</p>
             </div>
           </div>
         </div>
@@ -52,9 +49,6 @@
   import BadgeImage from "./BadgeImage";
   import badges from "@/data-sources/badges.json";
 
-  import { getEventsByQuery } from "@/api/events";
-  import eventMixin from "@/mixins/events";
-
   export default {
     components: {
       Carousel,
@@ -64,40 +58,16 @@
     data() {
       return {
         badges,
-        events: [],
-        listQuery: {
-          search: "",
-          lang: null,
-          limit: 12,
-          offset: 0,
-        },
+        activities: [],
       };
     },
-    mixins: [eventMixin],
-    mounted() {
-      this.getData();
-    },
-    methods: {
-      async getData() {
-        this.isLoading = true;
-        const res = await getEventsByQuery(this.listQuery);
-        this.total = res.data.total;
-        this.events = res.data.results;
-        this.isLoading = false;
-      },
-    },
-    watch: {
-      listQuery: {
-        handler() {
-          this.getData();
-        },
-        deep: true,
-      },
+    created: function() {
+      const datosDB = JSON.parse.localStorage.getItem("activities");
+      if (datosDB == null) {
+        this.activities = [];
+      } else {
+        this.activities = datosDB;
+      }
     },
   };
 </script>
-<style>
-  .display-none {
-    display: none;
-  }
-</style>
