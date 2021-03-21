@@ -45,12 +45,13 @@
 
 <script>
   import { getWorkshops, getWorkshopsByQuery } from "@/api/workshops";
+  import ContentLoader from "@/components/ContentLoader";
   import WorkshopItem from "./WorkshopItem";
   import areas from "@/data-sources/areas.json";
 
   export default {
     name: "Workshops",
-    components: { WorkshopItem },
+    components: { ContentLoader, WorkshopItem },
     mounted() {
       this.getData();
     },
