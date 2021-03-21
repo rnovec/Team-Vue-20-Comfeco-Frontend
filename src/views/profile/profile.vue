@@ -42,8 +42,6 @@
         this.$emit("action", action);
       },
       async getCurrentEvent() {
-        console.log(this.currentEvent);
-
         if (this.currentEvent) {
           const data = await getEventById(this.currentEvent);
           this.currentEventData = data;
