@@ -16,8 +16,7 @@ client.interceptors.response.use(
     return res.data;
   },
   error => {
-    console.log(error);
-    return Promise.reject(error.response.data);
+    return Promise.reject(error);
   }
 );
 
