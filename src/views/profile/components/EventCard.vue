@@ -54,19 +54,9 @@
     methods: {
       onEventJoin() {
         this.$emit("join", this.data._id);
-        this.$emit("newActivity", this.myActiviti);
       },
       onEventLeave() {
         this.$emit("leave", this.data._id);
-      },
-      // Se genera un objeto para ser pasado a actividad por medio de newActivity
-      myActiviti() {
-        this.activity = {
-          id: this.data._id,
-          title: this.data.title,
-          description: this.data.description,
-        };
-        return this.activity;
       },
     },
   };

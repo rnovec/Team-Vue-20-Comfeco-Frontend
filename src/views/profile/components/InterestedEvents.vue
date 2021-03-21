@@ -7,7 +7,7 @@
       <a
         class="card-header-icon"
         aria-label="more options"
-        @click="innerValue = 'Events'"
+        @click="showMoreClick"
       >
         <small>Ver más</small>
       </a>
@@ -32,6 +32,11 @@
       return {
         events,
       };
+    },
+    methods: {
+      showMoreClick() {
+        this.$emit("show-more");
+      },
     },
   };
 </script>
