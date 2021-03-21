@@ -33,6 +33,7 @@
     data() {
       return {
         events: [],
+        activities: [],
         total: 0,
         isLoading: false,
         listQuery: {
@@ -50,8 +51,8 @@
       async getData() {
         this.isLoading = true;
         const res = await getEventsByQuery(this.listQuery);
-        this.total = res.data.total;
-        this.events = res.data.results;
+        this.total = res.total;
+        this.events = res.results;
         this.isLoading = false;
       },
     },

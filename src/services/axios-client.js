@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default axios.create({
+const client = axios.create({
   baseURL: process.env.VUE_APP_DATA_API_URL,
   withCredentials: false,
   headers: {
@@ -9,3 +9,16 @@ export default axios.create({
   },
   timeout: 30000,
 });
+
+// response interceptor
+client.interceptors.response.use(
+  res => {
+    return res.data;
+  },
+  error => {
+    console.log(error);
+    return Promise.reject(error.response.data);
+  }
+);
+
+export default client;

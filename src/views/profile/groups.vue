@@ -153,8 +153,8 @@
       async getData() {
         this.isLoading = true;
         const res = await getGroupsByQuery(this.listQuery);
-        this.total = res.data.total;
-        this.groups = res.data.results;
+        this.total = res.total;
+        this.groups = res.results;
         this.isLoading = false;
       },
     },

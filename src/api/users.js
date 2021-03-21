@@ -14,8 +14,8 @@ export const getUserProfile = async () => {
   const data = result.docs.length === 0 ? {} : result.docs[0].data();
   return {
     group: data.group ?? {},
+    event: data.event ?? {},
     badges: data.badges ?? [],
-    events: data.events ?? [],
     gender: data.gender ?? "",
     birthday: data.birthday ?? "",
     country: data.country ?? "",

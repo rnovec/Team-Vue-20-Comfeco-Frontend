@@ -45,12 +45,13 @@
 
 <script>
   import { getWorkshops, getWorkshopsByQuery } from "@/api/workshops";
+  import ContentLoader from "@/components/ContentLoader";
   import WorkshopItem from "./WorkshopItem";
   import areas from "@/data-sources/areas.json";
 
   export default {
     name: "Workshops",
-    components: { WorkshopItem },
+    components: { ContentLoader, WorkshopItem },
     mounted() {
       this.getData();
     },
@@ -68,10 +69,10 @@
       async getData() {
         this.isLoading = true;
         try {
-          const response = this.isQueryEmpty()
+          const data = this.isQueryEmpty()
             ? await getWorkshops()
             : await getWorkshopsByQuery(this.query);
-          this.workshops = response.data.results;
+          this.workshops = data.results;
         } catch (error) {
           console.log(error);
         } finally {

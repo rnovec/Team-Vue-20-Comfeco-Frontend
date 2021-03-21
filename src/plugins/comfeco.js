@@ -12,7 +12,6 @@ import state, {
   updateUserProfile,
   updateUserPassword,
 } from "@/api/users";
-import ContentLoader from "@/components/ContentLoader";
 
 export default {
   install(Vue, options) {
@@ -27,8 +26,8 @@ export default {
         currentGroup() {
           return state.profile.group ?? {};
         },
-        currentEvents() {
-          return state.profile.events ?? [];
+        currentEvent() {
+          return state.profile.event ?? null;
         },
         earnedBadges() {
           return state.profile.badges ?? [];
@@ -64,8 +63,28 @@ export default {
           this.$router.push("/sign-in");
         },
         async getUserInfo() {
-          const userInfo = await getUserProfile();
-          return userInfo;
+          const {
+            gender,
+            birthday,
+            country,
+            area,
+            biography,
+            ghprofile,
+            twprofile,
+            fbprofile,
+            lnprofile,
+          } = await getUserProfile();
+          return {
+            gender,
+            birthday,
+            country,
+            area,
+            biography,
+            ghprofile,
+            twprofile,
+            fbprofile,
+            lnprofile,
+          };
         },
         async updateProfile(userInfo, profileInfo, profilePhotoFile) {
           await updateUserProfile(userInfo, profileInfo, profilePhotoFile);
@@ -124,9 +143,6 @@ export default {
         },
       },
     });
-
-    // Register global components
-    Vue.component("ContentLoader", ContentLoader);
 
     Vue.prototype.$snackbar = function(
       message,
