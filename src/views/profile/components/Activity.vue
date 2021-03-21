@@ -3,11 +3,11 @@
     <div class="is-flex is-justify-content-space-between mb-3">
       <h1 class="title is-6">Actividad</h1>
     </div>
-    <article class="media box" v-for="activity in activities" :key="activity">
+    <article class="media box" v-for="(item, index) in activities" :key="index">
       <div class="media-content">
         <div class="content">
           <p>
-            Te has unido al evento <b>{{ activity }}</b>
+            Te has unido al evento <b>{{ item.title }}</b>
           </p>
         </div>
       </div>
@@ -32,10 +32,11 @@
 
 <script>
   export default {
-    data() {
-      return {
-        activities: [],
-      };
+    props: {
+      activities: {
+        type: Array,
+        default: () => [],
+      },
     },
   };
 </script>

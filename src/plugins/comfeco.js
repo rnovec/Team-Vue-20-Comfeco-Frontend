@@ -63,8 +63,28 @@ export default {
           this.$router.push("/sign-in");
         },
         async getUserInfo() {
-          const userInfo = await getUserProfile();
-          return userInfo;
+          const {
+            gender,
+            birthday,
+            country,
+            area,
+            biography,
+            ghprofile,
+            twprofile,
+            fbprofile,
+            lnprofile,
+          } = await getUserProfile();
+          return {
+            gender,
+            birthday,
+            country,
+            area,
+            biography,
+            ghprofile,
+            twprofile,
+            fbprofile,
+            lnprofile,
+          };
         },
         async updateProfile(userInfo, profileInfo, profilePhotoFile) {
           await updateUserProfile(userInfo, profileInfo, profilePhotoFile);

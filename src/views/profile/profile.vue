@@ -7,7 +7,7 @@
       <div class="column is-6 mb-3">
         <section>
           <BadgeList />
-          <Activity />
+          <Activity :activities="activities" />
         </section>
       </div>
       <div class="column is-3 is-hidden-touch">
@@ -18,6 +18,7 @@
 </template>
 
 <script>
+  import { getEventById } from "@/api/events";
   import BadgeList from "./components/BadgeList";
   import Activity from "./components/Activity";
   import ProfilePreview from "./components/ProfilePreview";
@@ -30,9 +31,31 @@
       ProfilePreview,
       InterestedEvents,
     },
+    data() {
+      return {
+        currentEventData: {},
+        activities: [],
+      };
+    },
     methods: {
       onAction(action) {
         this.$emit("action", action);
+      },
+      async getCurrentEvent() {
+        console.log(this.currentEvent);
+
+        if (this.currentEvent) {
+          const data = await getEventById(this.currentEvent);
+          this.currentEventData = data;
+          this.activities = [data];
+        }
+      },
+    },
+    watch: {
+      currentEvent(val) {
+        if (val) {
+          this.getCurrentEvent();
+        }
       },
     },
   };

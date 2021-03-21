@@ -1,5 +1,9 @@
 # vue-team-20-comfeco
 
+**App ID Huawei Quick Apps**: 103856973
+
+**Live demo**: https://comfeco.netlify.app/
+
 ## Project setup
 
 ```

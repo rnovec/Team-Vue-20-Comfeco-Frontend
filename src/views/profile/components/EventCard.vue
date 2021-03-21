@@ -23,7 +23,7 @@
       >
       <a
         class="card-footer-item has-text-danger"
-        v-if="currentEvents.indexOf(data._id) !== -1"
+        v-if="currentEvent === data._id"
         @click="onEventLeave"
         >Abandonar</a
       >

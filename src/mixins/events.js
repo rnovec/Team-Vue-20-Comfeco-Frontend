@@ -1,10 +1,7 @@
-module.exports = {
+export default {
   methods: {
     async joinToEvent(eventId) {
-      const events = [eventId];
-      // update user profile without UserInfo
-      // TODO: consumir API para saber si no esta baneado de ese evento
-      await this.updateProfile(null, { events });
+      await this.updateProfile(null, { event: eventId });
       this.$swal.fire({
         icon: "success",
         title: "Se ha unido al evento!",
@@ -12,12 +9,11 @@ module.exports = {
         timer: 1500,
       });
     },
-    async leaveEvent(eventId) {
-      const events = this.currentEvents;
-      if (events.indexOf(eventId) !== -1) {
+    async leaveEvent() {
+      if (this.currentEvent) {
         this.$swal
           .fire({
-            title: "¿Estas seguro de abandonar el evento?",
+            title: "¿Estas seguro de abandonar tu evento actual?",
             text:
               "¡Esta acción es irreversible!. Quedarás vetado de este evento",
             icon: "warning",
@@ -29,9 +25,7 @@ module.exports = {
           })
           .then(async result => {
             if (result.isConfirmed) {
-              // TODO: remover el evento pero mantener los demas a los que esta inscrito
-              // TODO: consumir API de baneos
-              await this.updateProfile(null, { events });
+              await this.updateProfile(null, { event: null });
             }
           });
       }

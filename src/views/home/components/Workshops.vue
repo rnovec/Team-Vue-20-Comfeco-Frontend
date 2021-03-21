@@ -69,10 +69,10 @@
       async getData() {
         this.isLoading = true;
         try {
-          const response = this.isQueryEmpty()
+          const data = this.isQueryEmpty()
             ? await getWorkshops()
             : await getWorkshopsByQuery(this.query);
-          this.workshops = response.data.results;
+          this.workshops = data.results;
         } catch (error) {
           console.log(error);
         } finally {

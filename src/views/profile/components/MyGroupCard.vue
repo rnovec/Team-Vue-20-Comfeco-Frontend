@@ -106,7 +106,7 @@
       async getMembers() {
         if (this.currentGroup.id) {
           const data = await getUsersByGroup();
-          this.members = data.data.users;
+          this.members = data.users;
         }
       },
       onGroupLeave() {
