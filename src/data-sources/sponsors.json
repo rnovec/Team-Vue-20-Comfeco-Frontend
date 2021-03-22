@@ -1,13 +1,6 @@
 {
     "data": [
         {
-            "id": 1,
-            "name": "Huawei",
-            "fanpage": "",
-            "date_joined": "2021-05-25T09:00:15",
-            "name_image": "Huawei.jpg"
-        },
-        {
             "id": 2,
             "name": "Fernando Herrera",
             "fanpage": "",

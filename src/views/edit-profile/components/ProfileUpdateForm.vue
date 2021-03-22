@@ -75,7 +75,7 @@
 
     <div class="columns">
       <div class="column">
-        <b-field label="Pais" message="Selecciona tu país de origen">
+        <b-field label="País / Región" message="Selecciona tu país de origen">
           <b-autocomplete
             icon="flag"
             :data="filteredCountries"
